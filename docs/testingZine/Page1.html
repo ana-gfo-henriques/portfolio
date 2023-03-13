@@ -1,0 +1,20 @@
+<!-- Displaying the content of the "intro" div from Page2.html on Page1.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function($){
+                $('#result').load('Page2.html #intro');
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="result"></div>
+        <div>Other Stuff Here</div>
+    </body>
+</html>
