@@ -1,0 +1,144 @@
+/* base formatting */
+
+* {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+html, body {
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    background-color: white;
+}
+
+.noisy {
+    background-image: url(../images/noise/noise.svg);
+    filter: contrast(120%);
+} 
+
+  #perlinBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    mix-blend-mode: hard-light;
+    opacity: 1;
+ }
+
+/* elements */
+
+canvas {
+    display: block;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+button:active {
+    color: gray;
+}
+
+.screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+.screenPapers {
+    width: 100vw;
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+.print svg {
+    width: 90px;
+    height: 90px;
+    /* background-color: red; */
+}
+
+.print svg:hover {
+    fill: transparent;
+    stroke: black;
+    stroke-width: 2.2px;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='25%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>PRINT</text></svg>") 16 0, auto;
+}
+
+.print svg:active {
+    fill: transparent;
+    stroke: gray;
+    stroke-width: 2.2px;
+}
+
+.image {
+    width: 700px;
+    height: 495px;
+    /* background-color: red; */
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+#aestheticSpaceImg {
+    background-image: url('../images/aestheticSpace/aestheticSpace.png');
+}
+
+#mappingImg {
+    background-image: url('../images/mapping/mapping.png');
+}
+
+#onKnowingImg {
+    background-image: url('../images/onKnowing/onKnowing.png');
+}
+
+#designingFuturesImg {
+    background-image: url('../images/designingFutures/designingFutures.png');
+}
+
+#upicImg {
+    background-image: url('../images/upic/upic.png');
+}
+
+/* stylers */
+
+.margin {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 280px;
+    margin-right: 280px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vertCenter {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50.5%);
+    transform: translateY(-50.5%);
+}
+
+.nonAdjustableScreen {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    position: relative;
+}
