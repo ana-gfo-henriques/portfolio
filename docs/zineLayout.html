@@ -20,7 +20,11 @@
 			referrerpolicy="no-referrer"
 		></script> -->
 
-        <script type="text/javascript" src="scripts/html2canvas.js"></script>
+        <!-- <script type="text/javascript" src="scripts/html2canvas.js"></script> -->
+
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="scripts/canvas2image.js"></script>
 
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
@@ -246,21 +250,13 @@
 		</script> -->
 
         <script type='text/javascript'>
+            
             function screenshot(){
-
-
-                html2canvas(document.body).then(canvas => {
-                    let a = document.createElement("a");
-                    a.download = "ss.png";
-                    //   a.href = canvas.toDataURL("image/png");
-                    a.click();
+                html2canvas(document.body).then(function(canvas) {
+                    // document.body.innerHTML=''
+                    // document.body.appendChild(canvas);
+                    return Canvas2Image.saveAsPNG(canvas);
                 });
-
-
-
-                // html2canvas(document.body).then(function(canvas) {
-                //     document.body.appendChild(canvas);
-                // });
             }
         </script>
 
