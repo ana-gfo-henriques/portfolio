@@ -220,19 +220,17 @@
             </div>
         </div>
 
-        <button id="download-button">Download as PDF</button>
+        <button id="download-button" onclick="generatePDF()">Download as PDF</button>
 
         <script>
 			const button = document.getElementById('download-button');
 
 			function generatePDF() {
 				// Choose the element that your content will be rendered to.
-				const element = document.getElementById('invoice');
+				const element = document.getElementById('body');
 				// Choose the element and save the PDF for your user.
 				html2pdf().from(element).save();
 			}
-
-			button.addEventListener('click', generatePDF);
 		</script>
 
         <script src="scripts/perlinBottom.js"></script>
