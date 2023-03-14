@@ -24,17 +24,30 @@
 
 //  }, false);
 
-var content = document.getElementById('txtContent'),
-button = document.getElementById('btnDownload');
+var content = document.getElementById('body');
+var button = document.getElementById('btnDownload');
 
 function generatePDF(){
-  var doc = new jsPDF();
+  var doc = new jsPDF({
+    orientation: "landscape",
+    unit: "mm",
+    size: "a4"
+  });
+  doc.html(page, {
+    callback: function(doc) {
+        doc.save('sample-document.pdf');
+    },
+        x: 0,
+        y: 0,
+        width: 297,
+        height: 210
+  });
 
-  doc.setFontSize(14);
-  doc.text(20, 20, content.value);
-  //doc.text(35, 25, "Paranyan loves jsPDF");
-  //doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
-  doc.save('my.pdf');
+//   doc.setFontSize(14);
+//   doc.text(20, 20, content.value);
+//   doc.text(35, 25, "Paranyan loves jsPDF");
+//   doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+//   doc.save('my.pdf');
 }
 
 button.addEventListener('click', generatePDF);
