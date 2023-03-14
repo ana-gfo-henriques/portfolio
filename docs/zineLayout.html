@@ -189,7 +189,7 @@
                                 <div id="onKnowingImg" class="image"></div>
                                 <div class="vertProjectTitle"><span>On Knowing:</span> Cultural bias and the decoloniza-<br>tion of knowledge</div>
                             </div>
-                            <div class="description">
+                            <div id="tryingForPDF" class="description">
                                 about the book as a vehicle of supposed legitimate knowledge <span>· AUTHOR'S EDITION</span>
                             </div>
                         </div>
@@ -220,17 +220,26 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="generatePDF()">Download as PDF</button>
+        <button id="download-button" onclick="generatePDF()">CR7</button>
 
         <script>
 			const button = document.getElementById('download-button');
 
 			function generatePDF() {
-				// Choose the element that your content will be rendered to.
 				const element = document.getElementById('body');
-				// Choose the element and save the PDF for your user.
-				html2pdf().from(element).save();
-			}
+				// html2pdf().from(element).save();
+			
+            
+                var opt = {
+                    margin:       1,
+                    filename:     'myfile.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2 },
+                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save();        
+            }
 		</script>
 
         <script src="scripts/perlinBottom.js"></script>

@@ -472,8 +472,8 @@ background-repeat: no-repeat;
 
 
 
-#btnDownload {
-    z-index: 99999999;
+#download-button {
+    /* z-index: 99999999; */
     position: absolute;
     top: 10mm;
     left: 100mm;
