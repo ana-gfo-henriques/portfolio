@@ -57,7 +57,7 @@
 
 window.jsPDF = window.jspdf.jsPDF;
 var docPDF = new jsPDF();
-function pdfPrint(){
+function print(){
 var elementHTML = document.querySelector("#body");
 docPDF.html(elementHTML, {
  callback: function(docPDF) {
