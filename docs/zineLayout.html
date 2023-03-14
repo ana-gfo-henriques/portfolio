@@ -13,12 +13,14 @@
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script> -->
-        <script
+        <!-- <script
 			src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
 			integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
-		></script>
+		></script> -->
+
+        <script type="text/javascript" src="scripts/html2canvas.js"></script>
 
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
@@ -189,7 +191,7 @@
                                 <div id="onKnowingImg" class="image"></div>
                                 <div class="vertProjectTitle"><span>On Knowing:</span> Cultural bias and the decoloniza-<br>tion of knowledge</div>
                             </div>
-                            <div id="tryingForPDF" class="description">
+                            <div class="description">
                                 about the book as a vehicle of supposed legitimate knowledge <span>· AUTHOR'S EDITION</span>
                             </div>
                         </div>
@@ -220,9 +222,9 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="generatePDF()">SLB</button>
+        <button id="download-button" onclick="screenshot()">CR7</button>
 
-        <script>
+        <!-- <script>
 			const button = document.getElementById('download-button');
 
 			function generatePDF() {
@@ -232,6 +234,7 @@
             
                 var opt = {
                     margin:       0,
+                    css:           
                     filename:     'myfile.pdf',
                     image:        { type: 'jpeg', quality: 1 },
                     html2canvas:  { scale: 1 },
@@ -240,7 +243,26 @@
 
                 html2pdf().set(opt).from(element).save();        
             }
-		</script>
+		</script> -->
+
+        <script type='text/javascript'>
+            function screenshot(){
+
+
+                html2canvas(document.body).then(canvas => {
+                    let a = document.createElement("a");
+                    a.download = "ss.png";
+                    //   a.href = canvas.toDataURL("image/png");
+                    a.click();
+                });
+
+
+
+                // html2canvas(document.body).then(function(canvas) {
+                //     document.body.appendChild(canvas);
+                // });
+            }
+        </script>
 
         <script src="scripts/perlinBottom.js"></script>
     </body>
