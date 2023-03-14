@@ -1,0 +1,105 @@
+.aboutImage {
+    position: relative;
+    overflow: hidden;
+    /* background-color: orange; */
+    width: 879px;
+    height: 621.58px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    /* margin-left: 280px;
+    margin-right: 280px; */
+}
+
+.slide{
+    position: absolute;
+}
+
+.slide img{
+    /* width: 100%;
+    height: 100%; */
+    width: 879px;
+    height: 621.58px;
+    object-fit: contain;
+    /* border: 2px solid black; */
+}
+
+.slideshowArrowsDiv {
+    width: 100px;
+    height: 621.58px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    /* background-color: red; */
+    position: relative;
+}
+
+.sliderArrow {
+    color: black;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3rem;
+
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+}
+
+#leftArrow {
+    left: 50px;
+    position: absolute;
+}
+
+#rightArrow{
+    right: 50px;
+    position: absolute;
+}
+
+#leftArrow:hover{
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>PREVIOUS</text></svg>") 16 0, pointer;
+}
+
+#rightArrow:hover{
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='25%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>NEXT</text></svg>") 16 0, pointer;
+}
+
+#dotsWrapper{
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+#dotsWrapperMapping {
+    display: flex;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.dotNavigation{
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    cursor: pointer;
+    margin: 0 4px;
+    border: 1.5px solid gray;
+    transition: .5s background-color;
+}
+
+.dotNavigation:hover{
+    background-color: red;
+}
+
+.activeDot {
+    background-color: gray;
+}
+
+.fade{
+    animation-name: fade;
+    animation-duration: .7s;
+}
+@keyframes fade{
+    from {opacity: .8}
+    to {opacity: 1}
+}
