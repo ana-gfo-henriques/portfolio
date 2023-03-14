@@ -1,26 +1,40 @@
-import {jsPDF} from "https://cdn.skypack.dev/jspdf";
-// import jspdfAutotable from 'https://cdn.skypack.dev/jspdf-autotable';
+// import {jsPDF} from "https://cdn.skypack.dev/jspdf";
 
-const page = document.getElementById("body");
+// const page = document.getElementById("body");
 
-console.log("before doc");
+// console.log("before doc");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const doc = new jsPDF({
-        orientation: "landscape",
-        unit: "mm",
-        size: "a4"
-    });
-    doc.html(page, {
-        callback: function(doc) {
-            doc.save('sample-document.pdf');
-        },
-        x: 0,
-        y: 0,
-        width: 297,
-        height: 210
-    });
+// document.addEventListener('DOMContentLoaded', function() {
+//     const doc = new jsPDF({
+//         orientation: "landscape",
+//         unit: "mm",
+//         size: "a4"
+//     });
+//     doc.html(page, {
+//         callback: function(doc) {
+//             doc.save('sample-document.pdf');
+//         },
+//         x: 0,
+//         y: 0,
+//         width: 297,
+//         height: 210
+//     });
 
-    console.log("after doc");
+//     console.log("after doc");
 
- }, false);
+//  }, false);
+
+var content = document.getElementById('txtContent'),
+button = document.getElementById('btnDownload');
+
+function generatePDF(){
+  var doc = new jsPDF();
+
+  doc.setFontSize(14);
+  doc.text(20, 20, content.value);
+  //doc.text(35, 25, "Paranyan loves jsPDF");
+  //doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+  doc.save('my.pdf');
+}
+
+button.addEventListener('click', generatePDF);
