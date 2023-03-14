@@ -10,14 +10,19 @@
         
         <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script> -->
-        
+        <script
+			src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+			integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
 
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
-        <script type="module" defer src="scripts/createPdf.js"></script>
+        <!-- <script type="module" defer src="scripts/createPdf.js"></script> -->
         
         <!-- <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -215,7 +220,20 @@
             </div>
         </div>
 
-        <button id="printButton" onclick="weeee()">CR7</button>
+        <button id="download-button">Download as PDF</button>
+
+        <script>
+			const button = document.getElementById('download-button');
+
+			function generatePDF() {
+				// Choose the element that your content will be rendered to.
+				const element = document.getElementById('invoice');
+				// Choose the element and save the PDF for your user.
+				html2pdf().from(element).save();
+			}
+
+			button.addEventListener('click', generatePDF);
+		</script>
 
         <script src="scripts/perlinBottom.js"></script>
     </body>
