@@ -220,7 +220,7 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="generatePDF()">CR7</button>
+        <button id="download-button" onclick="generatePDF()">SLB</button>
 
         <script>
 			const button = document.getElementById('download-button');
@@ -231,11 +231,11 @@
 			
             
                 var opt = {
-                    margin:       1,
+                    margin:       0,
                     filename:     'myfile.pdf',
-                    image:        { type: 'jpeg', quality: 0.98 },
-                    html2canvas:  { scale: 2 },
-                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    image:        { type: 'jpeg', quality: 1 },
+                    html2canvas:  { scale: 1 },
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
                 };
 
                 html2pdf().set(opt).from(element).save();        
