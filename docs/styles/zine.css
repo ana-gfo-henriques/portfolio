@@ -467,3 +467,14 @@ background-repeat: no-repeat;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+
+
+
+
+#btnDownload {
+    z-index: 99999999;
+    position: absolute;
+    top: 10mm;
+    left: 100mm;
+}
