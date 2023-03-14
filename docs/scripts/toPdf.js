@@ -32,7 +32,7 @@ function generatePDF(){
     orientation: "landscape",
     size: "a4"
   });
-  doc.html(page, {
+  doc.html(content, {
     callback: function(doc) {
         doc.save('sample-document.pdf');
     },
