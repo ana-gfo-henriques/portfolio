@@ -10,13 +10,14 @@
         
         <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
         
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script> -->
         
 
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
-        <script type="module" defer src="scripts/toPdf.js"></script>
+        <script type="module" defer src="scripts/createPdf.js"></script>
         
         <!-- <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -214,7 +215,7 @@
             </div>
         </div>
 
-        <button id="btnDownload"> DONA DOLORES </button>
+        <button id="printButton" onclick="pdfPrint()">Print</button>
 
         <script src="scripts/perlinBottom.js"></script>
     </body>
