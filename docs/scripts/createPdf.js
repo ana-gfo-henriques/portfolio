@@ -58,14 +58,16 @@
 window.jsPDF = window.jspdf.jsPDF;
 var docPDF = new jsPDF();
 function print(){
-var elementHTML = document.querySelector("#body");
-docPDF.html(elementHTML, {
- callback: function(docPDF) {
-  docPDF.save('myDocument.pdf');
- },
- x: 0,
- y: 0,
- width: 1122.520,
- windowWidth: 793.695
-});
+    console.log("starting function");
+    var elementHTML = document.querySelector("#body");
+    docPDF.html(elementHTML, {
+    callback: function(docPDF) {
+    docPDF.save('myDocument.pdf');
+    },
+    x: 0,
+    y: 0,
+    width: 1122.520,
+    windowWidth: 793.695
+    });
+    console.log("ending function");
 }
