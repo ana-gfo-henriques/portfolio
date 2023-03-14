@@ -30,7 +30,6 @@ var button = document.getElementById('btnDownload');
 function generatePDF(){
   var doc = new jsPDF({
     orientation: "landscape",
-    unit: "mm",
     size: "a4"
   });
   doc.html(page, {
@@ -39,8 +38,8 @@ function generatePDF(){
     },
         x: 0,
         y: 0,
-        width: 297,
-        height: 210
+        width: 1122.520,
+        height: 793.695
   });
 
 //   doc.setFontSize(14);
