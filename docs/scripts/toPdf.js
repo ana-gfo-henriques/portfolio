@@ -1,4 +1,4 @@
-import { jsPDF } from "jspdf";
+const { jsPDF } = window.jspdf;
 
 const page = document.getElementById("body");
 
