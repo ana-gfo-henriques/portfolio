@@ -1,6 +1,8 @@
 
 const page = document.getElementById("body");
 
+console.log("before doc");
+
 document.addEventListener('DOMContentLoaded', function() {
     const doc = new jsPDF({
         orientation: "landscape",
@@ -16,4 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 297,
         height: 210
     });
+
+    console.log("after doc");
+
  }, false);
