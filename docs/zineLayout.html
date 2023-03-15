@@ -255,9 +255,7 @@
                 html2canvas(document.body).then(function(canvas) {
                     // document.body.innerHTML=''
                     // document.body.appendChild(canvas);
-                    // return Canvas2Image.saveAsPNG(canvas);
-                    var image = canvas.toDataURL('image/png', 1.0);
-                    saveAsPNG(image, 'export.png')
+                    return Canvas2Image.saveAsPNG(canvas);
                 });
             }
         </script>
