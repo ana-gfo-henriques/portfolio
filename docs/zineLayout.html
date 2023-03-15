@@ -26,6 +26,8 @@
         <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
         <script src="scripts/canvas2image.js"></script>
 
+        <script src="https://cburgmer.github.io/rasterizeHTML.js/rasterizeHTML.allinone.js"></script>
+
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
         <!-- <script type="module" defer src="scripts/createPdf.js"></script> -->
@@ -39,7 +41,8 @@
 
     </head>
     <!-- <body id="body" onload="window.print()"> -->
-        <body id="body">
+        <body id="body" style="display: none;">
+        <canvas id="canvas" width="1122.520" height="793.695"></canvas>
         <canvas id="perlinBackground" class="noisy"></canvas>
 
         <div class="a4Screen">
@@ -249,7 +252,7 @@
             }
 		</script> -->
 
-        <script type='text/javascript'>
+        <!-- <script type='text/javascript'>
             
             function screenshot(){
                 html2canvas(document.body).then(function(canvas) {
@@ -258,6 +261,17 @@
                     return Canvas2Image.saveAsPNG(canvas);
                 });
             }
+        </script> -->
+
+        <script type='text/javascript'>
+            var canvas = document.getElementById("canvas"),
+            context = canvas.getContext('2d'),
+            html_container = document.getElementById("body"),
+            html = html_container.innerHTML;
+
+            rasterizeHTML.drawHTML(html).then(function (renderResult) {
+                context.drawImage(renderResult.image, 0, 0, 1122.520, 793.695);
+            });
         </script>
 
         <script src="scripts/perlinBottom.js"></script>
