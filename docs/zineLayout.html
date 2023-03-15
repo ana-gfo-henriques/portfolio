@@ -44,9 +44,8 @@
     </head>
     <!-- <body id="body" onload="window.print()"> -->
         <body id="body">
-        <canvas id="perlinBackground" class="noisy"></canvas>
-
-        <div class="a4Screen">
+        <div id="a4Screen">
+            <canvas id="perlinBackground" class="noisy"></canvas>
             <div class="row">
                 <div class="coverScreen">
                     <div class="tableOfContents">
@@ -230,7 +229,7 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="screenshot()">SLB</button>
+        <button id="download-button" onclick="screenshot()">CR7</button>
 
         <!-- <script>
 			const button = document.getElementById('download-button');
@@ -253,9 +252,11 @@
 		</script> -->
 
         <script type='text/javascript'>
+
+            let a4Screen = document.querySelector("#a4Screen");
             
             function screenshot(){
-                html2canvas(document.body).then(function(canvas) {
+                html2canvas(a4Screen).then(function(canvas) {
                     // document.body.innerHTML=''
                     // document.body.appendChild(canvas);
                     //return Canvas2Image.saveAsPNG(canvas);
