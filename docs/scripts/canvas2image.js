@@ -205,10 +205,11 @@ var Canvas2Image = function () {
 	 * @param  {[String]} filename [image filename]
 	 * @return {[type]}          [description]
 	 */
-	var saveAsImage = function (canvas, width, height, type,filename) {
+	var saveAsImage = function (canvas, width, height, type, filename) {
 		if ($support.canvas && $support.dataURL) {
 			if (typeof canvas == "string") { canvas = document.getElementById(canvas); }
 			if (type == undefined) { type = 'png'; }
+            if (type == 'jpeg') { type = 'jpg'; }
 			filename = filename == undefined||filename.length === 0 ?Date.now()+'.'+type: filename+'.'+type
 			type = fixType(type);
 
