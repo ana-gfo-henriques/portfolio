@@ -26,7 +26,7 @@
         <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
         <script src="scripts/canvas2image.js"></script>
 
-        <script src="https://cburgmer.github.io/rasterizeHTML.js/rasterizeHTML.allinone.js"></script>
+        <!-- <script src="https://cburgmer.github.io/rasterizeHTML.js/rasterizeHTML.allinone.js"></script> -->
 
         <script src="scripts/menu.js"></script>
         <script src="scripts/perlinTop.js"></script>
@@ -41,8 +41,7 @@
 
     </head>
     <!-- <body id="body" onload="window.print()"> -->
-        <body id="body" style="display: none;">
-        <canvas id="canvas" width="1122.520" height="793.695"></canvas>
+        <body id="body">
         <canvas id="perlinBackground" class="noisy"></canvas>
 
         <div class="a4Screen">
@@ -229,7 +228,7 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="screenshot()">CR7</button>
+        <button id="download-button" onclick="screenshot()">CR7777</button>
 
         <!-- <script>
 			const button = document.getElementById('download-button');
@@ -238,10 +237,9 @@
 				const element = document.getElementById('body');
 				// html2pdf().from(element).save();
 			
-            
                 var opt = {
                     margin:       0,
-                    css:           
+                    // css:           
                     filename:     'myfile.pdf',
                     image:        { type: 'jpeg', quality: 1 },
                     html2canvas:  { scale: 1 },
@@ -252,18 +250,23 @@
             }
 		</script> -->
 
-        <!-- <script type='text/javascript'>
+        <script type='text/javascript'>
             
             function screenshot(){
                 html2canvas(document.body).then(function(canvas) {
                     // document.body.innerHTML=''
                     // document.body.appendChild(canvas);
-                    return Canvas2Image.saveAsPNG(canvas);
+                    //return Canvas2Image.saveAsPNG(canvas);
+
+                    canvas.toBlob(function(blob) {
+                        window.saveAs(blob, 'my_image.jpg');
+                    });
                 });
             }
-        </script> -->
 
-        <script type='text/javascript'>
+        </script>
+
+        <!-- <script type='text/javascript'>
             var canvas = document.getElementById("canvas"),
             context = canvas.getContext('2d'),
             html_container = document.getElementById("body"),
@@ -272,7 +275,7 @@
             rasterizeHTML.drawHTML(html).then(function (renderResult) {
                 context.drawImage(renderResult.image, 0, 0, 1122.520, 793.695);
             });
-        </script>
+        </script> -->
 
         <script src="scripts/perlinBottom.js"></script>
     </body>
