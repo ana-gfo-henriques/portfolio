@@ -24,9 +24,9 @@
 
         <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
         <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-        <!-- <script src="scripts/canvas2image.js"></script> -->
+        <script src="scripts/canvas2image.js"></script>
 
-        <script src="https://github.com/hongru/canvas2image/blob/master/canvas2image.js"></script>
+        <!-- <script src="https://github.com/hongru/canvas2image/blob/master/canvas2image.js"></script> -->
 
         <!-- <script src="https://cburgmer.github.io/rasterizeHTML.js/rasterizeHTML.allinone.js"></script> -->
 
@@ -230,7 +230,7 @@
             </div>
         </div>
 
-        <button id="download-button" onclick="screenshot()">CR7777</button>
+        <button id="download-button" onclick="screenshot()">CR7</button>
 
         <!-- <script>
 			const button = document.getElementById('download-button');
@@ -259,7 +259,9 @@
                     // document.body.innerHTML=''
                     // document.body.appendChild(canvas);
                     //return Canvas2Image.saveAsPNG(canvas);
-                    return Canvas2Image.Canvas2Image.saveAsJPEG(canvas, 1122.520, 793.695)
+                    // return Canvas2Image.Canvas2Image.saveAsJPEG(canvas, 1122.520, 793.695)
+
+                    return Canvas2Image.saveAsImage(canvas, 1122.520, 793.695, "jpg", "verycoolimage.jpg")
                 });
             }
 
