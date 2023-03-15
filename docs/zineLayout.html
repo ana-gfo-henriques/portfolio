@@ -60,6 +60,27 @@
                     </div>
                 </div>
 
+                <div class="contactScreenTrial">
+                    <div class="alignMidle">
+                        <div class="vertCenter">
+                            <div class="pronouns">(she/they)</div>
+                            <div class="anaHenriques">
+                                ANA HENRIQUES*
+                            </div>
+                            <div class="monikers">designer.researcher.author</div>
+                            <div class="credits row">
+                                <div>
+                                    <span id="square">&#9726; </span>ana.gfo.henriques@gmail.com<br>
+                                    <span id="circle">&#9679; </span>anahenriques.eu
+                                </div>
+                                <div class="print">
+                                    <img src = "images/qr/qr.svg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="publishingScreen1">
                     <div id="designingFutures" class="screenDiv">
                         <div class="vertCenter">
@@ -208,28 +229,7 @@
             </div>
         </div>
 
-        <div class="contactScreenTrial">
-            <div class="alignMidle">
-                <div class="vertCenter">
-                    <div class="pronouns">(she/they)</div>
-                    <div class="anaHenriques">
-                        ANA HENRIQUES*
-                    </div>
-                    <div class="monikers">designer.researcher.author</div>
-                    <div class="credits row">
-                        <div>
-                            <span id="square">&#9726; </span>ana.gfo.henriques@gmail.com<br>
-                            <span id="circle">&#9679; </span>anahenriques.eu
-                        </div>
-                        <div class="print">
-                            <img src = "images/qr/qr.svg"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button id="download-button" onclick="screenshot()">SLB</button>
+        <button id="download-button" onclick="screenshot()">CR7</button>
 
         <!-- <script>
 			const button = document.getElementById('download-button');
@@ -255,13 +255,20 @@
 
             let a4Screen = document.getElementById("a4Screen");
             
+            //console.log(a4Screen);
+
             function screenshot(){
                 html2canvas(a4Screen).then(function(canvas) {
                     // document.body.innerHTML=''
                     // document.body.appendChild(canvas);
                     //return Canvas2Image.saveAsPNG(canvas);
 
-                    return Canvas2Image.saveAsImage(canvas, 1123, 794, "png", "supercoolimage.jpg")
+                    canvas.width = a4Screen.clientWidth;
+                    canvas.height = a4Screen.clientHeight;
+
+                    //console.log(canvas);
+
+                    return Canvas2Image.saveAsImage(canvas, 1123, 794, "png", "supercoolimage")
                 });
             }
 

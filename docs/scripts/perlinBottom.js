@@ -5,8 +5,6 @@ var bodyHeight = document.getElementById('body').clientHeight;
 
 //console.log("body height: "+ bodyHeight.toString());
 
-
-
 bg_canvas.style.height = bodyHeight.toString() + "px";
 bg_canvas.style.width = bodyWidth.toString() + "px";
 
