@@ -1,30 +1,37 @@
-body, html {
+body, html, #body {
     width: 297mm !important;
     height: 210mm !important;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow: none;
-    background-color: white;
+    /* background-color: red; */
+    size: a4;
+
+    /* background-image: url('../images/textures/texture1.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.noisy {
-    background-image: url(../images/noise/noise.svg);
-    filter: contrast(120%);
-} 
-
-#perlinBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
+img {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    mix-blend-mode: hard-light;
-    opacity: 1;
- }
+    height: 100%;
+}
 
 
 
 /* Screens */
+
+#a4Screen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    /* display: none; */
+}
 
 .coverScreen {
     /* background-color: greenyellow; */
@@ -34,8 +41,7 @@ body, html {
     top: 0;
     left: 0;
     margin: 0;
-
-    /* transform: rotate(180deg); */
+    transform: rotate(180deg);
 }
 
 .contactScreen {
@@ -147,6 +153,37 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
+.loading {
+    width: fit-content;
+    font-size: 80pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: left;
+    margin-left: 200px;
+}
+
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(3,end) 900ms infinite;      
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+
 #ampersand {
     font-size: 9pt;
     font-family: 'Times New Roman', Times, serif;
@@ -170,9 +207,6 @@ body, html {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-right: 4px;
-    /* background-color: red; */
-    /* margin-top: 10px;
-    margin-bottom: 15px; */
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -196,30 +230,64 @@ body, html {
     font-weight: bold;
 }
 
+.position {
+    position: relative;
+    width: 220px;
+}
+
 .vertProjectTitle {
+    height: 123px;
+    width: 40px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.floatingTitles {
     font-size: 9pt;
     color: black;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     font-weight: normal;
-    writing-mode: vertical-rl;
     text-align: left;
     line-height: 10pt;
 
-    width: 40px;
-    height: 123px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    /* background-color: red; */
-    -webkit-transform: rotate(180deg); 
-    -moz-transform: rotate(180deg);    
-    transform:rotate(180deg);
+    width: 123px;
+    height: 40px;
+    /* background-color: pink; */
+    position: absolute;
+    transform:rotate(-90deg)
 }
 
-.vertProjectTitle span {
+.floatingTitles span {
     font-weight: bold;
+}
+
+#AStitle {
+    top: 486px;
+    left: 1009px;  
+}
+
+#OKtitle {
+    top: 664px;
+    left: 1009px;  
+}
+
+#MPPtitle {
+    top: 663px;
+    left: 728px;  
+}
+
+#DFtitle {
+    top: 268px;
+    left: 551px;  
+}
+
+#Utitle {
+    top: 89px;
+    left: 551px;  
 }
 
 .titles {
@@ -278,64 +346,33 @@ background-repeat: no-repeat;
 .zineInstructions {
     margin-left: 25px;
     margin-right: 20px;
-    /* width: 230px;
-    height: 80px;
-    background-color: red; */
-    text-align: left;
+    width: 235px;
+    height: 85px;
+    /* background-color: red; */
+    /* background-image: url('../images/cover/zineInstructions.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .tableOfContents {
-    /* height: 105mm; */
+    height: 396.849px;
     width: 97px;
     position: absolute;
     top: 0;
     left: 50mm;
+    /* background-color: red; */
+    /* background-image: url('../images/cover/tableOfContents.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-/* .tableOfContents1 {
-    writing-mode: vertical-lr;
-    text-align: left;
-    font-size: 12pt;
-    line-height: 13pt;
-    letter-spacing: 0.1px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 0.35pt black;
-    width: fit-content;
-    height: 105mm;
-
+.perlinBackground {
+    width: 297mm !important;
+    height: 210mm;
     position: absolute;
     top: 0;
-    left: 56.5mm;
-
-    transform:rotate(180deg);
+    left: 0;
 }
-
-.tableOfContents2 {
-    writing-mode: vertical-lr;
-    text-align: right;
-    font-size: 12pt;
-    line-height: 13pt;
-    letter-spacing: 0.1px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 0.35pt black;
-    width: fit-content;
-    height: 105mm;
-
-    position: absolute;
-    top: 0;
-    left: 56.5mm;
-
-    transform:rotate(180deg);
-}
-
-.tableOfContents1 span, .tableOfContents2 span {
-    color: black;
-    -webkit-text-stroke: 0;
-} */
 
 
 
@@ -351,16 +388,30 @@ background-repeat: no-repeat;
 /* Publishing + Design */
 
 .publishingCanvas {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
     width: 74.24mm;
-    height: 80px
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+/* .publishingCanvas img {
+    width: 74.24mm;
+    height: 80px;  
+} */
+
 .designCanvas {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
     width: 100%;
     height: 166px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+/* .designCanvas img {
+    width: 100%;
+    height: 166px;   
+} */
 
 .paperTitle {
     font-size: 9pt;
@@ -380,26 +431,6 @@ background-repeat: no-repeat;
 
 .verticalSpacingPublishing {
     height: 10px;
-}
-
-#designingFuturesImg {
-    background-image: url('../images/designingFutures/designingFutures.png');
-}
-
-#upicImg {
-    background-image: url('../images/upic/upic.png');
-}
-
-#aestheticSpaceImg {
-    background-image: url('../images/aestheticSpace/aestheticSpace.png');
-}
-
-#onKnowingImg {
-    background-image: url('../images/onKnowing/onKnowing.png');
-}
-
-#mappingImg {
-    background-image: url('../images/mapping/mapping.png');
 }
 
 
@@ -455,9 +486,12 @@ background-repeat: no-repeat;
     font-size: 12pt;
 }
 
-.print svg {
+.print {
     width: 38px;
     height: 38px;
+    /* background-image: url('../images/qr/qr.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
     /* background-color: red; */
 }
 
@@ -466,15 +500,4 @@ background-repeat: no-repeat;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-}
-
-
-
-
-
-#download-button {
-    /* z-index: 99999999; */
-    position: absolute;
-    top: 10mm;
-    left: 100mm;
 }

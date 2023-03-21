@@ -138,6 +138,15 @@ a:visited {
     margin-top: 140px;
 } */
 
+#arial {
+    font-style: normal;
+}
+
+#times {
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 #square {
     font-size: 1.2rem;
 }

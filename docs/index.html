@@ -1,24 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
     <head>
         <title>Ana Henriques</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style>
-            html, body {
-                overflow: hidden;
-                box-sizing: border-box;
-                font-size: 14px;
-            }
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="Keywords" content="Ana, Henriques, Ana Henriques, Design, Portfolio, Design Portfolio, Website">
+        <meta name="Description" content="An online portfolio for Ana Henriques — A cute little website about a cute little designer.">
+        
+        <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 
-            body {
-                background-color: red;
-                color: #fff;
-                font-size: 1rem;
-            }
-            
-        </style>
+        <script src="scripts/menu.js"></script>
+        <script src="scripts/perlinTop.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+        
+        <link rel="stylesheet" href="styles/general.css">
+        <link rel="stylesheet" href="styles/text.css">
+        <link rel="stylesheet" href="styles/menu.css">
+
     </head>
-    <body>
-        hello, world!
+    <body id="body">
+        <canvas id="perlinBackground" class="noisy"></canvas>
+
+        <section class="warningScreen">
+            <div class="warning">
+                Still working on making the website responsive. Will be done very soon!<br>
+                <span>(so sorry)</span>
+            </div>
+        </section>
+        
+        <section class="screen">
+            <div class="vertCenter">
+                <div class="anaHenriques">
+                    ANA HENRIQUES*
+                </div>
+                <div class="cuteWebsite">
+                    A CUTE LITTLE
+                    WEBSITE
+                    ABOUT <br>A CUTE
+                    LITTLE DESIGNER
+                </div>
+            </div>
+        </section>
+        <section class="screen">
+            <div class="vertCenter">
+                <div class="titles">
+                    HELLO
+                </div>
+                <div class="textBox">
+                    Here is where you can learn more <a href="about.html">about me</a> and see some of my work. Would you like to take a look?
+                </div>
+                <div class="flex margin">
+
+                    <!-- <script src="scripts/Attractor2/attractor2.js"></script>
+                    <script src="scripts/Attractor2/mover2.js"></script> -->
+                    <script src="scripts/Attractor2/sketch2.js"></script>
+
+                    <!-- <a href="design.html">
+                        <div id="parent" class="designPublishing" data-title="DESIGN" data-fontSize="54" data-moverSize="20" data-moverQuantity="35" data-moveMouse="no">
+                            <script src="scripts/Attractor/attractor.js"></script>
+                            <script src="scripts/Attractor/mover.js"></script>
+                            <script src="scripts/Attractor/sketch.js"></script>
+                        </div>
+                    </a> -->
+                    <div id="designParent" class="designPublishing" data-title="DESIGN" data-fontSize="54" data-moverSize="20" data-moverQuantity="35" data-moveMouse="no">
+                        <a id="designArial" href="design.html">DESIGN</a>
+                        <a id="designTimes" href="design.html">DESIGN</a>
+                    </div>
+                    <div did="publishingParent" class="designPublishing" data-title="PUBLISHING" data-fontSize="54" data-moverSize="20" data-moverQuantity="35" data-moveMouse="no" onmouseenter="selectElement('designParent')">
+                        <a id="publishingArial" href="publishing.html">PUBLISHING</a>
+                        <a id="publishingTimes" href="publishing.html">PUBLISHING</a>
+                    </div>
+                    <!-- <a href="publishing.html">
+                        <div id="parent" class="designPublishing" data-title="PUBLISHING" data-fontSize="54" data-moverSize="20" data-moverQuantity="35" data-moveMouse="no">
+                            <script src="scripts/Attractor/attractor.js"></script>
+                            <script src="scripts/Attractor/mover.js"></script>
+                            <script src="scripts/Attractor/sketch.js"></script>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+        </section>
+
+        
+
+        <script src="scripts/perlinBottom.js"></script>
     </body>
-</html>
+</html><div class="asterisk" onclick="toggleMenu()"></div>
+        <div id="menuList" class="menu">
+            <div class="menuItem"><a href="index.html">Home</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="about.html">About Me</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="design.html">Design</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="publishing.html">Publishing</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="contact.html">Contact</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="colophon.html">Colophon</a></div>
+            <div class="underline"></div>
+        </div>

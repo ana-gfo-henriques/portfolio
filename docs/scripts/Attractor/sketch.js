@@ -36,7 +36,7 @@ function setup() {
 
 function draw() {
   clear();
-  background(loadImage('../images/backgroundTextures/transparent.png'));
+  background(loadImage('../images/textures/transparent.png'));
   attractor.show();
   for (let mover of movers) {
     mover.update();

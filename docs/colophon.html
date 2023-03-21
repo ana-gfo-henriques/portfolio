@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Ana Henriques</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="Keywords" content="Ana, Henriques, Ana Henriques, Design, Portfolio, Design Portfolio, Website">
+        <meta name="Description" content="An online portfolio for Ana Henriques — A cute little website about a cute little designer.">
+        
+        <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+        <script src="scripts/menu.js"></script>
+        <script src="scripts/perlinTop.js"></script>
+        
+        <link rel="stylesheet" href="styles/general.css">
+        <link rel="stylesheet" href="styles/text.css">
+        <link rel="stylesheet" href="styles/menu.css">
+
+    </head>
+    <body id="body">
+        <canvas id="perlinBackground" class="noisy"></canvas>
+        <section class="nonAdjustableScreen">
+            <div>
+                <div class="titles">
+                    COLOPHON
+                </div>
+                <div class="textBox">
+                    This site is meant to function both as a both a personal showcase and a professional profile. Here I share my design and publishing work, as well as my academic research.<br><br>
+    
+                    I took this as a good opportunity to push myself and build something that I can be proud of and feel accurately represents me. As such, I am treating it as a project in itself, which exists beyond merely its set function.<br><br>
+
+                    I thought about what kind of presence could best represent me and felt like a static portfolio was somewhat limiting as that characterization. This is how the idea to build this as a hybrid format generative mixed media project came to be — and serves as a metaphor for my inter- and multidisciplinary background. These fields of knowledge exist within me in constant dynamic dialog, much like that between the web and print components of this showcase.<br><br>
+
+                    As for the design, the layout is largely modular to ease the construction and coherence between media and formats. I am using only <span id="arial">Arial</span> and <span id="times">Times New Roman</span> for web accessibility. The use of the asterisk<span>*</span> as a symbol is also meant to represent plurality, in an homage to the work of Jack Halberstam. Included are also some images and svg icons of my own. The color scheme is largely black and white to facilitate printing, with hints of yellow and purple in the online branch. This consistent use of opposite colors in conjunction is intentional. As opposites, they contain between them the entire chromatic spectrum, and, when used together, it adds to a desired metaphor for hollistic integration. Moreover, the background texture is being algorithmically generated with some overlayed css filtes, and is intended to both add dimension and simulate printing textures to locally contribute to cross-media communication and more broadly to advocate for it as an essential collaborative tool.<br><br>
+                    
+                    Regarding the practical aspects, the code uses simple html and css along with some javascript for the dynamic elements. The moving asterisks in the <a href="design.html">Design</a> and <a href="publishing.html">Publishing</a> pages were modified from the <a href="https://p5js.org/">p5.js</a> attractor example.  The The background texture is also being dynamically generated through a perlin noise algorithm and is never the same upon reload. Additionally, the html contents are being fetched from an updating object list. In this way, the website's contents are also being dynamically imposed onto an a4 zine format for printing. This was accomplished with the <a href="https://github.com/eKoopmans/html2pdf.js">html2pdf</a> javascript library.<br><br>
+
+                    The code for this website is on <a href="https://github.com/ana-gfo-henriques?tab=repositories">Github</a> and hosted there through <a href="https://www.cloudflare.com/">Cloudflare</a>.<br><br>
+
+                </div>
+                
+                <div class="credits">
+                    <span id="square">&#9726; </span><span>design by</span> Ana Henriques<br>
+                    <span id="circle">&#9679; </span><span>code by</span> Ana Henriques
+                </div>
+                <div class="thankYou">
+                    A special thank you to <a href="#">Cobalto</a>, whose help was invaluable in putting this together. 
+                    He’s great, you should hire him. And also me :)
+                </div>
+            </div>
+        </section>
+
+        <div class="asterisk" onclick="toggleMenu()"></div>
+        <div id="menuList" class="menu">
+            <div class="menuItem"><a href="index.html">Home</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="about.html">About Me</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="design.html">Design</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="publishing.html">Publishing</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="contact.html">Contact</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="colophon.html">Colophon</a></div>
+            <div class="underline"></div>
+        </div>
+
+        <script src="scripts/perlinBottom.js"></script>
+    </body>
+</html>

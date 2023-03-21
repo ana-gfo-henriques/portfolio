@@ -4,11 +4,10 @@ function perlin_noise (canvas) {
         offscreen_ctx = offscreen.getContext ("2d"),
         saved_alpha = canvas_ctx.globalAlpha
 
-    /* Fill the offscreen buffer with random noise. */
     offscreen.width = canvas.width
     offscreen.height = canvas.height
 
-    var offscreen_id = offscreen_ctx.getImageData (0, 0,
+    var offscreen_id = offscreen_ctx.getImageData (0, 0, 
                                                    offscreen.width,
                                                    offscreen.height),
         offscreen_pixels = offscreen_id.data
@@ -22,7 +21,6 @@ function perlin_noise (canvas) {
 
     offscreen_ctx.putImageData (offscreen_id, 20, 50)
 
-    /* Scale random iterations onto the canvas to generate Perlin noise. */
     for (var size = 4; size <= offscreen.width; size *= 2) {
       var x = Math.floor (Math.random () * (offscreen.width - size)),
           y = Math.floor (Math.random () * (offscreen.height - size))
@@ -34,5 +32,3 @@ function perlin_noise (canvas) {
 
     canvas_ctx.globalAlpha = saved_alpha
   }
-
-  //console.log("perlinTop called");

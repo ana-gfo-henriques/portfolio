@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Ana Henriques</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="Keywords" content="Ana, Henriques, Ana Henriques, Design, Portfolio, Design Portfolio, Website">
+        <meta name="Description" content="An online portfolio for Ana Henriques — A cute little website about a cute little designer.">
+        
+        <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+        <script src="scripts/menu.js"></script>
+        <script src="scripts/perlinTop.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+        
+        <link rel="stylesheet" href="styles/general.css">
+        <link rel="stylesheet" href="styles/text.css">
+        <link rel="stylesheet" href="styles/menu.css">
+
+    </head>
+    <body id="body">
+        <canvas id="perlinBackground" class="noisy"></canvas>
+        <section id="parent" class="screen" data-title="DESIGN" data-fontSize="120" data-moverSize="40" data-moverQuantity="70" data-moveMouse="yes">
+            <script src="scripts/Attractor/attractor.js"></script>
+            <script src="scripts/Attractor/mover.js"></script>
+            <script src="scripts/Attractor/sketch.js"></script>
+        </section>
+
+        <section id="mapping" class="screen">
+            <div class="vertCenter">
+                <div class="flex">
+                    <div class="type">
+                        <span>WEB</span> designer <span id="ampersand">&</span> developer
+                    </div>
+                    <div id="readMore" class="readMoreLess" onmouseenter="changeBackgroundImage('mappingImg', 'images/mapping/mapping_hover_yp2.png')" onmouseleave="changeBackgroundImage('mappingImg', 'images/mapping/mapping.png')"><a href="design/mapping.html">+</a></div>
+                </div>
+                <div class="flex margin">
+                    <a href="design/mapping.html"><div id="mappingImg" class="image" onmouseenter="changeBackgroundImage('mappingImg', 'images/mapping/mapping_hover_yp2.png')" onmouseleave="changeBackgroundImage('mappingImg', 'images/mapping/mapping.png')"></div></a>
+                    <div class="vertProjectTitle">Mapping the Public Personal</div>
+                </div>
+                <div class="description">
+                    about the face as a reflexion of an identity that is made both public and personal <span>· PERSONAL PROJECT</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="aestheticSpace" class="screen">
+            <div class="vertCenter">
+                <div class="flex">
+                    <div class="type">
+                        <span>POSTER</span> designer
+                    </div>
+                    <div id="readMore" class="readMoreLess" onmouseenter="changeBackgroundImage('aestheticSpaceImg', 'images/aestheticSpace/aestheticSpace_hover_yp2.png')" onmouseleave="changeBackgroundImage('aestheticSpaceImg', 'images/aestheticSpace/aestheticSpace.png')"><a href="design/aestheticSpace.html">+</a></div>
+                </div>
+                <div class="flex margin">
+                    <a href="design/aestheticspace.html"><div id="aestheticSpaceImg" class="image" onmouseenter="changeBackgroundImage('aestheticSpaceImg', 'images/aestheticSpace/aestheticSpace_hover_yp2.png')" onmouseleave="changeBackgroundImage('aestheticSpaceImg', 'images/aestheticSpace/aestheticSpace.png')"></div></a>
+                    <div class="vertProjectTitle">Aesthetic Space</div>
+                </div>
+                <div class="description">
+                    an exploration of Augusto Boal’s concept of "aesthetic space" and it's applicability 
+                    in designed spaces <span>· CIEBA</span>
+                </div>
+            </div>
+        </section>
+        <section id="onKnowing" class="screen">
+            <div class="vertCenter">
+                <div class="flex">
+                    <div class="type">
+                        <span>BOOK</span> author <span id="ampersand">&</span> designer
+                    </div>
+                    <div id="readMore" class="readMoreLess" onmouseenter="changeBackgroundImage('onKnowingImg', 'images/onKnowing/onKnowing_hover_yp2.png')" onmouseleave="changeBackgroundImage('onKnowingImg', 'images/onKnowing/onKnowing.png')"><a href="design/onKnowing.html">+</a></div>
+                </div>
+                <div class="flex margin">
+                    <a href="design/onKnowing.html"><div id="onKnowingImg" class="image" onmouseenter="changeBackgroundImage('onKnowingImg', 'images/onKnowing/onKnowing_hover_yp2.png')" onmouseleave="changeBackgroundImage('onKnowingImg', 'images/onKnowing/onKnowing.png')"></div></a>
+                    <div class="vertProjectTitle"><span>On Knowing:</span> Cultural bias and the decolonization 
+                        of knowledge</div>
+                </div>
+                <div class="description">
+                    on the Eurocentric and normative bias of the book as a vehicle for and legitimizer 
+                    of assumed knowledge <span>· AUTHOR'S EDITION</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="asterisk" onclick="toggleMenu()"></div>
+        <div id="menuList" class="menu">
+            <div class="menuItem"><a href="index.html">Home</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="about.html">About Me</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="design.html">Design</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="publishing.html">Publishing</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="contact.html">Contact</a></div>
+            <div class="underline"></div>
+            <div class="menuItem"><a href="colophon.html">Colophon</a></div>
+            <div class="underline"></div>
+        </div>
+
+        <script src="scripts/perlinBottom.js"></script>
+    </body>
+</html>
