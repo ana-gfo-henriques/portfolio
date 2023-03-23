@@ -15,9 +15,9 @@ a:visited {
     font-weight: bold;
 
     margin-top: 0;
-    margin-bottom: 4vh;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-bottom: 40px;
+    margin-left: 280px;
+    margin-right: 280px;
 }
 
 .cuteWebsite {
@@ -29,8 +29,8 @@ a:visited {
 
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 19vw;
-    margin-right: 19vw;
+    margin-left: 290px;
+    margin-right: 290px;
 }
 
 .titles {
@@ -41,9 +41,9 @@ a:visited {
     font-weight: bold; 
 
     margin-top: 0;
-    margin-bottom: 4vh;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-bottom: 30px;
+    margin-left: 280px;
+    margin-right: 280px;
 }
 
 .textBox {
@@ -55,8 +55,8 @@ a:visited {
     
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-left: 280px;
+    margin-right: 280px;
 }
 
 .textBox span {
@@ -83,11 +83,11 @@ a:visited {
     /* font-family: 'Times New Roman', Times, serif; */
     /* text-decoration: underline; */
     position: relative;
-    background-color: red;
+    /* background-color: red; */
 
-    margin-top: 6vh;
-    width: 25vw;
-    height: 10vw;
+    margin-top: 50px;
+    width: 350px;
+    height: 150px;
 }
 
 #designArial {
@@ -162,10 +162,10 @@ a:visited {
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     
-    margin-top: 7vh;
-    margin-bottom: 7vh;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 280px;
+    margin-right: 280px;
 }
 
 .credits span{
@@ -186,8 +186,9 @@ a:visited {
     
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 30vw;
+    margin-left: 280px;
+    margin-right: 650px;
+    /* padding-bottom: 60px; */
 }
 
 .thankYou a {
@@ -202,10 +203,10 @@ a:visited {
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     
-    margin-top: -4vh;
-    margin-bottom: 4vh;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-top: -40px;
+    margin-bottom: 40px;
+    margin-left: 280px;
+    margin-right: 280px;   
 }
 
 .pronouns {
@@ -217,8 +218,8 @@ a:visited {
 
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 18vw; 
+    margin-left: 280px;
+    margin-right: 280px; 
 }
 
 #ampersand {
@@ -237,7 +238,7 @@ a:visited {
     
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
+    margin-left: 280px;
     margin-right: 0;
 }
 
@@ -262,7 +263,7 @@ a:visited {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
-    margin-right: 18vw;
+    margin-right: 280px;
 }
 
 /* .readMoreLess a {
@@ -292,8 +293,8 @@ a:visited {
     
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-left: 280px;
+    margin-right: 280px;
     /* background-color: blue; */
 }
 
@@ -323,14 +324,12 @@ a:visited {
     writing-mode: vertical-rl;
     text-align: left;
 
-    /* width: 150px;
-    height: 493px; */
-    width: 15vw;
-    height: 34.3vw;
+    width: 150px;
+    height: 493px;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
     /* background-color: red; */
     -webkit-transform: rotate(180deg); 
     -moz-transform: rotate(180deg);    
@@ -348,10 +347,10 @@ a:visited {
     font-style: italic;
     text-align: left;
 
-    margin-left: 18vw;
-    margin-right: 18vw;
-    margin-top: 3vh;
-    margin-bottom: 1.5vh;
+    margin-left: 280px;
+    margin-right: 280px;
+    margin-top: 30px;
+    margin-bottom: 15px;
     /* background-color: red; */
 }
 
@@ -365,7 +364,7 @@ a:visited {
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     
-    margin-top: 3vh;
+    margin-top: 30px;
 }
 
 .paperPublisher {
@@ -375,8 +374,8 @@ a:visited {
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
 
-    margin-top: 1vh;
-    padding-bottom: 1vh;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 .paperPublisher span {
@@ -395,7 +394,7 @@ a:visited {
     top: 0;
     right: 0;
 
-    padding: 1vh;
+    padding: 10px;
 }
 
 .aboutProject {
@@ -407,7 +406,7 @@ a:visited {
     -webkit-text-stroke: 1.5px black;
 
     margin-top: 0;
-    margin-bottom: 3vh;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-bottom: 30px;
+    margin-left: 280px;
+    margin-right: 280px;
 }

@@ -9,7 +9,7 @@ html, body {
     overflow: scroll;
     margin: 0;
     padding: 0;
-    font-size: 1.7vw;
+    font-size: 24px;
     background-color: white;
 }
 
@@ -51,8 +51,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     /* height: 100%; */
     mix-blend-mode: hard-light;
     opacity: 1;
@@ -88,15 +87,15 @@ button:active {
 .screenPapers {
     width: 100vw;
     padding: 0;
-    margin-top: 3vh;
-    margin-bottom: 7vh;
+    margin-top: 30px;
+    margin-bottom: 70px;
     position: relative;
     /* border: 1px solid red; */
 }
 
 .print svg {
-    width: 7vw;
-    height: 7vw;
+    width: 90px;
+    height: 90px;
     /* background-color: red; */
 }
 
@@ -114,13 +113,11 @@ button:active {
 }
 
 .image {
-    /* width: 700px; */
-    /* height: 495px; */
-    width: 48.5vw;
-    height: 34.3vw;
+    width: 700px;
+    height: 495px;
     /* background-color: red; */
-    margin-top: 1vh;
-    margin-bottom: 1.5vh;
+    margin-top: 10px;
+    margin-bottom: 15px;
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -152,8 +149,8 @@ button:active {
 .margin {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 18vw;
+    margin-left: 280px;
+    margin-right: 280px;
 }
 
 .flex {
@@ -170,8 +167,8 @@ button:active {
 }
 
 .nonAdjustableScreen {
-    margin-top: 7vh;
-    margin-bottom: 7vh;
+    margin-top: 70px;
+    margin-bottom: 70px;
     position: relative;
 }
 
@@ -180,11 +177,11 @@ button:active {
 /* RESPONSIVE */
 
 /* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1280px) {
     .screen {display: none;}
     .asterisk {display: none;}
     .warningScreen {display:block;}
-} */
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
 /* @media only screen and (min-width: 768px) {
