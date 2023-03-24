@@ -8,9 +8,9 @@ a:visited {
 }
 
 .anaHenriques {
-    font-size: 4.16667rem;
+    font-size: max(4.16667rem, 50px);
     color: black;
-    text-align: center;
+    /* text-align: center; */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 
@@ -21,7 +21,7 @@ a:visited {
 }
 
 .cuteWebsite {
-    font-size: 4rem;
+    font-size: max(4rem, 40px);
     color: black;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
@@ -34,7 +34,7 @@ a:visited {
 }
 
 .titles {
-    font-size: 3.083rem;
+    font-size: max(3.083rem, 50px);
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -47,7 +47,7 @@ a:visited {
 }
 
 .disclaimer {
-    font-size: 1.3rem;
+    font-size: max(1.3rem, 20px);
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-weight: bold;
@@ -77,7 +77,7 @@ a:visited {
 
 
 .textBox {
-    font-size: 1rem;
+    font-size: max(1rem, 16px);
     color: black;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
@@ -90,7 +90,7 @@ a:visited {
 }
 
 .textBox span {
-    font-size: 0.91rem;
+    font-size: max(0.91rem,14px);
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -98,7 +98,7 @@ a:visited {
 }
 
 .textBox a {
-    font-size: 0.91rem;
+    font-size: max(0.91rem,14px);
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -107,7 +107,7 @@ a:visited {
 }
 
 .designPublishing {
-    font-size: 2.25rem;
+    font-size: max(2.25rem, 30px);
     color: black;
     text-align: center;
     /* font-family: 'Times New Roman', Times, serif; */
@@ -116,8 +116,8 @@ a:visited {
     /* background-color: red; */
 
     margin-top: 6vh;
-    width: 25vw;
-    height: 10vw;
+    width: max(30vw, 200px);
+    height: max(10vw, 60px);
 }
 
 #designArial {
@@ -127,16 +127,18 @@ a:visited {
     color: transparent;
     -webkit-text-stroke: 2px black;
     position: absolute;
-    top: 25%;
-    left: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: visible;
 }
 
 #designTimes {
     font-family: 'Times New Roman', Times, serif;
     position: absolute;
-    top: 35%;
-    left: 18%;
+    top: 60%;
+    left: 47%;
+    transform: translate(-50%, -50%);
 }
 
 #publishingArial {
@@ -146,16 +148,18 @@ a:visited {
     color: transparent;
     -webkit-text-stroke: 2px black;
     position: absolute;
-    top: 25%;
-    right: 2.5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: visible;
 }
 
 #publishingTimes {
     font-family: 'Times New Roman', Times, serif;
     position: absolute;
-    top: 35%;
-    right: 8%;
+    top: 60%;
+    left: 47%;
+    transform: translate(-50%, -50%);    
 }
 
 /* .designPublishing a {
@@ -173,33 +177,33 @@ a:visited {
 }
 
 #times {
-    font-size: 1rem;
+    font-size: max(1rem, 16px);
     font-family: 'Times New Roman', Times, serif;
 }
 
 #square {
-    font-size: 1.2rem;
+    font-size: max(1.2rem, 16px);
 }
 
 #circle {
-    font-size: 1.7rem;
+    font-size: max(1.7rem, 25px);
 }
 
 .credits {
-    font-size: 1.5rem;
+    font-size: max(1.5rem, 18px);
     color: black;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     
     margin-top: 7vh;
-    margin-bottom: 7vh;
+    /* margin-bottom: 7vh; */
     margin-left: 18vw;
     margin-right: 18vw;
 }
 
 .credits span{
-    font-size: 1.416666rem;
+    font-size: max(1.416666rem, 20px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
@@ -208,13 +212,13 @@ a:visited {
 }
 
 .thankYou {
-    font-size: 1rem;
+    font-size: max(1rem, 16px);
     color: black;
     text-align: left;
     font-family:Arial, Helvetica, sans-serif;
     font-style: normal;
     
-    margin-top: 0;
+    margin-top: 7vh;
     margin-bottom: 0;
     margin-left: 18vw;
     margin-right: 30vw;
@@ -226,7 +230,7 @@ a:visited {
 }
 
 .monikers {
-    font-size: 2.70833rem;
+    font-size: max(2.70833rem, 25px);
     color: black;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
@@ -239,7 +243,7 @@ a:visited {
 }
 
 .pronouns {
-    font-size: 0.8rem;
+    font-size: max(0.8rem, 16px);
     color: black;
     text-align: right;
     font-family:Arial, Helvetica, sans-serif;
@@ -250,6 +254,20 @@ a:visited {
     margin-left: 18vw;
     margin-right: 18vw; 
 }
+
+
+@media only screen and (max-width: 700px) {
+    .flex {display: block;}
+    .designPublishing {margin-left: 0vw; margin-right: 0vw; margin-top: 4vh; width: 68vw;}
+    .goDown {margin-bottom: 5vh;}
+
+    .pronouns {text-align: left; margin-bottom: 1vh;}
+    .monikers {margin-top: -1vh; text-align: left;}
+    .print {margin-top: 4vh;}
+}
+
+
+
 
 #ampersand {
     font-size: 1.8333rem;
@@ -459,3 +477,5 @@ a:visited {
     margin-left: 18vw;
     margin-right: 18vw;
 }
+
+

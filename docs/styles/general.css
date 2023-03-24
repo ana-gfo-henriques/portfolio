@@ -95,8 +95,8 @@ button:active {
 }
 
 .print svg {
-    width: 7vw;
-    height: 7vw;
+    width: max(7vw, 40px);
+    height: max(7vw, 40px);
     /* background-color: red; */
 }
 
@@ -175,38 +175,3 @@ button:active {
     margin-bottom: 7vh;
     position: relative;
 }
-
-
-
-/* RESPONSIVE MEDIA QUERIES */
-
-/* Min-size text
-redefine screens for portrait mode */
-
-
-
-
-
-
-
-
-/* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 1280px) {
-    .screen {display: none;}
-    .asterisk {display: none;}
-    .warningScreen {display:block;}
-} */
-
-/* Medium devices (landscape tablets, 768px and up) */
-/* @media only screen and (min-width: 768px) {
-    
-} */
-
-/* Large devices (laptops/desktops, 992px and up) */
-/* @media only screen and (min-width: 992px) {...} */
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-/* @media only screen and (min-width: 1200px) {...} */
-
-
-
