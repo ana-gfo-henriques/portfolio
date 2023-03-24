@@ -22,10 +22,10 @@
         <canvas id="perlinBackground" class="noisy"></canvas>
         <section class="screen">
             <div class="vertCenter">
-                <div class="titles">
+                <div id="aboutTitle" class="titles">
                     ABOUT ME
                 </div>
-                <div class="textBox">
+                <div id="aboutText" class="textBox">
                     Hi, my name is <span>Ana</span> and I’m a designer and researcher currently based in Lisbon. 
                     I got my Bachelor’s degree in Engineering Physics, but I sought to have a move direct sociocultural 
                     impact and switched fields for my Master’s in Communication Design. As both a <span>scientist</span> 
@@ -41,10 +41,13 @@
                     I’d really love to <span>hear from you</span>. I love to debate and share ideas and skills so if you think we 
                     might have something to teach and learn from each other, please hit me up <span>:)</span>
                 </div>
+                <div id="disclaimer" class="disclaimer" onclick="disclaimer()">
+                    disclaimer
+                </div>
             </div>            
         </section>
 
-        <section class="screen">
+        <!-- <section class="screen">
             <div class="vertCenter">
                 <div class="titles">
                     DISCLAIMER
@@ -56,7 +59,7 @@ yet but we’re going with that at the moment) white queer neurodivergent able-b
                     (I think)
                 </div>
             </div>            
-        </section>
+        </section> -->
 
         <div class="asterisk" onclick="toggleMenu()"></div>
         <div id="menuList" class="menu">

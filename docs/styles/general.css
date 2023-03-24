@@ -116,11 +116,12 @@ button:active {
 .image {
     /* width: 700px; */
     /* height: 495px; */
-    width: 48.5vw;
+    width: 51vw;
     height: 34.3vw;
     /* background-color: red; */
     margin-top: 1vh;
     margin-bottom: 1.5vh;
+    margin-right: 0.7vw;
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -177,7 +178,17 @@ button:active {
 
 
 
-/* RESPONSIVE */
+/* RESPONSIVE MEDIA QUERIES */
+
+/* Min-size text
+redefine screens for portrait mode */
+
+
+
+
+
+
+
 
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 1280px) {

@@ -68,17 +68,13 @@
 #dotsWrapper{
     display: flex;
     position: absolute;
-    bottom: 3vh;
+    bottom: 7%;
     left: 50%;
     transform: translateX(-50%); 
 }
 
 #dotsWrapperMapping {
-    display: flex;
-    position: absolute;
-    bottom: 9vh;
-    left: 50%;
-    transform: translateX(-50%); 
+    display: none; 
 }
 
 .dotNavigation{
