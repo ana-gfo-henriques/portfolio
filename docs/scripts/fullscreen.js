@@ -23,3 +23,9 @@ function fullscreen(imgId) {
         fullscreenImage.style.backgroundImage = imgUrl;
     } 
 }
+
+function closeHome() {
+    var popUp = document.getElementById("popUp");
+    popUp.style.display = "none";
+    console.log("doing it");
+}
