@@ -10,8 +10,11 @@
         
         <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <script src="../scripts/menu.js"></script>
         <script src="../scripts/perlinTop.js"></script>
+        <script src="../scripts/fullscreen.js"></script>
         
         <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -24,7 +27,7 @@
 
         <section class="nonAdjustableScreen">
             <div>
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="type">
                         <span>BOOK</span> editorial assistant
                     </div>
@@ -37,42 +40,42 @@
                      <a href="https://zkm.de/en/from-xenakiss-upic-to-graphic-notation-today">zkm.de/en/from-xenakiss-upic-to-graphic-notation-today</a>
                 </div>
 
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="slideshowArrowsDiv">
                         <button class="sliderArrow" id="leftArrow">&#60;</button>
                     </div>
     
                     <div class="aboutImage">
-                        <div class="slide fade" id="slide-0">
-                                <img src="../images/upic/1.png" alt="First Image">
+                        <div class="slide fade" id="slide-0" onclick="fullscreen('U1')">
+                                <img id="U1" src="../images/upic/1.webp" alt="First Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-1">
-                                <img src="../images/upic/2.png" alt="Second Image">
+                        <div class="slide fade" id="slide-1" onclick="fullscreen('U2')">
+                                <img id="U2" src="../images/upic/2.webp" alt="Second Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-2">
-                                <img src="../images/upic/3.png" alt="Third Image">
+                        <div class="slide fade" id="slide-2" onclick="fullscreen('U3')">
+                                <img id="U3" src="../images/upic/3.webp" alt="Third Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-3">
-                                <img src="../images/upic/4.png" alt="Fourth Image">
+                        <div class="slide fade" id="slide-3" onclick="fullscreen('U4')">
+                                <img id="U4" src="../images/upic/4.webp" alt="Fourth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-4">
-                                <img src="../images/upic/5.png" alt="Fifth Image">
+                        <div class="slide fade" id="slide-4" onclick="fullscreen('U5')">
+                                <img id="U5" src="../images/upic/5.webp" alt="Fifth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-5">
-                                <img src="../images/upic/6.png" alt="Sixth Image">
+                        <div class="slide fade" id="slide-5" onclick="fullscreen('U6')">
+                                <img id="U6" src="../images/upic/6.webp" alt="Sixth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-6">
-                                <img src="../images/upic/7.png" alt="Seventh Image">
+                        <div class="slide fade" id="slide-6" onclick="fullscreen('U7')">
+                                <img id="U7" src="../images/upic/7.webp" alt="Seventh Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-7">
-                                <img src="../images/upic/8.png" alt="Eigth Image">
+                        <div class="slide fade" id="slide-7" onclick="fullscreen('U8')">
+                                <img id="U8" src="../images/upic/8.webp" alt="Eigth Image">
                         </div>
                         
                         <!-- <div class="slide fade" id="slide-8">
@@ -90,6 +93,10 @@
                         <div class="slide fade" id="slide-11">
                                 <img src="../images/upic/3.png" alt="Twelvth Image">
                         </div> -->
+
+                        <div id="fullscreenU" class="fullscreen">
+                            <span class="material-symbols-outlined">open_in_full</span>
+                        </div>
     
                         <div id="dotsWrapper">
                                 <div class="dotNavigation"></div>
@@ -119,6 +126,11 @@
             </div>
 
         </section>
+
+        <div id="overlay" class="overlay">
+            <div id="fullscreenImage" class="fullscreenImage"></div>
+            <div id="closeFullscreenDF" class="closeFullscreen" onclick="fullscreen('U1')">✕</div>
+        </div>
 
         <div class="asterisk" onclick="toggleMenu()"></div>
         <div id="menuList" class="menu">

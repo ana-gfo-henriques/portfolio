@@ -10,8 +10,11 @@
         
         <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <script src="../scripts/menu.js"></script>
         <script src="../scripts/perlinTop.js"></script>
+        <script src="../scripts/fullscreen.js"></script>
         
         <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -24,7 +27,7 @@
 
         <section class="nonAdjustableScreen">
             <div>
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="type">
                         <span>BOOK</span> author <span id="ampersand">&</span> designer
                     </div>
@@ -33,85 +36,87 @@
                 <div class="horProjectTitle">
                     <span>On Knowing:</span> Cultural bias and the decolonization of knowledge
                 </div>
-                <div class="description">
+                <!-- <div class="description">
                      <a href="../design/onKnowing.pdf">OnKnowing.pdf</a>
-                </div>
+                </div> -->
 
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="slideshowArrowsDiv">
                         <button class="sliderArrow" id="leftArrow">&#60;</button>
                     </div>
     
                     <div class="aboutImage">
-                        <div class="slide fade" id="slide-0">
-                                <img src="../images/onKnowing/1.png" alt="First Image">
+                        <div class="slide fade" id="slide-0" onclick="fullscreen('OK1')">
+                                <img id="OK1" src="../images/onKnowing/1.webp" alt="First Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-1">
-                                <img src="../images/onKnowing/2.png" alt="Second Image">
+                        <div class="slide fade" id="slide-1" onclick="fullscreen('OK2')">
+                                <img id="OK2" src="../images/onKnowing/2.webp" alt="Second Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-2">
-                                <img src="../images/onKnowing/3.png" alt="Third Image">
+                        <div class="slide fade" id="slide-2" onclick="fullscreen('OK3')">
+                                <img id="OK3" src="../images/onKnowing/3.webp" alt="Third Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-3">
-                                <img src="../images/onKnowing/4.png" alt="Fourth Image">
+                        <div class="slide fade" id="slide-3" onclick="fullscreen('OK4')">
+                                <img id="OK4" src="../images/onKnowing/4.webp" alt="Fourth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-4">
-                                <img src="../images/onKnowing/5.png" alt="Fifth Image">
+                        <div class="slide fade" id="slide-4" onclick="fullscreen('OK5')">
+                                <img id="OK5" src="../images/onKnowing/5.webp" alt="Fifth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-5">
-                                <img src="../images/onKnowing/6.png" alt="Sixth Image">
+                        <div class="slide fade" id="slide-5" onclick="fullscreen('OK6')">
+                                <img id="OK6" src="../images/onKnowing/6.webp" alt="Sixth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-6">
-                                <img src="../images/onKnowing/7.png" alt="Seventh Image">
+                        <div class="slide fade" id="slide-6" onclick="fullscreen('OK7')">
+                                <img id="OK7" src="../images/onKnowing/7.webp" alt="Seventh Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-7">
-                                <img src="../images/onKnowing/8.png" alt="Eigth Image">
+                        <div class="slide fade" id="slide-7" onclick="fullscreen('OK8')">
+                                <img id="OK8" src="../images/onKnowing/8.webp" alt="Eigth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-8">
-                                <img src="../images/onKnowing/9.png" alt="Ninth Image">
+                        <div class="slide fade" id="slide-8" onclick="fullscreen('OK9')">
+                                <img id="OK9" src="../images/onKnowing/9.webp" alt="Ninth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-9">
-                                <img src="../images/onKnowing/10.png" alt="Tenth Image">
+                        <div class="slide fade" id="slide-9" onclick="fullscreen('OK10')">
+                                <img id="OK10" src="../images/onKnowing/10.webp" alt="Tenth Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-10">
-                                <img src="../images/onKnowing/11.png" alt="Eleventh Image">
+                        <div class="slide fade" id="slide-10" onclick="fullscreen('OK11')">
+                                <img id="OK11" src="../images/onKnowing/11.webp" alt="Eleventh Image">
                         </div>
                         
-                        <div class="slide fade" id="slide-11">
-                                <img src="../images/onKnowing/12.png" alt="Twelvth Image">
+                        <div class="slide fade" id="slide-11" onclick="fullscreen('OK12')">
+                                <img id="OK12" src="../images/onKnowing/12.webp" alt="Twelvth Image">
                         </div>
 
-                        <div class="slide fade" id="slide-12">
-                                <img src="../images/onKnowing/13.png" alt="Thirteenth Image">
+                        <div class="slide fade" id="slide-12" onclick="fullscreen('OK13')">
+                                <img id="OK13" src="../images/onKnowing/13.webp" alt="Thirteenth Image">
                         </div>
 
-                        <div class="slide fade" id="slide-13">
-                            <img src="../images/onKnowing/14.png" alt="Fourteenth Image">
+                        <div class="slide fade" id="slide-13" onclick="fullscreen('OK14')">
+                            <img id="OK14" src="../images/onKnowing/14.webp" alt="Fourteenth Image">
                         </div>
 
-                        <div class="slide fade" id="slide-14">
-                            <img src="../images/onKnowing/15.png" alt="Fifteenth Image">
+                        <div class="slide fade" id="slide-14" onclick="fullscreen('OK15')">
+                            <img id="OK15" src="../images/onKnowing/15.webp" alt="Fifteenth Image">
                         </div>
 
-                        <div class="slide fade" id="slide-15">
-                            <img src="../images/onKnowing/16.png" alt="Sixteenth Image">
+                        <div class="slide fade" id="slide-15" onclick="fullscreen('OK16')">
+                            <img id="OK16" src="../images/onKnowing/16.webp" alt="Sixteenth Image">
                         </div>
 
-                        <div class="slide fade" id="slide-16">
-                            <img src="../images/onKnowing/17.png" alt="Seventeenth Image">
+                        <div class="slide fade" id="slide-16" onclick="fullscreen('OK17')">
+                            <img id="OK17" src="../images/onKnowing/17.webp" alt="Seventeenth Image">
                         </div>
 
-
+                        <div id="fullscreenOK" class="fullscreen">
+                            <span class="material-symbols-outlined">open_in_full</span>
+                        </div>
     
                         <div id="dotsWrapper">
                                 <div class="dotNavigation"></div>
@@ -148,6 +153,11 @@ The cover was deliberately left obscure to compel the reader to engage with the 
             </div>
 
         </section>
+
+        <div id="overlay" class="overlay">
+            <div id="fullscreenImage" class="fullscreenImage"></div>
+            <div id="closeFullscreenOK" class="closeFullscreen" onclick="fullscreen('OK1')">✕</div>
+        </div>
 
         <div class="asterisk" onclick="toggleMenu()"></div>
         <div id="menuList" class="menu">

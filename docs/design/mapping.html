@@ -10,8 +10,11 @@
         
         <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <script src="../scripts/menu.js"></script>
         <script src="../scripts/perlinTop.js"></script>
+        <script src="../scripts/fullscreen.js"></script>
         
         <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -24,7 +27,7 @@
 
         <section class="nonAdjustableScreen">
             <div>
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="type">
                         <span>WEB</span> designer <span id="ampersand">&</span> developer
                     </div>
@@ -37,60 +40,20 @@
                      <a href="https://www.anahenriques.eu/mapping/">anahenriques.eu/mapping</a>
                 </div>
 
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="slideshowArrowsDiv">
                         <button class="sliderArrow" id="leftArrow">&#60;</button>
                     </div>
     
                     <div class="aboutImage">
-                        <div class="slide fade" id="slide-0">
-                                <img src="../images/mapping/1.png" alt="Mapping the Public Personal home page">
+                        <div class="slide fade" id="slide-0" onclick="fullscreen('MPP1')">
+                                <img id="MPP1" src="../images/mapping/1.webp" alt="Mapping the Public Personal home page">
                         </div>
-                        
-                        <!-- <div class="slide fade" id="slide-1">
-                                <img src="../images/upic/2.png" alt="Second Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-2">
-                                <img src="../images/upic/3.png" alt="Third Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-3">
-                                <img src="../images/upic/1.png" alt="Fourth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-4">
-                                <img src="../images/upic/2.png" alt="Fifth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-5">
-                                <img src="../images/upic/3.png" alt="Sixth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-6">
-                                <img src="../images/upic/1.png" alt="Seventh Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-7">
-                                <img src="../images/upic/2.png" alt="Eigth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-8">
-                                <img src="../images/upic/3.png" alt="Ninth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-9">
-                                <img src="../images/upic/1.png" alt="Tenth Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-10">
-                                <img src="../images/upic/2.png" alt="Eleventh Image">
-                        </div>
-                        
-                        <div class="slide fade" id="slide-11">
-                                <img src="../images/upic/3.png" alt="Twelvth Image">
-                        </div> -->
     
+                        <div id="fullscreenMPP" class="fullscreen">
+                            <span class="material-symbols-outlined">open_in_full</span>
+                        </div>
+
                         <div id="dotsWrapperMapping">
                                 <div class="dotNavigation"></div>
                                 <!-- <div class="dotNavigation"></div>
@@ -122,6 +85,11 @@ This project thus intends to reflect on what it means to embody our own skin and
             </div>
 
         </section>
+
+        <div id="overlay" class="overlay">
+            <div id="fullscreenImage" class="fullscreenImage"></div>
+            <div id="closeFullscreenMPP" class="closeFullscreen" onclick="fullscreen('MPP1')">✕</div>
+        </div>
 
         <div class="asterisk" onclick="toggleMenu()"></div>
         <div id="menuList" class="menu">

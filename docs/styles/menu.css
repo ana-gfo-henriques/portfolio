@@ -33,7 +33,7 @@
 }
 
 .menu {
-    width: max(16vw, 50px);
+    width: max(15vw, 150px);
     position: fixed;
     top: 10vh;
     right: 25px;
@@ -41,7 +41,7 @@
 }
 
 .underline {
-    width: max(16vw, 150px);
+    width: max(15vw, 150px);
     height: 1.2vh;
     border-top: 0.2vw black solid;
 }

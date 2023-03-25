@@ -10,8 +10,11 @@
         
         <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <script src="../scripts/menu.js"></script>
         <script src="../scripts/perlinTop.js"></script>
+        <script src="../scripts/fullscreen.js"></script>
         
         <link rel="stylesheet" href="../styles/general.css">
         <link rel="stylesheet" href="../styles/text.css">
@@ -24,7 +27,7 @@
 
         <section class="nonAdjustableScreen">
             <div>
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="type">
                         <span>POSTER</span> designer
                     </div>
@@ -37,20 +40,24 @@
                      <a href="#">link.com</a>
                 </div> -->
 
-                <div class="flex">
+                <div class="flexAlways">
                     <div class="slideshowArrowsDiv">
                         <button class="sliderArrow" id="leftArrow">&#60;</button>
                     </div>
     
                     <div class="aboutImage">
-                        <div class="slide fade" id="slide-0">
+                        <div class="slide fade" id="slide-0" onclick="fullscreen('AS1')">
                                 <!-- <a href="../slideshow/aestheticspace.html"><img src="../images/aestheticSpace/1.png" alt="Aesthetic Space Poster Art"></a> -->
-                                <img src="../images/aestheticSpace/1.png" alt="Aesthetic Space Poster Art">
+                                <img id="AS1" src="../images/aestheticSpace/1.webp" alt="Aesthetic Space Poster Art">
                         </div>
                         
-                        <div class="slide fade" id="slide-1">
+                        <div class="slide fade" id="slide-1" onclick="fullscreen('AS2')">
                             <!-- <a href="../slideshow/aestheticspace.html"><img src="../images/aestheticSpace/2.png" alt="Aesthetic Space Poster Framed and Scribbled"></a> -->
-                            <img src="../images/aestheticSpace/2.png" alt="Aesthetic Space Poster Art">
+                            <img id="AS2" src="../images/aestheticSpace/2.webp" alt="Aesthetic Space Poster Art Framed">
+                        </div>
+
+                        <div id="fullscreenAS" class="fullscreen">
+                            <span id="fullscreen" class="material-symbols-outlined">open_in_full</span>
                         </div>
     
                         <div id="dotsWrapper">
@@ -74,6 +81,11 @@ Finally, the foreground, as a representation of Rainbow of Desire, is framed, bo
             </div>
 
         </section>
+
+        <div id="overlay" class="overlay">
+            <div id="fullscreenImage" class="fullscreenImage"></div>
+            <div id="closeFullscreenAS" class="closeFullscreen" onclick="fullscreen('AS1')">✕</div>
+        </div>
 
         <div class="asterisk" onclick="toggleMenu()"></div>
         <div id="menuList" class="menu">

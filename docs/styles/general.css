@@ -76,7 +76,7 @@ button:active {
     color: gray;
 }
 
-.screen {
+.screen, .screenDesignPublishing {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -88,7 +88,7 @@ button:active {
 .screenPapers {
     width: 100vw;
     padding: 0;
-    margin-top: 3vh;
+    margin-top: 10vh;
     margin-bottom: 7vh;
     position: relative;
     /* border: 1px solid red; */
@@ -116,8 +116,8 @@ button:active {
 .image {
     /* width: 700px; */
     /* height: 495px; */
-    width: 51vw;
-    height: 34.3vw;
+    width: max(51vw, 320px);
+    height: max(34.3vw, 216px);
     /* background-color: red; */
     margin-top: 1vh;
     margin-bottom: 1.5vh;
@@ -157,7 +157,7 @@ button:active {
     margin-right: 18vw;
 }
 
-.flex {
+.flex, .flexAlways {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -10,6 +10,7 @@
     margin-bottom: 6vh;
     /* margin-left: 280px;
     margin-right: 280px; */
+    cursor: pointer;
 }
 
 .slide{
@@ -78,12 +79,12 @@
 }
 
 .dotNavigation{
-    width: 0.8vw;
-    height: 0.8vw;
+    width: max(0.8vw, 10px);
+    height: max(0.8vw, 10px);
     border-radius: 100%;
     cursor: pointer;
     margin: 0 4px;
-    border: 1.5px solid gray;
+    border: 1px solid black;
     transition: .5s background-color;
 }
 
@@ -92,7 +93,7 @@
 }
 
 .activeDot {
-    background-color: gray;
+    background-color: white;
 }
 
 .fade{
@@ -102,4 +103,74 @@
 @keyframes fade{
     from {opacity: .8}
     to {opacity: 1}
+}
+
+.fullscreen {
+    width: fit-content;
+}
+
+.fullscreen span {
+    font-size: max(1.2rem, 22px);
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-align: right;
+}
+
+#fullscreenAS {
+    position: absolute;
+    top: 2%;
+    left: 25%;
+}
+
+#fullscreenMPP {
+    position: absolute;
+    top: 12%;
+    left: 2%;
+}
+
+#fullscreenOK {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+}
+
+#fullscreenU {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.fullscreenImage {
+    position: relative;
+    /* background-color: orange; */
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/textures/transparent.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.closeFullscreen {
+    font-size: max(2rem, 40px);
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-align: right;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    margin: 3vw;
 }
