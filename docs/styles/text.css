@@ -184,15 +184,15 @@ a:visited {
 }
 
 #square {
-    font-size: max(1.2rem, 16px);
+    font-size: max(1.2rem, 14px);
 }
 
 #circle {
-    font-size: max(1.7rem, 25px);
+    font-size: max(1.7rem, 23px);
 }
 
 .credits {
-    font-size: max(1.5rem, 16px);
+    font-size: max(1.5rem, 15px);
     color: black;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
@@ -205,7 +205,7 @@ a:visited {
 }
 
 .credits span{
-    font-size: max(1.416666rem, 16px);
+    font-size: max(1.416666rem, 15px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
