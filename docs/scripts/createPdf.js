@@ -16,17 +16,19 @@ function generatePDF() {
             pdfObj.autoPrint();
             window.open(pdfObj.output('bloburl'), '_blank');
         });
+        // alert("test is working");
     } else {
         // alert("mobile");
-        // html2pdf().set(opt).from(element).save();
+        html2pdf().set(opt).from(element).save();
 
         document.getElementById("body").innerHTML = "New text!";
     }
 }
 
 function checkMobile() {
+    if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
     // if(window.orientation > 1) {
-    if(window.matchMedia("(any-pointer:coarse)").matches) {
+    // if(window.matchMedia("(any-pointer:coarse)").matches) {
         return true;
     } else {
         return false;
