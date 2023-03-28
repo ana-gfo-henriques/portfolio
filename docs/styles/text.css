@@ -127,7 +127,7 @@ a:visited {
     font-style: italic;
     font-weight: bold;
     color: transparent;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 0.18vw black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -148,7 +148,7 @@ a:visited {
     font-style: italic;
     font-weight: bold;
     color: transparent;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 0.18vw black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -192,7 +192,7 @@ a:visited {
 }
 
 .credits {
-    font-size: max(1.5rem, 18px);
+    font-size: max(1.5rem, 16px);
     color: black;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
@@ -205,7 +205,7 @@ a:visited {
 }
 
 .credits span{
-    font-size: max(1.416666rem, 20px);
+    font-size: max(1.416666rem, 16px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
@@ -232,7 +232,7 @@ a:visited {
 }
 
 .monikers {
-    font-size: max(2.70833rem, 25px);
+    font-size: max(2.70833rem, 23px);
     color: black;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
@@ -340,7 +340,7 @@ a:visited {
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.6px;
     
     margin-top: 0;
     margin-bottom: 0;
@@ -370,7 +370,7 @@ a:visited {
 
 
 @media only screen and (max-width: 480px) {
-    .screenDesignPublishing {height: 64vh !important; margin-top: 0vh !important;}
+    .screenDesignPublishing {height: 70vh !important; margin-top: 0vh !important;}
     .disclaimer {margin-bottom: 10vh !important;}
     .vertCenterAbout {margin-top: 30vh !important;}
 }
@@ -386,9 +386,9 @@ a:visited {
 
     .vertProjectTitle {writing-mode:horizontal-tb !important; -webkit-transform: rotate(0)!important; -moz-transform: rotate(0)!important; transform:rotate(0)!important; width: max(51vw, 250px) !important; height: fit-content !important; margin-top: 3vh !important; margin-bottom: 2vh !important;}
 
-    /* body .screenDesignPublishing:last-of-type {
-        margin-bottom: 16vw !important;
-    } */
+    body .screenDesignPublishing:last-of-type {
+        margin-bottom: 15vw !important;
+    }
 }
 
 @media only screen and (max-width: 1200px) {

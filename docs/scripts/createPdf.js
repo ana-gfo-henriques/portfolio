@@ -17,7 +17,7 @@ function generatePDF() {
             window.open(pdfObj.output('bloburl'), '_blank');
         });
     } else {
-        console.log("mobile");
+        alert("mobile");
         html2pdf().set(opt).from(element).save();
     }
 }
