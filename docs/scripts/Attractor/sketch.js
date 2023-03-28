@@ -72,3 +72,6 @@ function isInMenuBox() {
   }
 }
 
+function windowResized() {
+  resizeCanvas(divDimensions.width, divDimensions.height);
+}

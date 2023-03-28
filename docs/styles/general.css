@@ -116,8 +116,8 @@ button:active {
 .image {
     /* width: 700px; */
     /* height: 495px; */
-    width: max(51vw, 320px);
-    height: max(34.3vw, 216px);
+    width: max(51vw, 250px);
+    height: max(34.3vw, 169px);
     /* background-color: red; */
     margin-top: 1vh;
     margin-bottom: 1.5vh;

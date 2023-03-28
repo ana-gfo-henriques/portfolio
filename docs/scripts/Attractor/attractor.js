@@ -33,9 +33,9 @@ class Attractor {
   show() {
     push();
       stroke(0);
-      strokeWeight(3);
+      strokeWeight(0.0025*windowWidth);
       fill(255, 255, 255, 50);
-      textSize(+fontSize);
+      textSize(0.15*windowWidth);
       textFont('Arial');
       textStyle('bold');
       textStyle('italic');
@@ -45,11 +45,11 @@ class Attractor {
       stroke(0);
       strokeWeight(0);
       fill(0);
-      textSize(+fontSize);
+      textSize(0.15*windowWidth);
       textFont('Times');
       textStyle('normal');
       textAlign(CENTER, CENTER);
-      text(title, this.pos.x-33, this.pos.y+22);
+      text(title, this.pos.x-0.035*windowWidth, this.pos.y+0.02*windowWidth);
     pop();
     
   }

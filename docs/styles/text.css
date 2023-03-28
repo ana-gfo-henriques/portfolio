@@ -8,7 +8,7 @@ a:visited {
 }
 
 .anaHenriques {
-    font-size: max(4.16667rem, 50px);
+    font-size: max(4.16667rem, 40px);
     color: black;
     /* text-align: center; */
     font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +21,7 @@ a:visited {
 }
 
 .cuteWebsite {
-    font-size: max(4rem, 40px);
+    font-size: max(4rem, 30px);
     color: black;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
@@ -34,7 +34,7 @@ a:visited {
 }
 
 .titles {
-    font-size: max(3.083rem, 50px);
+    font-size: max(3.083rem, 40px);
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -87,6 +87,8 @@ a:visited {
     margin-bottom: 0;
     margin-left: 18vw;
     margin-right: 18vw;
+
+    /* width: fit-content; */
 }
 
 .textBox span {
@@ -344,7 +346,7 @@ a:visited {
     margin-bottom: 0;
     margin-left: 18vw;
     /* margin-right: 18vw; */
-    width: max(51vw, 320px);
+    width: max(51vw, 250px);
     /* background-color: blue; */
 }
 
@@ -380,7 +382,7 @@ a:visited {
     .monikers {margin-top: -1vh; text-align: left;}
     .print {margin-top: 4vh;}
 
-    .vertProjectTitle {writing-mode:horizontal-tb !important; -webkit-transform: rotate(0)!important; -moz-transform: rotate(0)!important; transform:rotate(0)!important; width: max(51vw, 320px) !important; height: fit-content !important; margin-top: 3vh !important; margin-bottom: 2vh !important;}
+    .vertProjectTitle {writing-mode:horizontal-tb !important; -webkit-transform: rotate(0)!important; -moz-transform: rotate(0)!important; transform:rotate(0)!important; width: max(51vw, 250px) !important; height: fit-content !important; margin-top: 3vh !important; margin-bottom: 2vh !important;}
 }
 
 @media only screen and (max-width: 1200px) {

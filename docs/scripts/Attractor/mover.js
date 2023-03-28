@@ -32,7 +32,7 @@ class Mover {
   show() {
     push();
       fill(0, 0, 0, 155);
-      textSize(+moverSize);
+      textSize(0.03*windowWidth);
       // textFont('Times New Roman');
       text("*", this.pos.x, this.pos.y);
     pop();
