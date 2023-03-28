@@ -8,6 +8,8 @@
 let movers = [];
 let attractor;
 
+let canvasWidth, canvasHeight;
+
 var moverQuantity = document.getElementById("parent").getAttribute('data-moverQuantity');
 // console.log(moverSize);
 var moveMouse = document.getElementById("parent").getAttribute('data-moveMouse');
@@ -16,9 +18,11 @@ var moveMouse = document.getElementById("parent").getAttribute('data-moveMouse')
 function setup() {
   var parentDiv = document.getElementById("parent");
   var divDimensions = parentDiv.getBoundingClientRect();
-  //console.log("parent width: " + divDimensions.width + "\nparent height: " + divDimensions.height);
+  
+  canvasWidth, canvasHeight = divDimensions.width, divDimensions.height;
 
   var myCanvas = createCanvas(divDimensions.width, divDimensions.height);
+  
   myCanvas.parent("parent");
 
   for (let i = 0; i < +moverQuantity; i++) {
@@ -56,6 +60,12 @@ function draw() {
   }
 }
 
+// function windowResized() {
+//   console.log(window.innerWidth + ", " + window.innerHeight);
+//   let parent = document.getElementById("parent");
+//   resizeCanvas(parent.offsetWidth, parent.offsetHeight);
+// }
+
 function isInScreen() {
   if (0 < mouseY && windowHeight > mouseY && windowWidth > mouseX && 0 < mouseX) {
     return true;
@@ -70,8 +80,4 @@ function isInMenuBox() {
   } else {
     return false;
   }
-}
-
-function windowResized() {
-  resizeCanvas(divDimensions.width, divDimensions.height);
 }
