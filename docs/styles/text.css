@@ -184,11 +184,11 @@ a:visited {
 }
 
 #square {
-    font-size: max(1.2rem, 14px);
+    font-size: max(1.2rem, 12px);
 }
 
 #circle {
-    font-size: max(1.7rem, 23px);
+    font-size: max(1.7rem, 21px);
 }
 
 .credits {
