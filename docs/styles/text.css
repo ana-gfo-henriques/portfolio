@@ -33,7 +33,7 @@ a:visited {
     margin-right: 19vw;
 }
 
-.titles {
+.titles, .aboutTitle {
     font-size: max(3.083rem, 40px);
     color: black;
     text-align: center;
@@ -77,7 +77,7 @@ a:visited {
 
 
 .textBox {
-    font-size: max(1rem, 16px);
+    font-size: max(1rem, 18.5px);
     color: black;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
@@ -92,7 +92,7 @@ a:visited {
 }
 
 .textBox span {
-    font-size: max(0.91rem,14px);
+    font-size: max(0.91rem, 16.5px);
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -371,6 +371,8 @@ a:visited {
 
 @media only screen and (max-width: 480px) {
     .screenDesignPublishing {height: 64vh !important; margin-top: 0vh !important;}
+    .disclaimer {margin-bottom: 10vh !important;}
+    .vertCenterAbout {margin-top: 30vh !important;}
 }
 
 @media only screen and (max-width: 700px) {

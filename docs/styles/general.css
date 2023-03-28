@@ -178,7 +178,7 @@ button:active {
     justify-content: space-between;
 }
 
-.vertCenter {
+.vertCenter, .vertCenterAbout {
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50.5%);
