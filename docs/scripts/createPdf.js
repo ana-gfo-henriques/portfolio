@@ -25,7 +25,8 @@ function generatePDF() {
 }
 
 function checkMobile() {
-    if(window.orientation > 1) {
+    // if(window.orientation > 1) {
+    if(window.matchMedia("(any-pointer:coarse)").matches) {
         return true;
     } else {
         return false;
