@@ -20,8 +20,8 @@ function generatePDF() {
     } else {
         // alert("mobile");
         html2pdf().set(opt).from(element).save();
-
-        document.getElementById("body").innerHTML = "New text!";
+        window.open(pdfObj.output('bloburl'), '_blank');
+        // document.getElementById("body").innerHTML = "New text!";
     }
 }
 
