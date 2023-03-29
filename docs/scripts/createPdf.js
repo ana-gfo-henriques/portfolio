@@ -21,7 +21,6 @@ function generatePDF() {
         // alert("mobile");
         html2pdf().set(opt).from(element).save();
         window.open(pdfObj.output('bloburl'), '_blank');
-        // document.getElementById("body").innerHTML = "New text!";
     }
 }
 
