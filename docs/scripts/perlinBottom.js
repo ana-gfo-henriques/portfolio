@@ -1,6 +1,6 @@
-(function () {
-    generatePerlin();
-})();
+// (function () {
+//     generatePerlin();
+// })();
 
 // addEventListener("resize", (event) => {
 //     if screen.orientation.type == "landscape"
@@ -23,7 +23,7 @@ screen.orientation.addEventListener("change", function(e) {
     //     });
 });
 
-function generatePerlin() {
+function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
     //var body = document.getElementById('body');
     var bodyWidth = document.getElementById('body').clientWidth;
@@ -43,7 +43,7 @@ function generatePerlin() {
 
     bg_canvas.style.setProperty("mix-blend-mode", "hard-light");
     bg_canvas.style.setProperty("filter", "contrast(120%)");
-    bg_canvas.style.setProperty("background-image", "url('images/noise/noise.svg')");
+    bg_canvas.style.setProperty("background-image", url);
 
     bg_canvas.style.height = bodyHeight.toString() + "px";
     bg_canvas.style.width = bodyWidth.toString() + "px";
