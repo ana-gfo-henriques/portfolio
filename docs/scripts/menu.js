@@ -72,7 +72,7 @@ function disclaimer() {
         disclaimerClose.style = "animation: none; color: black";
         aboutTitle.style = "margin-top: 12.5vh !important"
         aboutTitle.innerHTML = "DISCLAIMER";
-        aboutText.innerHTML = 'I am a 26-year-old cisgender (to be completely honest, the gender journey is not really complete yet but we’re going with that at the moment) white queer neurodivergent able-bodied woman. My preferred pronouns are she/they. I am living in Lisbon, Portugal at the time of publishing, but I was born in the United States of America where I lived for two-and-a-half years. I come from a middle-class background, my education has been primarily anglo- and lusophone and I have always lived in urban centers. Even though most of my family is catholic, I do not subscribe to any particular religion or creed.<br><br>These are my biases.<br>(I think)';
+        aboutText.innerHTML = 'I am a 26-year-old cisgender (to be completely honest, the gender journey is not really complete yet but we’re going with that at the moment) white queer neurodivergent able-bodied woman. My preferred pronouns are she/they. I am currently living in Lisbon, Portugal but I was born in the United States of America where I lived for two-and-a-half years. I come from a middle-class background, my education has been primarily anglo- and lusophone and I have always lived in urban centers. Even though most of my family is catholic, I do not subscribe to any particular religion or creed.<br><br>These are my biases.<br>(I think)';
 
         document.body.scrollTop = 0;
 
