@@ -6,7 +6,8 @@
 }
 
 html, body {
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     margin: 0;
     padding: 0;
     font-size: 1.7vw;
@@ -56,10 +57,10 @@ html, body {
     font-size: 4vw;
 }
 
-.noisy {
+/* .noisy {
     background-image: url(../images/noise/noise.svg);
     filter: contrast(120%);
-} 
+}  */
 
   #perlinBackground {
     position: absolute;
@@ -67,9 +68,11 @@ html, body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* height: 100%; */
-    mix-blend-mode: hard-light;
+    height: 100%; 
+    /* mix-blend-mode: hard-light;
     opacity: 1;
+    background-image: url('../images/noise/noise.svg');
+    filter: contrast(120%); */
  }
 
 /* elements */
