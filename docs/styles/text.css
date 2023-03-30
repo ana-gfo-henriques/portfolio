@@ -369,7 +369,6 @@ a:visited {
     color: gray;
 }
 
-
 @media only screen and (max-width: 480px) {
     .screenDesignPublishing {height: 70vh !important; margin-top: 0vh !important;}
     .disclaimer {margin-bottom: 10vh !important;}
@@ -401,6 +400,17 @@ a:visited {
 
 @media only screen and (max-width: 1200px) {
     .screenDesignPublishing {height: 64vh; margin-top: 5vw;}
+
+    @media only screen and (max-height: 400px) {
+        .screenDesignPublishing {margin-bottom: 30vh; height: 80vh;}
+
+        .vertCenterAbout {top: 0; -ms-transform: translateY(0); transform: translateY(0);}
+        .aboutTitle {margin-top: 20vh !important;}
+        .disclaimer {margin-top: 10vh !important; margin-bottom: 15vh !important;}
+        .colophonTitle {margin-top: 15vh !important;}
+        .credits {margin-bottom: 10vh !important;}
+
+    }
 }
 
 @media only screen and (min-width: 1200px) {
