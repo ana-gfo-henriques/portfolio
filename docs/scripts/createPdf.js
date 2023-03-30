@@ -18,7 +18,7 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
-        // alert("mobile");
+        alert("mobile");
         var windowSize; "width=" + window.innerWidth + ",height=" + window.innerHeight + ",scrollbars=no";
         html2pdf().set(opt).from(element).save();
         // window.open(pdfObj.output('bloburl'), '_blank');
