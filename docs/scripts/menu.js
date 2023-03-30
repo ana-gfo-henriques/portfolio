@@ -1,15 +1,45 @@
+function checkMobile() {
+    if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
+        return true;
+    } else {
+        return false;
+    }
+    // alert(answer ? 'It is a mobile device' : 'It is not a mobile device');
+ }
+
 function toggleMenu(){
     var menuList = document.getElementById("menuList");
+    var menuOverlay = document.getElementById("menuOverlay");
+    var asterisk = document.getElementById("asterisk");
+
+    if(checkMobile()) {
+        if (menuList.style.display === "block") {
+            menuList.style.display = "none";
+            menuOverlay.style.display = "none";
+            asterisk.style.backgroundImage = "url(images/menu/asterisk.svg)";
+        } 
+        else {
+            menuList.style.display = "block";
+            menuOverlay.style.display = "block";
+            asterisk.style.backgroundImage = "url(images/menu/asterisk_h.svg)";
+        } 
+    }else {
+        if (menuList.style.display === "block") {
+            menuList.style.display = "none";
+        } 
+        else {
+            menuList.style.display = "block";
+        } 
+    }
     
-    if (menuList.style.display === "block") {
-        menuList.style.display = "none";
-    } 
-    else {
-        menuList.style.display = "block";
-    } 
+    // if (menuList.style.display === "block") {
+    //     menuList.style.display = "none";
+    // } 
+    // else {
+    //     menuList.style.display = "block";
+    // } 
     // console.log("function was called");
 }
-
 
 function changeBackgroundImage (id, imageLink) {
     var image = document.getElementById(id);
