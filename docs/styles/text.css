@@ -33,7 +33,7 @@ a:visited {
     margin-right: 19vw;
 }
 
-.titles, .aboutTitle {
+.titles, .aboutTitle, .colophonTitle {
     font-size: max(3.083rem, 40px);
     color: black;
     text-align: center;
@@ -265,7 +265,7 @@ a:visited {
     font-weight: normal;
 }
 
-.type {
+.type, .typeDP {
     font-size: max(1.8333rem, 22px);
     color: black;
     text-align: left;
@@ -373,7 +373,14 @@ a:visited {
 @media only screen and (max-width: 480px) {
     .screenDesignPublishing {height: 70vh !important; margin-top: 0vh !important;}
     .disclaimer {margin-bottom: 10vh !important;}
-    .vertCenterAbout {margin-top: 30vh !important;}
+    /* .vertCenterAbout {margin-top: 30vh !important;} */
+    .vertCenterAbout {top: 0; -ms-transform: translateY(0); transform: translateY(0);}
+    .aboutTitle {margin-top: 12.5vh !important;}
+    .colophonTitle {margin-top: 5.7vh !important;}
+
+    .flexRM {flex-direction: column-reverse; justify-content: space-between;}
+    .readMoreLess {margin-left: 18vw; margin-bottom: 2vh;}
+    .typeDP {margin-left: 18vw; margin-right: 0vw;}
 }
 
 @media only screen and (max-width: 700px) {

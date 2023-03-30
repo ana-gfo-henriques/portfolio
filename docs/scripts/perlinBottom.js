@@ -3,7 +3,10 @@
 })();
 
 addEventListener("resize", (event) => {
-    generatePerlin();
+    // generatePerlin();
+    location.reload();
+    //setTimeout(location.reload(), 1000);
+    console.log("resized");
 });
 
 

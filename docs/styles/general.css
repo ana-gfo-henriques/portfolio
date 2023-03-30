@@ -172,7 +172,7 @@ button:active {
     margin-right: 18vw;
 }
 
-.flex, .flexAlways {
+.flex, .flexAlways, .flexRM {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
