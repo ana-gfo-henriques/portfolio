@@ -19,15 +19,15 @@ function generatePDF() {
         // alert("test is working");
     } else {
         // alert("mobile");
+        var windowSize; "width=" + window.innerWidth + ",height=" + window.innerHeight + ",scrollbars=no";
         html2pdf().set(opt).from(element).save();
-        window.open(pdfObj.output('bloburl'), '_blank');
+        // window.open(pdfObj.output('bloburl'), '_blank');
+        window.open(pdfObj.output('bloburl'), 'popup', windowSize);
     }
 }
 
 function checkMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
-    // if(window.orientation > 1) {
-    // if(window.matchMedia("(any-pointer:coarse)").matches) {
         return true;
     } else {
         return false;
