@@ -1,31 +1,12 @@
-// (function () {
-//     generatePerlin();
-// })();
-
-// addEventListener("resize", (event) => {
-//     if screen.orientation.type == "landscape"
-//     // generatePerlin();
-//     // location.reload();
-//     // setInterval(location.reload(), 1000);
-//     // console.log("resized");
-//     setInterval(generatePerlin(), 1000);
-// });
-
 screen.orientation.addEventListener("change", function(e) {
     generatePerlin();
     var bg_canvas = document.getElementById('perlinBackground');
-    // bg_canvas.style = "mix-blend-mode: hard-light; opacity: 1; filter: contrast(120%); background-image: url('images/noise/noise.svg');";
-    // bg_canvas.css({
-    //     "mix-blend-mode": "hard-light",
-    //     "opacity": "1",
-    //     "filter": "contrast(120%)",
-    //     "background-image": "url('images/noise/noise.svg')"
-    //     });
+    bg_canvas.style.height = bodyHeight.toString() + "px";
+    bg_canvas.style.width = bodyWidth.toString() + "px";
 });
 
 function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
-    //var body = document.getElementById('body');
     var bodyWidth = document.getElementById('body').clientWidth;
     var bodyHeight = document.getElementById('body').clientHeight;
 
