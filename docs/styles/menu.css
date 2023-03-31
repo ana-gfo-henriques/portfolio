@@ -2,6 +2,10 @@
     display: none;
 }
 
+#asterisk {
+    z-index: 999999999;
+}
+
 .asterisk {
     /* font-size: 6.25rem; */
     color: black;
