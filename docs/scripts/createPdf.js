@@ -18,17 +18,21 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
-        //alert("mobile");
+        html2pdf().set(opt).from(element).toPdf().save();
+        alert("mobile");
         // var windowSize; "width=" + window.innerWidth + ",height=" + window.innerHeight + ",scrollbars=no";
         // html2pdf().set(opt).from(element).save();
         // window.open(pdfObj.output('bloburl'), '_blank');
         // window.open(pdfObj.output('bloburl'), 'popup', windowSize);
         // window.open('/Export/PrintPdf');
         // console.log(html2pdf().set(opt).from(element).toPdf().get('pdf'));
-        html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdfObj) {
-            // pdfObj.autoPrint();
-            window.open(pdfObj.output('bloburl'), '_blank');
-        });
+        //console.log("doing");
+        // html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdfObj) {
+        //     // console.log("doing2");
+        //     // body.innerHTML = "";
+        //     // window.open(pdfObj.output('bloburl'), '_self');
+        //     // html2pdf().set(opt).from(element).save();
+        // });
     }
 }
 
@@ -38,5 +42,4 @@ function checkMobile() {
     } else {
         return false;
     }
-    // alert(answer ? 'It is a mobile device' : 'It is not a mobile device');
  }
