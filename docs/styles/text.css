@@ -400,21 +400,31 @@ a:visited {
 }
 
 @media only screen and (max-width: 1200px) {
-    .screenDesignPublishing {height: 64vh; margin-top: 5vw;}
+    .screenDesignPublishing {height: 64vh; margin-top: 5vw; margin-bottom: -30vw;}
+    body .screenDesignPublishing:last-of-type {
+        margin-bottom: 20vh !important;
+    }
+
+    @media only screen and (max-height: 900px) {
+        .screenDesignPublishing {height: 70vh; margin-bottom: 0vw !important;}
+        body .screenDesignPublishing:last-of-type {
+            margin-bottom: 10vw !important;
+        }
+    } 
 
     @media only screen and (max-height: 400px) {
-        .screenDesignPublishing {margin-bottom: 30vh; height: 80vh;}
+        .screenDesignPublishing {margin-bottom: 30vh !important; height: 80vh !important;}
 
         .vertCenterAbout {top: 0; -ms-transform: translateY(0); transform: translateY(0);}
         .aboutTitle {margin-top: 20vh !important;}
         .disclaimer {margin-top: 10vh !important; margin-bottom: 15vh !important;}
         .colophonTitle {margin-top: 15vh !important;}
         .credits {margin-bottom: 10vh !important;}
-    }
+    }   
 }
 
 @media only screen and (min-width: 1200px) {
-    .screenDesignPublishing {margin-top: 8vw;}
+    .screenDesignPublishing {margin-top: 8vw !important;}
 }
 
 .vertProjectTitle {

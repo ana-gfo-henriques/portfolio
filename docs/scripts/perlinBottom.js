@@ -1,9 +1,9 @@
 screen.orientation.addEventListener("change", function(e) {
-    var bg_canvas = document.getElementById('perlinBackground');
-    bg_canvas.style.height = bodyHeight.toString() + "px";
-    bg_canvas.style.width = bodyWidth.toString() + "px";
-    generatePerlin();
-    // location.reload();
+    // var bg_canvas = document.getElementById('perlinBackground');
+    // bg_canvas.style.height = bodyHeight.toString() + "px";
+    // bg_canvas.style.width = bodyWidth.toString() + "px";
+    // generatePerlin();
+    location.reload();
 });
 
 function generatePerlin(url) {
@@ -12,16 +12,6 @@ function generatePerlin(url) {
     var bodyHeight = document.getElementById('body').clientHeight;
 
     //console.log("body height: "+ bodyHeight.toString());
-
-
-    // bg_canvas.css({
-    //     "mix-blend-mode": "hard-light",
-    //     "opacity": "1",
-    //     "filter": "contrast(120%)",
-    //     "background-image": "url('images/noise/noise.svg')"
-    // });
-
-    // obj.style.setProperty("background-color", "lightgray");
 
     bg_canvas.style.setProperty("mix-blend-mode", "hard-light");
     bg_canvas.style.setProperty("filter", "contrast(120%)");
