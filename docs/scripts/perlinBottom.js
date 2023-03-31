@@ -1,8 +1,8 @@
 screen.orientation.addEventListener("change", function(e) {
-    generatePerlin();
     var bg_canvas = document.getElementById('perlinBackground');
     bg_canvas.style.height = bodyHeight.toString() + "px";
     bg_canvas.style.width = bodyWidth.toString() + "px";
+    generatePerlin();
     // location.reload();
 });
 

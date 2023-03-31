@@ -189,7 +189,7 @@ button:active {
 }
 
 .nonAdjustableScreen {
-    margin-top: 7vh;
-    margin-bottom: 7vh;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
     position: relative;
 }
