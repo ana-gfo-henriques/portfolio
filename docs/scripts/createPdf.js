@@ -19,20 +19,10 @@ function generatePDF() {
         // alert("test is working");
     } else {
         html2pdf().set(opt).from(element).toPdf().save();
-        alert("mobile");
-        // var windowSize; "width=" + window.innerWidth + ",height=" + window.innerHeight + ",scrollbars=no";
-        // html2pdf().set(opt).from(element).save();
-        // window.open(pdfObj.output('bloburl'), '_blank');
-        // window.open(pdfObj.output('bloburl'), 'popup', windowSize);
-        // window.open('/Export/PrintPdf');
-        // console.log(html2pdf().set(opt).from(element).toPdf().get('pdf'));
-        //console.log("doing");
-        // html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdfObj) {
-        //     // console.log("doing2");
-        //     // body.innerHTML = "";
-        //     // window.open(pdfObj.output('bloburl'), '_self');
-        //     // html2pdf().set(opt).from(element).save();
-        // });
+        // alert("mobile");
+        html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdfObj) {
+            window.open(pdfObj.output('bloburl'), '_blank');
+        });
     }
 }
 
