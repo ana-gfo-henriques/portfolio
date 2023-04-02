@@ -1,19 +1,6 @@
-// screen.orientation.addEventListener("change", function(e) {
-//     // var bg_canvas = document.getElementById('perlinBackground');
-//     // var bodyWidth = document.getElementById('body').clientWidth;
-//     // var bodyHeight = document.getElementById('body').clientHeight;
-
-//     // bg_canvas.style.height = bodyHeight.toString() + "px";
-//     // bg_canvas.style.width = bodyWidth.toString() + "px";
-//     // generatePerlin();
-//     alert("orientation changed");
-//     window.location.reload();
-// });
-
-
 function handleOrientation(event) {
-    alert("orientation changed");
-    generatePerlin();    
+    console.log("orientation changed");
+    generatePerlin('url(images/noise/noise.svg)');
 }
 
 
