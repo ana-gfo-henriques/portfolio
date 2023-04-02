@@ -12,7 +12,7 @@
 
 
 function handleOrientation(event) {
-    alert("orientation changed alert");
+    alert("alert orientation changed alert");
     generatePerlin('url(images/noise/noise.svg)');
 }
 
