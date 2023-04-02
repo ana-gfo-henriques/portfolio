@@ -21,11 +21,7 @@ function generatePDF() {
 
         // alert("mobile test working");
 
-        var one = document.getElementById("delete1");
-        var two = document.getElementById("delete2");
-
-        one.style.display = "none";
-        two.style.display = "none";
+        setTimeout(delete_overlay, 2500);
 
         // IDEA: find a way to print blob or arraybuffer onto canvas and then append that canvas to body
     }
@@ -38,3 +34,10 @@ function checkMobile() {
         return false;
     }
  }
+
+ function delete_overlay() {
+    var one = document.getElementById("delete1");
+    var two = document.getElementById("delete2");
+    one.style.display = "none";
+    two.style.display = "none";
+}
