@@ -1,6 +1,5 @@
 function handleOrientation(event) {
-    // console.log("orientation changed");
-    alert("orientation changed");
+    console.log("orientation changed");
     generatePerlin('url(images/noise/noise.svg)');
 }
 
