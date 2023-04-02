@@ -1,7 +1,21 @@
+// screen.orientation.addEventListener("change", function(e) {
+//     // var bg_canvas = document.getElementById('perlinBackground');
+//     // var bodyWidth = document.getElementById('body').clientWidth;
+//     // var bodyHeight = document.getElementById('body').clientHeight;
+
+//     // bg_canvas.style.height = bodyHeight.toString() + "px";
+//     // bg_canvas.style.width = bodyWidth.toString() + "px";
+//     // generatePerlin();
+//     alert("orientation changed");
+//     window.location.reload();
+// });
+
+
 function handleOrientation(event) {
-    console.log("orientation changed");
-    generatePerlin('url(images/noise/noise.svg)');
+    alert("orientation changed");
+    generatePerlin();    
 }
+
 
 window.addEventListener("deviceorientation", handleOrientation);
 
@@ -9,6 +23,8 @@ function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
     var bodyWidth = document.getElementById('body').clientWidth;
     var bodyHeight = document.getElementById('body').clientHeight;
+
+    //console.log("body height: "+ bodyHeight.toString());
 
     bg_canvas.style.setProperty("mix-blend-mode", "hard-light");
     bg_canvas.style.setProperty("filter", "contrast(120%)");
@@ -22,5 +38,5 @@ function generatePerlin(url) {
 
     perlin_noise(bg_canvas);
 
-    //console.log("canvas height: "+ bg_canvas.clientHeight.toString()); 
+    //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
 }
