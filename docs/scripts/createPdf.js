@@ -18,11 +18,16 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
-        html2pdf().set(opt).from(element).toPdf().save();
-        // alert("mobile");
-        html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdfObj) {
-            window.open(pdfObj.output('bloburl'), '_blank');
-        });
+
+        // alert("mobile test working");
+
+        var one = document.getElementById("delete1");
+        var two = document.getElementById("delete2");
+
+        one.style.display = "none";
+        two.style.display = "none";
+
+        // IDEA: find a way to print blob or arraybuffer onto canvas and then append that canvas to body
     }
 }
 

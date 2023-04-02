@@ -22,5 +22,5 @@ function generatePerlin(url) {
 
     perlin_noise(bg_canvas);
 
-    //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
+    //console.log("canvas height: "+ bg_canvas.clientHeight.toString()); 
 }
