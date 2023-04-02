@@ -10,8 +10,6 @@ function generatePerlin(url) {
     var bodyWidth = document.getElementById('body').clientWidth;
     var bodyHeight = document.getElementById('body').clientHeight;
 
-    //console.log("body height: "+ bodyHeight.toString());
-
     bg_canvas.style.setProperty("mix-blend-mode", "hard-light");
     bg_canvas.style.setProperty("filter", "contrast(120%)");
     bg_canvas.style.setProperty("background-image", url);
