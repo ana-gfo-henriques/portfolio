@@ -1,14 +1,22 @@
-screen.orientation.addEventListener("change", function(e) {
-    // var bg_canvas = document.getElementById('perlinBackground');
-    // var bodyWidth = document.getElementById('body').clientWidth;
-    // var bodyHeight = document.getElementById('body').clientHeight;
+// screen.orientation.addEventListener("change", function(e) {
+//     // var bg_canvas = document.getElementById('perlinBackground');
+//     // var bodyWidth = document.getElementById('body').clientWidth;
+//     // var bodyHeight = document.getElementById('body').clientHeight;
 
-    // bg_canvas.style.height = bodyHeight.toString() + "px";
-    // bg_canvas.style.width = bodyWidth.toString() + "px";
-    // generatePerlin();
+//     // bg_canvas.style.height = bodyHeight.toString() + "px";
+//     // bg_canvas.style.width = bodyWidth.toString() + "px";
+//     // generatePerlin();
+//     alert("orientation changed");
+//     window.location.reload();
+// });
+
+
+function handleOrientation(event) {
     alert("orientation changed");
-    window.location.reload();
-});
+    generatePerlin('url(images/noise/noise.svg)');
+}
+
+window.addEventListener("deviceorientation", handleOrientation);
 
 function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
