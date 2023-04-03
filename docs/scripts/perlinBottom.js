@@ -1,11 +1,3 @@
-function handleOrientation(event) {
-    console.log("orientation changed");
-    generatePerlin('url(images/noise/noise.svg)');
-}
-
-
-window.addEventListener("deviceorientation", handleOrientation);
-
 function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
     var bodyWidth = document.getElementById('body').clientWidth;
@@ -27,3 +19,10 @@ function generatePerlin(url) {
 
     //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
 }
+
+function handleOrientation(event) {
+    console.log("orientation changed");
+    generatePerlin('url(images/noise/noise.svg)');
+}
+
+window.addEventListener("deviceorientation", handleOrientation, true);
