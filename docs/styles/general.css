@@ -147,37 +147,27 @@ button:active {
 }
 
 #aestheticSpaceImg {
-    background-image: url('../images/aestheticSpace/aestheticSpace_hover_yp2_v2.png');
+    background-image: url('../images/aestheticSpace/aestheticSpace_hover_yp2.webp');
     filter: grayscale(1) contrast(200%);
     transition: filter 0.1s;
 }
-
-/* #aestheticSpaceImg:hover {
-    filter: none;
-} */
 
 #mappingImg {
-    background-image: url('../images/mapping/mapping_hover_yp2.png');
+    background-image: url('../images/mapping/mapping_hover_yp2.webp');
     filter: grayscale(1) contrast(200%);
     transition: filter 0.1s;
 }
 
-#mappingImg:hover {
-    filter: none;
-}
-
-
-
 #onKnowingImg {
-    background-image: url('../images/onKnowing/onKnowing.png');
+    background-image: url('../images/onKnowing/onKnowing_hover_yp2.webp');
 }
 
 #designingFuturesImg {
-    background-image: url('../images/designingFutures/designingFutures.png');
+    background-image: url('../images/designingFutures/designingFutures_hover_yp2.webp');
 }
 
 #upicImg {
-    background-image: url('../images/upic/upic.png');
+    background-image: url('../images/upic/upic_hover_yp2.webp');
 }
 
 /* stylers */

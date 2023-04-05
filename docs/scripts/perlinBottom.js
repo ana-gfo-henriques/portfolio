@@ -1,11 +1,7 @@
-window.addEventListener("deviceorientation", handleOrientation);
-
-function handleOrientation(event) {
-    // console.log("orientation changed");
-    location.reload();
-}
-
 function generatePerlin(url) {
+
+    // console.log(window.orientation);
+
     var bg_canvas = document.getElementById('perlinBackground');
     var bodyWidth = document.getElementById('body').clientWidth;
     var bodyHeight = document.getElementById('body').clientHeight;
@@ -27,32 +23,38 @@ function generatePerlin(url) {
     //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
 }
 
-
-
-
-
-
-
-// var plus = document.getElementById("readMoreLess").onmouseover = changeBackgroundImage();
-// var plus = document.getElementById("readMoreLess").onmouseout = changeBackgroundImage();
-document.getElementById("aestheticSpaceImg").onmouseover = changeBackgroundImage(this.id);
-
-// plus.addEventListener("mouseover", changeBackgroundImage(), false);
-// plus.addEventListener("mouseout", changeBackgroundImage(), false);
-// images.addEventListener("mouseover", changeBackgroundImage(), false);
-// images.addEventListener("mouseout", changeBackgroundImage(), false);
-
-
-
 function changeBackgroundImage (id) {
     var image = document.getElementById(id);
 
-    console.log("gjdgfhkjhg");
-
     if (image.style.filter === "none") {
         image.style.filter = "grayscale(1) contrast(200%)";
+        image.style.transition = "filter 0.1s";
     } 
     else {
         image.style.filter = "none";
+        image.style.transition = "filter 0.1s";
     }
 }
+
+// window.addEventListener("orientationchange", handleOrientation);
+
+// function handleOrientation(event) {
+//     // console.log("orientation changed");
+//     // location.reload();
+//     generatePerlin('url(images/noise/noise.svg)');
+// }
+
+// function handleOrientation() {
+//     console.log(screen.orientation);
+//     generatePerlin('url(images/noise/noise.svg)');
+// }
+
+// screen.orientation.addEventListener("change", handleOrientation);
+
+function handleOrientation() {
+    console.log("window orientation: " + window.orientation);
+    // generatePerlin('url(images/noise/noise.svg)');
+    location.reload();
+}
+
+window.onorientationchange = handleOrientation;
