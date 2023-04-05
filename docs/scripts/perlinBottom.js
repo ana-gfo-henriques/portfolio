@@ -1,8 +1,8 @@
 window.addEventListener("deviceorientation", handleOrientation);
 
 function handleOrientation(event) {
-    console.log("orientation changed");
-    generatePerlin('url(images/noise/noise.svg)');
+    // console.log("orientation changed");
+    location.reload();
 }
 
 function generatePerlin(url) {
@@ -25,4 +25,34 @@ function generatePerlin(url) {
     perlin_noise(bg_canvas);
 
     //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
+}
+
+
+
+
+
+
+
+// var plus = document.getElementById("readMoreLess").onmouseover = changeBackgroundImage();
+// var plus = document.getElementById("readMoreLess").onmouseout = changeBackgroundImage();
+document.getElementById("aestheticSpaceImg").onmouseover = changeBackgroundImage(this.id);
+
+// plus.addEventListener("mouseover", changeBackgroundImage(), false);
+// plus.addEventListener("mouseout", changeBackgroundImage(), false);
+// images.addEventListener("mouseover", changeBackgroundImage(), false);
+// images.addEventListener("mouseout", changeBackgroundImage(), false);
+
+
+
+function changeBackgroundImage (id) {
+    var image = document.getElementById(id);
+
+    console.log("gjdgfhkjhg");
+
+    if (image.style.filter === "none") {
+        image.style.filter = "grayscale(1) contrast(200%)";
+    } 
+    else {
+        image.style.filter = "none";
+    }
 }

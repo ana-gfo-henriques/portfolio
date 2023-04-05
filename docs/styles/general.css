@@ -147,12 +147,26 @@ button:active {
 }
 
 #aestheticSpaceImg {
-    background-image: url('../images/aestheticSpace/aestheticSpace.png');
+    background-image: url('../images/aestheticSpace/aestheticSpace_hover_yp2_v2.png');
+    filter: grayscale(1) contrast(200%);
+    transition: filter 0.1s;
 }
 
+/* #aestheticSpaceImg:hover {
+    filter: none;
+} */
+
 #mappingImg {
-    background-image: url('../images/mapping/mapping.png');
+    background-image: url('../images/mapping/mapping_hover_yp2.png');
+    filter: grayscale(1) contrast(200%);
+    transition: filter 0.1s;
 }
+
+#mappingImg:hover {
+    filter: none;
+}
+
+
 
 #onKnowingImg {
     background-image: url('../images/onKnowing/onKnowing.png');

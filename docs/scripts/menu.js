@@ -41,15 +41,9 @@ function toggleMenu(){
     // console.log("function was called");
 }
 
-function changeBackgroundImage (id, imageLink) {
-    var image = document.getElementById(id);
-    //var hoverImage = document.getElementById(id).getAttribute('data-hoverImage');
-    var hoverImageLink = "url('" + imageLink + "')";
 
-    //console.log(hoverImageLink);
 
-    image.style.backgroundImage = hoverImageLink;
-}
+
 
 function disclaimer() {
     var aboutTitle = document.getElementById("aboutTitle"); 
