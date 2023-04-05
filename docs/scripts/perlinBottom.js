@@ -26,13 +26,15 @@ function generatePerlin(url) {
 function changeBackgroundImage (id) {
     var image = document.getElementById(id);
 
-    if (image.style.filter === "none") {
-        image.style.filter = "grayscale(1)";
-        image.style.transition = "filter 0.1s";
-    } 
-    else {
-        image.style.filter = "none";
-        image.style.transition = "filter 0.1s";
+    if (!checkMobile()) {
+        if (image.style.filter === "none") {
+            image.style.filter = "grayscale(1) contrast(2)";
+            // image.style.transition = "filter 0.1s";
+        } 
+        else {
+            image.style.filter = "none";
+            // image.style.transition = "filter 0.1s";
+        }
     }
 }
 
