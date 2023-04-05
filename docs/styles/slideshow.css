@@ -79,12 +79,13 @@
 }
 
 .dotNavigation{
-    width: max(0.8vw, 10px);
-    height: max(0.8vw, 10px);
+    width: max(0.8vw, 7.5px);
+    height: max(0.8vw, 7.5px);
     border-radius: 100%;
     cursor: pointer;
-    margin: 0 4px;
-    border: 1px solid black;
+    margin: 0 0.5vw;
+    border: 1.35px solid black;
+    background-color: rgba(255, 255, 255, 0.4);
     transition: .5s background-color;
 }
 
