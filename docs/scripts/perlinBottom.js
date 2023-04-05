@@ -1,9 +1,9 @@
+window.addEventListener("deviceorientation", handleOrientation);
+
 function handleOrientation(event) {
-    alert("orientation changed");
+    console.log("orientation changed");
     generatePerlin('url(images/noise/noise.svg)');
 }
-  
-window.addEventListener("deviceorientation", handleOrientation);
 
 function generatePerlin(url) {
     var bg_canvas = document.getElementById('perlinBackground');
