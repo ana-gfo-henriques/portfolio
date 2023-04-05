@@ -176,6 +176,10 @@ button:active {
     /* transition: filter 0.1s; */
 }
 
+#aestheticSpaceImg:active, #mappingImg:active, #onKnowingImg:active, #designingFuturesImg:active,  #upicImg:active{
+    filter: none;
+}
+
 /* stylers */
 
 .margin {
