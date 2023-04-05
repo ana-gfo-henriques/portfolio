@@ -27,7 +27,7 @@ function changeBackgroundImage (id) {
     var image = document.getElementById(id);
 
     if (image.style.filter === "none") {
-        image.style.filter = "grayscale(1) contrast(200%)";
+        image.style.filter = "grayscale(1)";
         image.style.transition = "filter 0.1s";
     } 
     else {
@@ -53,7 +53,7 @@ function changeBackgroundImage (id) {
 
 function handleOrientation() {
     console.log("window orientation: " + window.orientation);
-    // generatePerlin('url(images/noise/noise.svg)');
+    //generatePerlin('url(images/noise/noise.svg)');
     location.reload();
 }
 

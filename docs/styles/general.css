@@ -148,26 +148,32 @@ button:active {
 
 #aestheticSpaceImg {
     background-image: url('../images/aestheticSpace/aestheticSpace_hover_yp2.webp');
-    filter: grayscale(1) contrast(200%);
+    filter: grayscale(1);
     transition: filter 0.1s;
 }
 
 #mappingImg {
     background-image: url('../images/mapping/mapping_hover_yp2.webp');
-    filter: grayscale(1) contrast(200%);
+    filter: grayscale(1);
     transition: filter 0.1s;
 }
 
 #onKnowingImg {
     background-image: url('../images/onKnowing/onKnowing_hover_yp2.webp');
+    filter: grayscale(1);
+    transition: filter 0.1s;
 }
 
 #designingFuturesImg {
     background-image: url('../images/designingFutures/designingFutures_hover_yp2.webp');
+    filter: grayscale(1);
+    transition: filter 0.1s;
 }
 
 #upicImg {
     background-image: url('../images/upic/upic_hover_yp2.webp');
+    filter: grayscale(1);
+    transition: filter 0.1s;
 }
 
 /* stylers */
