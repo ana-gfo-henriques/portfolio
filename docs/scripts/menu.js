@@ -46,7 +46,7 @@ function changeBackgroundImage (id, imageLink) {
     //var hoverImage = document.getElementById(id).getAttribute('data-hoverImage');
     var hoverImageLink = "url('" + imageLink + "')";
 
-    console.log(hoverImageLink);
+    //console.log(hoverImageLink);
 
     image.style.backgroundImage = hoverImageLink;
 }
