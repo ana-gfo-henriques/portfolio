@@ -1,5 +1,5 @@
 function handleOrientation(event) {
-    // console.log("orientation changed");
+    alert("orientation changed");
     generatePerlin('url(images/noise/noise.svg)');
 }
   
@@ -26,6 +26,3 @@ function generatePerlin(url) {
 
     //console.log("canvas height: "+ bg_canvas.clientHeight.toString());
 }
-
-
-
