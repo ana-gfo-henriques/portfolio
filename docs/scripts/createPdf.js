@@ -2,7 +2,7 @@ function generatePDF() {
 
     const element = document.getElementById('body');
 			
-    var opt = {
+    const opt = {
         margin:       0,
         css:          'styles/zine.css',
         filename:     'a4_zine.pdf',
@@ -18,15 +18,6 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
-
-        var opt = {
-            margin:       0,
-            css:          'styles/zine.css',
-            filename:     'a4_zine.pdf',
-            image:        { type: 'webp', quality: 1 },
-            html2canvas:  { scale: 5 },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
-        };
 
         // alert("mobile test working");
 
