@@ -18,10 +18,11 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
-
         // alert("mobile test working");
 
-        setTimeout(delete_overlay, 2500);
+        html2pdf().set(opt).from(element).save();
+
+        // setTimeout(delete_overlay, 2500);
 
         // IDEA: find a way to print blob or arraybuffer onto canvas and then append that canvas to body
     }
