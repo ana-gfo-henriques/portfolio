@@ -22,7 +22,7 @@ function generatePDF() {
 
         //html2pdf().set(opt).from(element).save();
 
-        html2pdf(element);
+        html2pdf(element, opt);
 
         // setTimeout(delete_overlay, 2500);
 
