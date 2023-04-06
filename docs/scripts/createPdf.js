@@ -20,7 +20,9 @@ function generatePDF() {
     } else {
         // alert("mobile test working");
 
-        html2pdf().set(opt).from(element).save();
+        //html2pdf().set(opt).from(element).save();
+
+        html2pdf(element);
 
         // setTimeout(delete_overlay, 2500);
 
