@@ -23,7 +23,14 @@ function generatePDF() {
 
         //html2pdf().set(opt).from(element).save();
 
-        html2pdf(element, opt);
+        html2pdf(element, {
+            margin:       0,
+            css:          'styles/zine.css',
+            filename:     'a4_zine.pdf',
+            image:        { type: 'webp', quality: 1 },
+            html2canvas:  { scale: 5 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape', compress: true }
+        });
 
         // setTimeout(delete_overlay, 2500);
 
