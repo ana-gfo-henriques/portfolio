@@ -380,16 +380,25 @@ img {
 .loading {
     color: black;
     width: 60vw;
-    font-size: 8vw;
+    font-size: 2.8vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     text-align: left;
     margin-left: 15vw;
     padding: 5vw;
+    line-height: 130%;
 }
 
 .loading span {
-    font-size: 2.8vw;
+    font-size: 8vw;
+    line-height: initial;
+}
+
+#timesItalic {
+    font-size: 3.2vw;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .alignVerticalCenter {
