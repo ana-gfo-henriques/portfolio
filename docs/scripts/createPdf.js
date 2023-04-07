@@ -21,16 +21,9 @@ function generatePDF() {
 
         // alert("mobile test working");
 
-        //html2pdf().set(opt).from(element).save();
+        html2pdf().set(opt).from(element).toPdf().get('pdf').save();
 
-        html2pdf(element, {
-            margin:       0,
-            css:          'styles/zine.css',
-            filename:     'a4_zine.pdf',
-            image:        { type: 'webp', quality: 1 },
-            html2canvas:  { scale: 5 },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape', compress: true }
-        });
+        // html2pdf(element);
 
         // setTimeout(delete_overlay, 2500);
 
