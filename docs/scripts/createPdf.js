@@ -2,7 +2,7 @@ function generatePDF() {
 
     const element = document.getElementById('body');
 			
-    const opt = {
+    var opt = {
         margin:       0,
         css:          'styles/zine.css',
         filename:     'a4_zine.pdf',
@@ -18,15 +18,10 @@ function generatePDF() {
         });
         // alert("test is working");
     } else {
+        html2pdf(element);
 
         // alert("mobile test working");
-
-        html2pdf().set(opt).from(element).toPdf().get('pdf').save();
-
-        // html2pdf(element);
-
         // setTimeout(delete_overlay, 2500);
-
         // IDEA: find a way to print blob or arraybuffer onto canvas and then append that canvas to body
     }
 }
@@ -37,7 +32,7 @@ function checkMobile() {
     } else {
         return false;
     }
- }
+}
 
  function delete_overlay() {
     var one = document.getElementById("delete1");

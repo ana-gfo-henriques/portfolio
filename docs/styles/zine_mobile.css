@@ -1,0 +1,400 @@
+body, html, #body {
+    width: 210 !important;
+    height: 297mm !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: none;
+    size: a4;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.perlinBackground {
+    width: 210mm !important;
+    height: 297mm !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.aboutDiv {
+    height: 105mm;
+    width: 148.5mm;
+    /* background-color: aqua; */
+    position: absolute;
+    top: 22mm;
+    left: -22mm;
+}
+
+.D1Div {
+    height: 105mm;
+    width: 74.25mm;
+    /* background-color: blanchedalmond; */
+    position: absolute;
+    top: 133.5mm;
+    left: 15mm;
+}
+
+.D2Div {
+    height: 105mm;
+    width: 74.25mm;
+    /* background-color: green; */
+    position: absolute;
+    top: 207.75mm;
+    left: 15mm;
+}
+
+.coverDiv {
+    height: 105mm;
+    width: 74.25mm;
+    /* background-color: pink; */
+    position: absolute;
+    top: -15mm;
+    left: 120mm;
+}
+
+.contactDiv {
+    width: 105mm;
+    height: 74.25mm;
+    /* background-color: red; */
+    position: absolute;
+    top: 74.25mm;
+    left: 105mm;
+}
+
+.P1Div {
+    height: 105mm;
+    width: 74.25mm;
+    /* background-color: blue; */
+    position: absolute;
+    top: 133.3mm;
+    left: 120mm;
+}
+
+.P2Div {
+    height: 105mm;
+    width: 74.25mm;
+    /* background-color: purple; */
+    position: absolute;
+    top: 206.75mm;
+    left: 120mm;
+}
+
+/* cover */
+
+#coverDiv {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+.tableOfContents {
+    height: 396.849px;
+    width: 97px;
+    position: absolute;
+    top: 0;
+    left: 50mm;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.coverText {
+    font-size: 29pt;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    line-height: 30pt;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.dashed {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 16px;
+    height: 1px;
+
+    background-image: repeating-linear-gradient(-60deg, #333333, #333333 0.39px, transparent 1px, transparent 6.46px, #333333 15px), repeating-linear-gradient(30deg, #333333, #333333 0.39px, transparent 1px, transparent 6.46px, #333333 15px), repeating-linear-gradient(120deg, #333333, #333333 0.39px, transparent 1px, transparent 6.46px, #333333 15px), repeating-linear-gradient(210deg, #333333, #333333 0.39px, transparent 1px, transparent 6.46px, #333333 15px);
+    background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+}
+
+.zineInstructions {
+    margin-left: 25px;
+    margin-right: 20px;
+    width: 235px;
+    height: 85px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* contact */
+
+.vertCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pronouns {
+    font-size: 8pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.anaHenriques {
+    text-align: center;
+    font-size: 28pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-left: 0;
+    margin-right: 0;
+
+    width: 105mm;
+}
+
+.monikers {
+    text-align: center;
+    font-size: 18pt;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.credits {
+    font-size: 12pt;
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14pt;
+
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#square {
+    font-size: 8pt;
+}
+
+#circle {
+    font-size: 12pt;
+}
+
+.print {
+    width: 38px;
+    height: 38px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* publishing */
+
+#P1Div {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+#P2Div {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+.screenDiv {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.type {
+    font-size: 9pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.type span {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.image {
+    width: 173px;
+    height: 123px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.description {
+    font-size: 7pt;
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    line-height: 7pt;
+    width: 173px;
+    letter-spacing: -0.25px;
+}
+
+.description span {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.vertProjectTitle {
+    height: 123px;
+    width: 40px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.verticalSpacingPublishing {
+    height: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.publishingCanvas {
+    width: 74.24mm;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.publishingScreenDiv {
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.paperTitle {
+    font-size: 9pt;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.paperPublisher {
+    font-size: 6.5pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.paperPublisher span {
+    font-weight: bold;
+}
+
+/* design */
+
+#D1Div {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+#D2Div {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.designCanvas {
+    width: 100%;
+    height: 166px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* about */
+
+#aboutDiv {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.aboutScreenDiv {
+    width: 123.5mm;
+    height: fit-content;
+}
+
+.titles {
+    font-size: 30pt;
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold; 
+}
+
+.textBox {
+    font-size: 10pt;
+    line-height: 12pt;
+    color: black;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.textBox span {
+    font-size: 9pt;
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* loading */
+
+.background {
+    overflow: hidden;
+    width: 210mm !important;
+    height: 297mm !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loading {
+    color: black;
+    width: 60vw;
+    font-size: 8vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: left;
+    margin-left: 15vw;
+    padding: 5vw;
+}
+
+.loading span {
+    font-size: 2.8vw;
+}
+
+.alignVerticalCenter {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
