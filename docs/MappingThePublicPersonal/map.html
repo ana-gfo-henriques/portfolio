@@ -1,0 +1,217 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mapping The Public Personal</title>  
+  <script src="https://unpkg.com/interactjs@1.3.0/dist/interact.js"></script>
+  <link rel="stylesheet" type="text/css" href="mapStyle.css">
+</head>
+
+<body>
+	
+	<svg version="1.1" id="mysvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+		 
+		 <g>
+<!-- 		<circle fill="#FF7BAC" cx="898" cy="147" r="7"/> -->
+			<a href="#"><text id='svgText1' onmouseover="changeTextSVG('svgText1')" onmouseout="reset('svgText1')" transform="matrix(1 0 0 1 670 172)" fill="none" stroke="white" stroke-width="0.07vw" font-family="'Arial-BoldMT'" font-size="25px">Emotion Detector</text></a>
+		</g>
+			
+		<g>
+<!-- 		<circle fill="#FF7BAC" cx="848" cy="341" r="7"/> -->
+			<a href="#"><text id='svgText2' onmouseover="changeTextSVG('svgText2')" onmouseout="reset('svgText2')" transform="matrix(1 0 0 1 630 370)" fill="none" stroke="white" stroke-width="0.07vw" font-family="'Arial-BoldMT'" font-size="25px">Gender Detector</text></a>
+		</g>
+				
+		<g>	
+<!-- 		<circle fill="#FF7BAC" cx="892" cy="560" r="7"/> -->
+			<a href="#"><text id='svgText3' onmouseover="changeTextSVG('svgText3')" onmouseout="reset('svgText3')" transform="matrix(1 0 0 1 665 590)" fill="none" stroke="white" stroke-width="0.07vw" font-family="'Arial-BoldMT'" font-size="25px">Face Substitution</text></a>
+		</g>
+		 
+		<defs>
+			<circle id="point-handle" r="4" x="0" y="0" stroke-width="4" fill="#7EE510" fill-opacity="1"/>
+	    </defs>
+	     
+		<polygon id="edit-star" stroke="white" stroke-width="0.12vw" stroke-linejoin="round" fill="none" 
+			points="948.5,340.6 975.5,340.6 966.2,340.6 966.2,319.4 
+			934.6,338.6 935.3,317.8 926.5,319.6 870.5,297.6 950.5,314.6 985.5,298.6 910.5,265.3 846,342.1 870.5,297.6 913.5,328.6 
+			922.7,334.6 913.5,328.6 917.5,419.6 846,342.1 913.5,328.6 926.5,319.6 950.5,314.6 973.5,321.6 988.5,338.6 975.5,340.6 
+			995.5,411.6 917.5,419.6 867,467.1 929,526.6 917.5,419.6 988.5,454.6 995.5,411.6 1005.5,361.6 1009.5,444 1026.5,347.6 
+			1030.5,444 1056.5,444.6 1080.5,452.6 1106.5,526.6 1073.5,506.6 1065.1,526.6 1071.5,553.6 1073.5,506.6 1060.5,498.6 
+			1032.5,498.6 1030.5,461.6 1047.5,495.6 1080.5,452.6 1060.5,498.6 1002.5,556.2 1034.5,558.6 1071.5,553.6 1106.5,526.6 
+			1065.1,526.6 1033.5,526.6 1000.9,526.6 961.2,526.6 1003.5,498.6 1032.5,498.6 1000.9,526.6 994.9,504.3 1003.5,498.6 988.5,454.6 
+			1015.5,495.6 1030.5,461.6 997.5,461.6 988.5,454.6 948.5,340.6 995.5,411.6 988.5,338.6 1005.5,361.6 1012.5,322.6 988.5,338.6 
+			985.5,298.6 973.5,321.6 950.5,314.6 914.5,286.6 870.5,297.6 910.5,265.3 895.5,203.6 897,147.1 980.5,178.6 972.5,106.1 
+			1113,106.1 1094.5,179.6 1181.5,203.6 1025.5,238.6 980.5,178.6 1094.5,179.6 1037.4,106.1 980.5,178.6 895.5,203.6 1025.5,238.6 
+			910.5,265.3 914.5,286.6 985.5,298.6 1025.5,238.6 1025.5,299.6 1025.5,238.6 1094.5,179.6 1189,153.1 1181.5,203.6 1231,274.1 
+			1193.7,298.6 1154.5,282.6 1114.5,312.7 1099.5,317.6 1099.5,338.6 1130.5,315.6 1131.6,338.6 1141.5,334.6 1152.5,330.6 
+			1130.5,315.6 1114.5,312.7 1099.5,317.6 1069.5,338.6 1089.8,338.6 1065.1,407.8 1052,365.8 1039.5,320.6 1025.5,299.6 985.5,298.6 
+			1012.5,322.6 1026.5,347.6 1005.5,361.6 1026.5,347.6 1039.5,320.6 1012.5,322.6 1025.5,299.6 1071.5,296.6 1069.5,338.6 
+			1039.5,320.6 1071.5,296.6 1084.6,328 1089.8,338.6 1114.5,338.6 1065.1,407.8 1080.5,452.6 1114.5,338.6 1168.5,420.6 
+			1141.5,334.6 1131.6,338.6 1114.5,338.6 1156.5,260.6 1025.5,238.6 1071.5,296.6 1156.5,260.6 1181.5,203.6 1193.7,298.6 
+			1156.5,260.6 1154.5,282.6 1071.5,296.6 1114.5,312.7 1193.7,298.6 1140.3,322.4 1152.5,330.6 1193.7,298.6 1238.1,342.1 
+			1168.5,420.6 1152.5,330.6 1238.1,342.1 1168.5,420.6 1080.5,452.6 1149.4,526.6 1106.5,526.6 1113,643.1 1149.4,526.6 1202,557.1 
+			1037,661.1 1034.5,579.6 968,643.1 1002.5,556.2 1034.5,579.6 1113,643.1 1071.5,553.6 1034.5,579.6 1034.5,558.6 1000.9,526.6 
+			1002.5,556.2 961.2,526.6 968,643.1 929,526.6 892,560.1 "/>
+	</svg>
+	
+		
+	<div class="header">
+			<a id="left" onmouseover="changeHome()" onmouseout="reset('#FF7BAC')" href="https://web.tecnico.ulisboa.pt/~ana.o.henriques/Portfolio/inRevision/">MAPPING THE PUBLIC PERSONAL</a>
+	</div>
+
+
+
+
+<script>
+	function changeTextSVG(id){
+// 		console.log(id);
+		var txt = document.getElementById(id);
+		txt.style.fill = "white";
+		txt.style.strokeWidth = "0";
+		
+	}
+	
+	function reset(id){
+		console.log(id);
+		var txt = document.getElementById(id);
+		txt.style.fill = "none";
+		txt.style.stroke = "white";
+		txt.style.strokeWidth = "0.07vw";
+	}
+</script>
+
+
+<script>
+  // wait for external resources to load if any
+  window.addEventListener('load', () => {    
+     }) // end of window.load
+</script>
+
+<script>
+	
+	//FROM: codepen.io/lao-tseu-is-alive/pen/ZamYRY
+	
+	 const getPosXY = (event) => {      
+      let rect = event.target.getBoundingClientRect()
+      let x = event.offsetX || event.pageX - rect.left - window.scrollX
+      let y = event.offsetY || event.pageY - rect.top - window.scrollY
+      return [x, y]
+    }
+    const getEl = (id) => document.getElementById(id)
+    const sns="http://www.w3.org/2000/svg"
+    const xns="http://www.w3.org/1999/xlink"
+    const root = getEl('mysvg')
+    const star = getEl('edit-star')
+    const coord = getEl('coord')    
+    var rootMatrix
+    var originalPoints = []
+    var transformedPoints = []
+    root.addEventListener('mousemove', (event) => {
+      let [x, y] = getPosXY(event)
+      coord.innerText = `x,y = ${x},${y}`
+    })
+    // BEGIN SECTION CODE TO DRAG POINTS OF THE STAR POLYGON
+    for (let i = 0, len = star.points.numberOfItems; i < len; i++) {
+        let handle = document.createElementNS(sns, 'use')
+        let point = star.points.getItem(i)
+        let newPoint = root.createSVGPoint()
+
+        handle.setAttributeNS(xns, 'href', '#point-handle')
+        handle.setAttribute('class', 'point-handle')
+
+        handle.x.baseVal.value = newPoint.x = point.x
+        handle.y.baseVal.value = newPoint.y = point.y
+
+        handle.setAttribute('data-index', i)
+
+        originalPoints.push(newPoint)
+        root.appendChild(handle)
+    }
+
+    function applyTransforms (event) {
+        rootMatrix = root.getScreenCTM()
+        transformedPoints = originalPoints.map( (point) => point.matrixTransform(rootMatrix))        
+
+        interact('.point-handle').draggable({
+            snap: {
+                targets: transformedPoints,
+                range: 20 * Math.max(rootMatrix.a, rootMatrix.d)
+            }
+        });
+    }
+
+    interact(root)
+        .on('mousedown', applyTransforms)
+        .on('touchstart', applyTransforms);
+
+    interact('.point-handle')
+        .draggable({
+            onstart: (event) => root.setAttribute('class', 'dragging'),
+            onmove: function (event) {
+                let i = event.target.getAttribute('data-index')|0
+                let point = star.points.getItem(i)
+                
+                point.x += event.dx / rootMatrix.a
+                point.y += event.dy / rootMatrix.d
+
+                event.target.x.baseVal.value = point.x;
+                event.target.y.baseVal.value = point.y;
+            },
+            onend: (event) => root.setAttribute('class', ''),
+            snap: {
+                targets: originalPoints,
+                range: 10,
+                relativePoints: [ { x: 0.5, y: 0.5 } ]
+            },
+            restrict: { restriction: document.rootElement }
+        })
+        .styleCursor(false);
+
+    document.addEventListener('dragstart', (event) =>  event.preventDefault())      
+    // END SECTION CODE TO DRAG POINTS OF STAR  
+    interact('.godragit')
+    .draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: (event) => {
+          let info = getEl('infoMove')
+          let distance = (Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0)).toFixed(2)
+          console .log(`moved a distance of ${distance} px`)
+          info.innerText = `moved a distance of ${distance} px`
+        }
+      });
+      function dragMoveListener (event) {
+        var target = event.target,
+            // keep the dragged position in the data-x/data-y attributes
+            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+        // translate the element
+        target.style.webkitTransform =
+        target.style.transform =
+          'translate(' + x + 'px, ' + y + 'px)';
+
+        // update the posiion attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+      }
+	
+</script>
+
+
+
+</body>
+</html>
