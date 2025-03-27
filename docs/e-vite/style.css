@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Comic Sans MS';
-	src: url("comici.ttf") format('truetype');
+	src: url("comic.ttf") format('truetype');
   }
 
 body, html {
@@ -212,6 +212,7 @@ a:visited, a:active{
 
 .frame {
 	width: 80vw;
+	max-width: 300px;
 	height: 50vh;
 	background-color: transparent;
 	margin: auto;
