@@ -1,0 +1,262 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+}
+
+.bg_img {
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	background-image: url('bg.jpg');
+	background-repeat: repeat;
+	background-size: contain;
+	filter: blur(1.5px);
+	-webkit-filter: blur(1.5px);
+}
+
+.bg_img_overlay {
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	position: absolute;
+	background-color: black;
+	opacity: 0.3;
+}
+
+.title {
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	position: absolute;
+	text-align: left;
+}
+
+#topspace {
+	width: 100vw;
+	height: 10vh;
+}
+
+#warning, #warning2 {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2vh;
+	font-weight: bold;
+	color: white;
+	text-shadow: 0 0 10px blue, 5px 0 10px fuchsia;
+	margin: auto;
+	width: 80vw;
+}
+
+#warning2 {
+	padding-top: 8vh;
+}
+
+
+.txt {
+/*
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+*/
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 5vh;
+	font-weight: bold;
+	color: white;
+/* 	text-shadow: 5px 5px 10px blue; */
+	text-shadow: 0 0 10px blue, 5px 0 10px fuchsia;
+	margin: auto;
+	width: 80vw;
+    line-height: 120%;
+    color: white;
+}
+
+.info {
+	width: 80vw;
+	display: flex;
+	justify-content: space-between;
+	font-family: "Comic Sans MS", sans-serif;
+	font-weight: bold;
+	font-size: 3vh;
+	color: white;
+	text-shadow: 5px 5px 10px #000000;
+	margin: auto;	
+	text-align: left;
+/* 	line-height: 170%; */
+	text-decoration: none;
+}
+
+.info p, #address {
+	margin: 1vh 0;
+	font-size: 2.5vh;
+	color: white;
+}
+
+.info p span {
+	text-shadow: 0 0 10px blue, 5px 0 10px fuchsia;
+	font-size: 3vh;
+}
+
+.info_left {
+	text-decoration: none;
+}
+
+/* .info_right a,{
+	text-decoration: none;
+	color: inherit;
+	text-shadow: 0 0 10px blue, 5px 0 10px fuchsia;
+} */
+
+a:visited, a:active{
+	text-decoration: inherit;
+	color: inherit;
+}
+
+.info_right button, .info_right a {
+	background-color: transparent;
+	border: none;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 3vh;
+	font-weight: bold;
+	color: white;
+	text-shadow: 0 0 10px blue, 5px 0 10px fuchsia;
+	margin: 1vh 0;
+	padding: 0;
+	cursor:grab;
+	text-decoration: none;
+}
+
+.prog {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2.2vh;
+	font-weight: bold;
+	color: white;
+	margin-left: 20%;
+	line-height: 170%;
+	display: none;
+}
+
+/* #span1 {
+	display: block;
+	text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+	font-size: 1vh;
+	position: absolute;
+	top: 60vh;
+} */
+
+/* #span2{
+	display: block;
+	text-shadow: 0 0 3px #11501d, 0 0 5px #00ff30;
+	font-size: 1vh;
+	position: absolute;
+	left: 60vw;
+} */
+
+
+
+
+
+
+
+/* MEME GALLERY */
+
+.gallery_title {
+	font-family: "Comic Sans MS", sans-serif;
+	margin: auto;
+	font-size: 3vh;
+	font-weight: bold;
+	color: blue;
+	/* width: 80vw; */
+}
+
+#meme_gallery_title {
+	width: 80vw;
+    margin: auto;
+}
+
+/*
+.gallery_row {
+	width: 85vw;
+	display: flex;
+	justify-content: space-between;
+}
+*/
+
+.meme_left {
+	width: 80vw;
+	height: 50vh;
+	background-color: white;
+	margin: auto;
+}
+
+.meme {
+	width: 80vw;
+	height: 50vh;
+/* 	background-color: red; */
+	margin: auto;
+	position: absolute;
+}
+
+.meme img {
+	border: solid fuchsia 0.5vh;
+}
+
+.frame {
+	width: 80vw;
+	height: 50vh;
+	background-color: transparent;
+	margin: auto;
+	position: absolute;
+/*
+	background-image: url('frame.png'); 
+	background-repeat: no-repeat;
+	background-size: cover;
+*/
+}
+
+.frame_bg {
+	background-image: url(sparkle.jpg);
+	background-size: cover;
+	width: 80vw;
+	height: 50vh;
+	position: absolute;
+	opacity: 0.5;
+}
+
+.frame img {
+	width: 100%;
+	height: 100%;
+}
+
+.mySlides {
+	display: none;
+/* 	padding: 15%; */
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 80%;
+    max-height: 90%;
+	width: 100%;
+}
+
+.slider_arrows {
+	text-align: center;
+}
+
+.slider_arrows button {
+	background-color: transparent;
+	border: none;
+	font-family: "Comic Sans MS", sans-serif;
+	margin: 7vw;
+	font-size: 5vh;
+	font-weight: bold;
+    color: fuchsia;
+    text-shadow: 2px 2px 10px blue;
+}
+
+
