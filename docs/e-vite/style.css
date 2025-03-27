@@ -88,7 +88,7 @@ body, html {
 	font-weight: bold;
 	font-size: 3vh;
 	color: white;
-	text-shadow: 5px 5px 5px #000000;
+	text-shadow: 0px 0px 5px #000000;
 	margin: auto;	
 	text-align: left;
 /* 	line-height: 170%; */
