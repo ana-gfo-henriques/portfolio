@@ -214,6 +214,7 @@ audio {position: absolute; opacity: 0;}
 
 #help {
     font-size: max(0.8rem, 10px);
+    color: #B29A70;
 }
 
 .please { 
@@ -225,6 +226,47 @@ audio {position: absolute; opacity: 0;}
     font-weight: bold;
     margin-bottom: 4vh;
 }
+
+.chapters {
+    margin-left: 12vw;
+    margin-right: 12vw;
+    font-size: max(1.2rem, 20px);
+    color: black;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    overflow: scroll;
+    height: 25vh;
+}
+
+.chapters span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: max(1.5rem, 22px);
+    font-weight: bold;
+}
+
+.allWorksheets {
+    margin-left: 12vw;
+    margin-right: 12vw;
+    font-size: max(1rem, 16px);
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    height: fit-content;
+    width: fit-content;
+    border: black 2pt solid;
+    border-radius: 100px;
+    padding: 1.3vh;
+}
+
+/* .allWorksheets span {
+    padding: 0.75rem;
+    border: black 2pt solid;
+    border-radius: 50%;
+} */
+
+
 
 /* .aboutProject {
     font-size: max(2.3333rem, 28px);

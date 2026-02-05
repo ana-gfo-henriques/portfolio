@@ -61,8 +61,8 @@ document.querySelectorAll(".dotNavigation").forEach(function(element){
     });
 });
 
-// lets set our slide automatic using setInterval method
-setInterval(function(){
-    showSlides(++SLIDEINDEX);
-}, 11050);
-//has a slight mismatch
+// // set our slide automaticaly using setInterval method
+// setInterval(function(){
+//     showSlides(++SLIDEINDEX);
+// }, 11050);
+// //has a slight mismatch
