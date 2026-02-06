@@ -22,10 +22,13 @@
     </head>
     <body id="show">
 
-        <audio controls autoplay>
+        <audio id="audio">
             <source src="./audio/audio.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+
+        <button id="pause" class="play" type="button" onclick="pause()"></button>
+        
 
         <section id="parent">
 
@@ -177,6 +180,8 @@
                     </div>
                 </div>
             </div>
+
+
 
         </section>
 

@@ -37,13 +37,13 @@ function showSlides(index){
 };
 
 // select the previous arrow element and add a click event using addEventListener method
-document.querySelector("#leftArrow").addEventListener("click", function(){
+document.querySelector("#leftArrow").addEventListener("mouseover", function(){
     // decrement SLIDEINDEX value to go to previous slide
     showSlides(--SLIDEINDEX);
 });
 
 // select the next arrow element and add a click event using addEventListener method
-document.querySelector("#rightArrow").addEventListener("click", function(){
+document.querySelector("#rightArrow").addEventListener("mouseover", function(){
     // decrement SLIDEINDEX value to go to previous slide
     showSlides(++SLIDEINDEX);
 });
@@ -66,3 +66,24 @@ document.querySelectorAll(".dotNavigation").forEach(function(element){
 //     showSlides(++SLIDEINDEX);
 // }, 11050);
 // //has a slight mismatch
+
+
+
+
+function pause()
+        {
+            var audio = document.getElementById("audio");
+            var audioButton = document.getElementById("pause");
+            if(audio.paused)
+            {
+                audio.play();
+                console.log("audio resumed");
+                audioButton.style.backgroundImage = "url(images/pause.svg)";
+            }
+            else
+            {
+               audio.pause();
+               console.log("audio paused");
+               audioButton.style.backgroundImage = "url(images/play.svg)";
+            }
+        }

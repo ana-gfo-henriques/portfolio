@@ -99,6 +99,12 @@ audio {position: absolute; opacity: 0;}
     justify-content: space-between;
 }
 
+.flex2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .flexRM {
     display: flex;
     flex-direction: row;
@@ -109,7 +115,7 @@ audio {position: absolute; opacity: 0;}
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 21.5vw;
+    height: 18vw;
 }
 
 .center {
@@ -137,7 +143,7 @@ audio {position: absolute; opacity: 0;}
     margin-left: auto;
     margin-right: auto;
     width: 68vw;
-    height: 60vh;
+    /* height: 60vh; */
 }
 
 .curtain {
@@ -146,7 +152,7 @@ audio {position: absolute; opacity: 0;}
     background-position: center;
     background-size: contain;
     width: 30vw;
-    height: 21.5vw;
+    height: 17vw;
     cursor: pointer;
 }
 
@@ -164,7 +170,7 @@ audio {position: absolute; opacity: 0;}
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     
-    margin-top: 12vh;
+    /* margin-top: 5vh; */
     margin-bottom: 0;
     margin-left: 12vw;
     margin-right: 12vw;
@@ -187,7 +193,7 @@ audio {position: absolute; opacity: 0;}
     font-style: italic;
     
     margin-top: 1vh;
-    margin-bottom: 8vh;
+    margin-bottom: 6vh;
     margin-left: 12vw;
     margin-right: 12vw;
 }
@@ -208,7 +214,7 @@ audio {position: absolute; opacity: 0;}
 .startText span {
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    font-size: max(1.5rem, 30px);
+    font-size: max(1.2rem, 24px);
     font-weight: bold;
 }
 
@@ -227,6 +233,52 @@ audio {position: absolute; opacity: 0;}
     margin-bottom: 4vh;
 }
 
+.warning {
+    margin-left: auto;
+    margin-right: auto;
+    width: 68vw;
+    font-size: max(0.8rem, 14px);
+    color: black;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+}
+
+.warning span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: max(1.1rem, 20px);
+    font-weight: bold;
+}
+
+.dedication {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 1rem;
+    width: 90vw;
+    padding-top: 0.5rem;
+    font-size: max(0.7rem, 12px);
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 1pt black solid;
+    /* border-radius: 10px; */
+}
+
+#megaphone {
+    font-size: max(1.1rem, 20px);
+    margin-right: 0.4rem;
+    overflow: visible;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+#italics {
+    font-style: italic;
+}
+
 .chapters {
     margin-left: 12vw;
     margin-right: 12vw;
@@ -237,6 +289,8 @@ audio {position: absolute; opacity: 0;}
     font-style: normal;
     overflow: scroll;
     height: 25vh;
+    /* cursor: url('scroll.svg'), auto; */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><path d='M5.1,12.3l1.9-1.9c.3-.3.9-.3,1.2,0,.3.3.3.9,0,1.2l-3.4,3.4c-.3.3-.9.3-1.2,0L.2,11.6c-.3-.3-.3-.9,0-1.2.3-.3.9-.3,1.2,0l1.9,1.9V2.9l-1.9,1.9c-.3.3-.9.3-1.2,0-.3-.3-.3-.9,0-1.2L3.6.2c.3-.3.9-.3,1.2,0l3.4,3.4c.3.3.3.9,0,1.2-.3.3-.9.3-1.2,0l-1.9-1.9v9.4ZM16.9,12.7v4.3c0,.6-.2,1.1-.6,1.5-.8,1-2.4,1.2-3.4.3l-1.6-1.3c-.5-.4-1.1-.6-1.7-.6s-.9.3-1.1.7h0c-.2.6-.2,1.2.2,1.6l7.5,9c1.2,1.5,3,2.3,4.9,2.3,4.2,0,7.6-3.4,7.6-7.6v-6.8c0-.5-.4-.8-.8-.8s-.8.4-.8.8v1.7c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-3.4c0-.5-.4-.8-.8-.8s-.8.4-.8.8v3.4c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-5.1c0-.5-.4-.8-.8-.8s-.8.4-.8.8v5.1c0,.5-.4.8-.8.8s-.8-.4-.8-.8V5.9c0-.5-.4-.8-.8-.8s-.8.4-.8.8v6.8ZM15.2,12.7v-6.8c0-1.4,1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5v4.4c.3,0,.5-.1.8-.1,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.4,0,2.5,1.1,2.5,2.5v6.8c0,5.1-4.2,9.3-9.3,9.3s-4.7-1.1-6.2-2.9l-7.5-9c-.8-.9-.9-2.2-.4-3.3h0c.5-1.1,1.5-1.7,2.6-1.7s2,.4,2.8,1l1.6,1.3c.3.2.7.2,1,0,.1-.1.2-.3.2-.4v-4.3Z/></svg>") 0 0, auto;
 }
 
 .chapters span {
@@ -260,40 +314,34 @@ audio {position: absolute; opacity: 0;}
     padding: 1.3vh;
 }
 
-/* .allWorksheets span {
-    padding: 0.75rem;
-    border: black 2pt solid;
-    border-radius: 50%;
-} */
 
-
-
-/* .aboutProject {
-    font-size: max(2.3333rem, 28px);
-    text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 1.5px black;
-
-    margin-top: 0;
-    margin-bottom: 3vh;
-    margin-left: 12vw;
-    margin-right: 12vw;
+/* .wrapper {
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.aboutDescription {
-    font-size: max(1.2rem, 16px);
-    color: black;
-    text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 12vw;
-    margin-right: 12vw;
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee p {
+  display: inline-block;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 } */
+
+
+
 
 
 /* responsive */
@@ -311,13 +359,15 @@ audio {position: absolute; opacity: 0;}
     .typeDP span {font-size: max(1.5rem, 22px);}
     .nonAdjustableScreen {margin-top: 5vh; margin-bottom: 5vh;}
     .curtain {width: 68vw; height: max(200px); margin-top: 2vh;}
-    .produced {margin-bottom: 4vh;}
-    .startText {width: 68vw; margin-top: 2vh; margin-left: 0;}
-    .flexVert {height: 60vw;}
+    .produced {margin-bottom: 2vh;}
+    .startText {width: 68vw; margin-top: 2vw; margin-left: 0;}
+    .flexVert {height: 40vw;}
     #break {height: 0;}
     #parent {width: 100vw; height: 100vh;}
 
     .flex {display: block;}
+    .dedication {margin-top: 3rem;}
+    #megaphone {margin-right: 2rem;}
     .slideshowArrowsDiv {display: none;}
     .bottomArrows {display: block; margin-top: 5vh; height: 2vh;}
     #leftArrow, #rightArrow {top: auto;}
