@@ -4,7 +4,7 @@
     position: fixed;
     top: 20px;
     left: 20px;
-    background-image: url(../images/WTlogo.jpg);
+    background-image: url(../images/logos/WTlogo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -30,10 +30,24 @@
     background-position-y: center;
 }
 
-/* .play button {
-    width: 80px;
-    height: 80px;
-} */
+#flashing {
+    position: fixed;
+    top: 70px;
+    left: 150px;
+    width: 120px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.blinker {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
 
 #menuList {
     display: none;

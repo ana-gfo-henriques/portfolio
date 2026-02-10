@@ -74,16 +74,19 @@ function pause()
         {
             var audio = document.getElementById("audio");
             var audioButton = document.getElementById("pause");
+            var blinker = document.getElementById("flashing");
             if(audio.paused)
             {
                 audio.play();
                 console.log("audio resumed");
                 audioButton.style.backgroundImage = "url(images/pause.svg)";
+                blinker.style.display = "none";
             }
             else
             {
                audio.pause();
                console.log("audio paused");
                audioButton.style.backgroundImage = "url(images/play.svg)";
+               blinker.style.display = "none";
             }
         }

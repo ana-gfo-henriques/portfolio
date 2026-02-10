@@ -289,8 +289,9 @@ audio {position: absolute; opacity: 0;}
     font-style: normal;
     overflow: scroll;
     height: 25vh;
-    /* cursor: url('scroll.svg'), auto; */
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><path d='M5.1,12.3l1.9-1.9c.3-.3.9-.3,1.2,0,.3.3.3.9,0,1.2l-3.4,3.4c-.3.3-.9.3-1.2,0L.2,11.6c-.3-.3-.3-.9,0-1.2.3-.3.9-.3,1.2,0l1.9,1.9V2.9l-1.9,1.9c-.3.3-.9.3-1.2,0-.3-.3-.3-.9,0-1.2L3.6.2c.3-.3.9-.3,1.2,0l3.4,3.4c.3.3.3.9,0,1.2-.3.3-.9.3-1.2,0l-1.9-1.9v9.4ZM16.9,12.7v4.3c0,.6-.2,1.1-.6,1.5-.8,1-2.4,1.2-3.4.3l-1.6-1.3c-.5-.4-1.1-.6-1.7-.6s-.9.3-1.1.7h0c-.2.6-.2,1.2.2,1.6l7.5,9c1.2,1.5,3,2.3,4.9,2.3,4.2,0,7.6-3.4,7.6-7.6v-6.8c0-.5-.4-.8-.8-.8s-.8.4-.8.8v1.7c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-3.4c0-.5-.4-.8-.8-.8s-.8.4-.8.8v3.4c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-5.1c0-.5-.4-.8-.8-.8s-.8.4-.8.8v5.1c0,.5-.4.8-.8.8s-.8-.4-.8-.8V5.9c0-.5-.4-.8-.8-.8s-.8.4-.8.8v6.8ZM15.2,12.7v-6.8c0-1.4,1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5v4.4c.3,0,.5-.1.8-.1,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.4,0,2.5,1.1,2.5,2.5v6.8c0,5.1-4.2,9.3-9.3,9.3s-4.7-1.1-6.2-2.9l-7.5-9c-.8-.9-.9-2.2-.4-3.3h0c.5-1.1,1.5-1.7,2.6-1.7s2,.4,2.8,1l1.6,1.3c.3.2.7.2,1,0,.1-.1.2-.3.2-.4v-4.3Z/></svg>") 0 0, auto;
+    cursor: ns-resize;
+    /* cursor: url('../images/scroll.svg'), ns-resize; */
+    /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><path d='M5.1,12.3l1.9-1.9c.3-.3.9-.3,1.2,0,.3.3.3.9,0,1.2l-3.4,3.4c-.3.3-.9.3-1.2,0L.2,11.6c-.3-.3-.3-.9,0-1.2.3-.3.9-.3,1.2,0l1.9,1.9V2.9l-1.9,1.9c-.3.3-.9.3-1.2,0-.3-.3-.3-.9,0-1.2L3.6.2c.3-.3.9-.3,1.2,0l3.4,3.4c.3.3.3.9,0,1.2-.3.3-.9.3-1.2,0l-1.9-1.9v9.4ZM16.9,12.7v4.3c0,.6-.2,1.1-.6,1.5-.8,1-2.4,1.2-3.4.3l-1.6-1.3c-.5-.4-1.1-.6-1.7-.6s-.9.3-1.1.7h0c-.2.6-.2,1.2.2,1.6l7.5,9c1.2,1.5,3,2.3,4.9,2.3,4.2,0,7.6-3.4,7.6-7.6v-6.8c0-.5-.4-.8-.8-.8s-.8.4-.8.8v1.7c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-3.4c0-.5-.4-.8-.8-.8s-.8.4-.8.8v3.4c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-5.1c0-.5-.4-.8-.8-.8s-.8.4-.8.8v5.1c0,.5-.4.8-.8.8s-.8-.4-.8-.8V5.9c0-.5-.4-.8-.8-.8s-.8.4-.8.8v6.8ZM15.2,12.7v-6.8c0-1.4,1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5v4.4c.3,0,.5-.1.8-.1,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.4,0,2.5,1.1,2.5,2.5v6.8c0,5.1-4.2,9.3-9.3,9.3s-4.7-1.1-6.2-2.9l-7.5-9c-.8-.9-.9-2.2-.4-3.3h0c.5-1.1,1.5-1.7,2.6-1.7s2,.4,2.8,1l1.6,1.3c.3.2.7.2,1,0,.1-.1.2-.3.2-.4v-4.3Z/></svg>"), auto; */
 }
 
 .chapters span {
@@ -312,6 +313,100 @@ audio {position: absolute; opacity: 0;}
     border: black 2pt solid;
     border-radius: 100px;
     padding: 1.3vh;
+}
+
+.aboutParent {
+    height: 50vh;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    font-size: max(1rem, 16px);
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+}
+
+.about span {
+    font-weight: bold;
+}
+
+.presents {
+    font-size: max(0.9rem, 12px);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.funding {
+    font-size: max(0.9rem, 12px);
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.presents span, .funding span {
+    font-weight: bold;
+}
+
+.cast {
+    font-size: max(0.9rem, 12px);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cast span {
+    font-size: max(1.2rem, 18px);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.follow {
+    font-size: max(0.9rem, 12px);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.follow span {
+    font-size: max(1rem, 16px);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.follow a {
+    text-decoration: underline;
+}
+
+.logos {
+    position: fixed;
+    bottom: 20px;
+    /* left: 20px; */
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+#pcc {
+    width: 300px;
+    height: 85px;
+    background-image: url(../images/logos/pcclogo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+#thislife {
+    width: 85px;
+    height: 85px;
+    background-image: url(../images/logos/thislifelogo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+#WT {
+    width: 85px;
+    height: 85px;
+    background-image: url(../images/logos/WTlogo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
 }
 
 
