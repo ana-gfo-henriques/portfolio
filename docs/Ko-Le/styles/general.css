@@ -311,7 +311,6 @@ audio {position: absolute; opacity: 0;}
     border: black 2pt solid;
     border-radius: 100px;
     padding: 1.3vh;
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
 }
 
 .aboutParent {
