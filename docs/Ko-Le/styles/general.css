@@ -289,9 +289,7 @@ audio {position: absolute; opacity: 0;}
     font-style: normal;
     overflow: scroll;
     height: 25vh;
-    cursor: ns-resize;
-    /* cursor: url('../images/scroll.svg'), ns-resize; */
-    /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><path d='M5.1,12.3l1.9-1.9c.3-.3.9-.3,1.2,0,.3.3.3.9,0,1.2l-3.4,3.4c-.3.3-.9.3-1.2,0L.2,11.6c-.3-.3-.3-.9,0-1.2.3-.3.9-.3,1.2,0l1.9,1.9V2.9l-1.9,1.9c-.3.3-.9.3-1.2,0-.3-.3-.3-.9,0-1.2L3.6.2c.3-.3.9-.3,1.2,0l3.4,3.4c.3.3.3.9,0,1.2-.3.3-.9.3-1.2,0l-1.9-1.9v9.4ZM16.9,12.7v4.3c0,.6-.2,1.1-.6,1.5-.8,1-2.4,1.2-3.4.3l-1.6-1.3c-.5-.4-1.1-.6-1.7-.6s-.9.3-1.1.7h0c-.2.6-.2,1.2.2,1.6l7.5,9c1.2,1.5,3,2.3,4.9,2.3,4.2,0,7.6-3.4,7.6-7.6v-6.8c0-.5-.4-.8-.8-.8s-.8.4-.8.8v1.7c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-3.4c0-.5-.4-.8-.8-.8s-.8.4-.8.8v3.4c0,.5-.4.8-.8.8s-.8-.4-.8-.8v-5.1c0-.5-.4-.8-.8-.8s-.8.4-.8.8v5.1c0,.5-.4.8-.8.8s-.8-.4-.8-.8V5.9c0-.5-.4-.8-.8-.8s-.8.4-.8.8v6.8ZM15.2,12.7v-6.8c0-1.4,1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5v4.4c.3,0,.5-.1.8-.1,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.2,0,2.2.8,2.4,1.9.3-.1.6-.2.9-.2,1.4,0,2.5,1.1,2.5,2.5v6.8c0,5.1-4.2,9.3-9.3,9.3s-4.7-1.1-6.2-2.9l-7.5-9c-.8-.9-.9-2.2-.4-3.3h0c.5-1.1,1.5-1.7,2.6-1.7s2,.4,2.8,1l1.6,1.3c.3.2.7.2,1,0,.1-.1.2-.3.2-.4v-4.3Z/></svg>"), auto; */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
 }
 
 .chapters span {
@@ -313,6 +311,7 @@ audio {position: absolute; opacity: 0;}
     border: black 2pt solid;
     border-radius: 100px;
     padding: 1.3vh;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
 }
 
 .aboutParent {
@@ -324,6 +323,7 @@ audio {position: absolute; opacity: 0;}
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     overflow-y: scroll;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
 }
 
 .about span {

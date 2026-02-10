@@ -86,7 +86,7 @@
 }
 
 .menu {
-    width: max(15vw, 150px);
+    width: max(13vw, 120px);
     position: fixed;
     top: 10vh;
     right: 25px;
@@ -99,7 +99,7 @@
 }
 
 .menuItem, .menuItem a {
-    font-size: max(0.91rem, 16px);
+    font-size: max(0.7rem, 14px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
@@ -109,7 +109,7 @@
 }
 
 .menuItem a:hover {
-    font-size: max(0.83333, 15px);
+    /* font-size: max(0.83333, 15px); */
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: bold;
