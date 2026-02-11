@@ -37,13 +37,13 @@ function showSlides(index){
 };
 
 // select the previous arrow element and add a click event using addEventListener method
-document.querySelector("#leftArrow").addEventListener("mouseover", function(){
+document.querySelector("#leftArrow").addEventListener("click", function(){
     // decrement SLIDEINDEX value to go to previous slide
     showSlides(--SLIDEINDEX);
 });
 
 // select the next arrow element and add a click event using addEventListener method
-document.querySelector("#rightArrow").addEventListener("mouseover", function(){
+document.querySelector("#rightArrow").addEventListener("click", function(){
     // decrement SLIDEINDEX value to go to previous slide
     showSlides(++SLIDEINDEX);
 });
