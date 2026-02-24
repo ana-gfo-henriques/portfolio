@@ -28,11 +28,11 @@ function showSlides(index){
         // hide slide elements
         slides[i].style.display = "none";
         // hide dots active-dot class
-        dots[i].classList.remove("activeDot");
+        // dots[i].classList.remove("activeDot");
     }
     // show the slide we want and set the dot class active-dot
     slides[SLIDEINDEX].style.display = "block";
-    dots[SLIDEINDEX].classList.add("activeDot");
+    // dots[SLIDEINDEX].classList.add("activeDot");
         
 };
 
