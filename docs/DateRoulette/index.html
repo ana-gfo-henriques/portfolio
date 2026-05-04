@@ -496,62 +496,58 @@
 </div>
 
 <script>
-  const ideas = {
-    inperson: [
-      { idea: "build a blanket fort and watch a favourite <em>childhood</em> movie.", description: "Every cushion. Every sheet. Inside the fort, no phones, only old movies, snacks, and silly nonsense.", tag: "indoor & cosy" },
-      // { idea: "drive somewhere dark and wait for shooting <em>stars</em>.", description: "Bring a blanket, two mugs of cocoa, and the patience to lie there until your eyes adjust. Bonus points if you can name three constellations and lie about the rest.", tag: "outdoor & quiet" },
-      { idea: "a five-pound market <em>challenge</em>.", description: "Five pounds each, twenty minutes. The catch: we have to make dinner from whatever the other person brings home. Inventiveness rewarded.", tag: "creative & edible" },
-      { idea: "take a pottery class and keep the <em>ugly</em> mug forever.", description: "We will not be good at it. That's the point. The shittiest one is the one we keep — it'll be the best mug we own in five years.", tag: "creative & hands-on" },
-      // { idea: "rent a tandem bike and get pleasantly <em>lost</em>.", description: "Pick a neighbourhood neither of you knows. Cycle until you find a café you love. The bike is embarrassing — that's part of the deal.", tag: "outdoor & active" },
-      { idea: "cook a meal from a country neither of us has <em>visited</em>.", description: "Three courses, the right music, and let's be real — probably only one course. Pretend we're somewhere else for the evening.", tag: "creative & edible" },
-      { idea: "wander a cultural event in the <em>evening</em>.", description: "Lots of places host late-night things sometimes — wine, weird lighting, far fewer children. Wear something nice. Make up backstories for the strangers.", tag: "cultural & date-night" },
-      { idea: "be a <em>tourist</em> in our own city.", description: "Pick like three attractions we've never bothered with. Buy a tacky souvenir. Take photos like we've never been here. We haven't, really.", tag: "local & playful" },
-      { idea: "picnic in a nice garden and read <em>aloud</em>.", description: "Bring a book — the sillier or cooler the better. Trade off chapters until the sun moves.", tag: "outdoor & quiet" },
-      { idea: "find an arcade and host a <em>tournament</em>.", description: "Loser buys dessert. Skee-ball is a serious sport here. Air hockey is allowed but only with full commitment.", tag: "indoor & competitive" },
-      { idea: "set an absurd alarm and watch the <em>sunrise</em>.", description: "Brew coffee (and hot chocolate) in a thermos. Go to the highest point we can reach. Sit there until the sky changes colour.", tag: "outdoor & early" },
-      { idea: "bake a pie and <em>deliver</em> it to a friend.", description: "No need to warn them. The pie doesn't have to be good. The visit will be.", tag: "indoor & generous" },
-      { idea: "charity-shop outfit swap, ten pounds <em>each</em>.", description: "Thirty minutes, ten pounds, one shop. Dress each other for an imaginary occasion. The more specific the imagined occasion, the better the outfit.", tag: "local & playful" },
-      // { idea: "visit the aquarium and pretend to be marine <em>biologists</em>.", description: "Take notes. Make up Latin names. Whisper conspiratorially about the octopus. He knows things.", tag: "indoor & playful" },
-      { idea: "find an outdoor <em>cinema</em>.", description: "There is one, somewhere, within reacheable distance. Probably. Bring snacks they would never sell at any concession stand.", tag: "outdoor & date-night" },
-      { idea: "take a couples' dance class — pick the one that <em>scares</em> you.", description: "Salsa, swing, tango. One lesson is enough to make you laugh at me for the rest of the evening. Two and we might actually like it.", tag: "active & romantic" },
-      { idea: "day trip to the town with the <em>funniest</em> name.", description: "Look at a map. Pick the town with the silliest name within an hour. Go there. Eat at the chippy. Look at the church. Leave.", tag: "outdoor & adventurous" },
-      // { idea: "camp in the back garden with a <em>telescope</em>.", description: "Tent, telescope, terrible attempts at constellations. You can sneak inside if it rains. You will sneak inside if it rains.", tag: "outdoor & cosy" },
-      { idea: "find a poetry reading or open mic and <em>go</em>.", description: "Whisper our reactions only when no one is looking. Buy a drink. Stay for the whole thing — the last reader is always the most interesting.", tag: "cultural & quiet" },
-      // { idea: "build a charcuterie kingdom from the <em>fanciest</em> shop in town.", description: "Spend an hour at the nicest grocery store you can find. Build a board fit for royalty. Eat it on the floor with a single spoon between you.", tag: "indoor & edible" },
-      { idea: "hunt the charity shop for the <em>strangest</em> object.", description: "Five pounds max, twenty minutes on the clock. Buy each other something useless and beautiful. Display it proudly. Forever.", tag: "local & creative" },
-      { idea: "project a film onto our <em>ceiling</em>.", description: "Sheet, projector, an extension cord that's testing its limits. Mindless entertainment is the only correct answer. Snacks compulsory.", tag: "outdoor & cosy" },
-      // { idea: "bake biscuits and give them to the <em>first</em> stranger we meet.", description: "Walk around the neighbourhood with a tin. The look on someone's face when receiving a free biscuit is its own kind of magic.", tag: "outdoor & generous" },
-      { idea: "empty karaoke room, the <em>earlier</em> the better.", description: "Three in the afternoon on a Tuesday. The room is ours. Sing badly, sing loudly, sing every song you ever loved at fourteen.", tag: "indoor & brave" },
-      { idea: "a nice walk, a <em>nice</em> podcast.", description: "Decide on a trail. Pick a podcast we've both been meaning to start. Walk until the episode ends. Stop where we stand. Find food.", tag: "outdoor & easy" }
-    ],
-    virtual: [
-      { idea: "synchronised film night — press play on <em>three</em>.", description: "Text reactions throughout. Pretend we're sitting on the same couch. Pause for snacks at the same time.", tag: "cosy & easy" },
-      { idea: "same recipe, two <em>kitchens</em>, also two cameras.", description: "Pick a recipe neither of us has tried. Cook it in parallel over video call. Critique generously. Eat together when it's all done.", tag: "creative & edible" },
-      { idea: "a co-op video game made for <em>two</em>.", description: "It Takes Two and Stardew Valley were built for this. Overcooked, if we want to test our relationship. Choose wisely.", tag: "playful & long" },
-      // { idea: "long-distance <em>book club</em> of two.", description: "Read the same book on your own time. Meet weekly to argue about it. Bring snacks. Bonus points for matching tabs.", tag: "quiet & slow" },
-      { idea: "tour a <em>museum</em> from our couches.", description: "The Louvre, the Met, the Smithsonian — all free, all online. The more niche the museum, the better.", tag: "cultural & free" },
-      { idea: "show and tell — three <em>weird</em> possessions each.", description: "Defend their honour. Vote on the strangest. The story behind it matters more than the object itself; that's always true.", tag: "playful & personal" },
-      { idea: "take an online language class and be <em>terrible</em> together.", description: "Pick a language neither of us speaks. Weird Youtube video is best. Embarassing yet fun.", tag: "long & playful" },
-      { idea: "build a shared playlist, <em>turn</em> by turn.", description: "Take turns adding songs. No skipping. The rules are sacred. The playlist will be strange and personal and exactly right.", tag: "easy & creative" },
-      // { idea: "watch the same <em>sunset</em> from different windows.", description: "Same time, different windows. Send a photo when it's at its best. The colour is never the same in two places at once.", tag: "quiet & free" },
-      { idea: "truth or drink — or truth or <em>tea</em>.", description: "There's a deck for this. Or just make up the questions. Drinks are optional; the questions are the whole point.", tag: "personal & playful" },
-      { idea: "virtual paint night with the <em>same</em> reference.", description: "Same reference photo, two attempts, no peeking. Reveal at the end. The worse we are at painting, the better this works.", tag: "creative & easy" },
-      { idea: "walk a foreign city via <em>street view</em>.", description: "Pick a city we'd both like to visit (but likely will not). Walk the streets together from our couches. Make notes for the real trip we'll never take.", tag: "cultural & free" },
-      { idea: "documentary watch-along, with <em>pauses</em>.", description: "Pause every twenty minutes to discuss. Pick something niche — obscure history works best. Surprise ourselves with what you both know. Or don't", tag: "cosy & slow" },
-      { idea: "serious online game, video on, <em>trash</em> talk allowed.", description: "Scrabble, chess, I can't think of others right now. Keep the camera on. Half the game are the faces we make unintentionally.", tag: "competitive & easy" },
-      { idea: "solve a virtual <em>escape</em> room together.", description: "There are lots of these now. Pick one, share a screen, don't Google the answers. The arguing is the whole pleasure.", tag: "playful & long" },
-      { idea: "co-write a story, one <em>sentence</em> at a time.", description: "Open a Google Doc. Take turns. End up somewhere strange (though likely gay). The rule is: no editing each other's sentences. Only adding.", tag: "creative & slow" },
-      { idea: "karaoke over video — <em>commit</em>.", description: "Smule exists. So does just queueing up YouTube karaoke and embarrassing ourselves. The trick is going first.", tag: "brave & playful" },
-      { idea: "take a weird <em>class</em> together.", description: "Pick the most absurd one; free, of course. Commit to one full lesson. Take notes. Learning is enrichment.", tag: "long & slow" },
-      { idea: "plan an <em>imaginary</em> (for now) trip in detail.", description: "Shared Pinterest board. Make an itinerary. Cost it out. We wont't go. Or maybe we will someday! Either way, it's a real evening together.", tag: "creative & slow" },
-      { idea: "trivia night — just the <em>two</em> of us.", description: "Free apps abound. Or take turns asking questions on a chosen topic. The arguments over the answers are better than the questions.", tag: "easy & competitive" },
-      { idea: "get the same lego set and <em>race</em>.", description: "Build together over video. The first one done has to plan the next date. The slower one usually does it better, anyway.", tag: "long & playful" },
-      { idea: "read a <em>chapter</em> aloud to each other.", description: "Take turns. Find a book that makes us both smile. Even ten minutes occasionally is enough; it'll last weeks. That's the point.", tag: "quiet & slow" },
-      { idea: "an hour-long photo <em>scavenger</em> hunt.", description: "Make a list together. We each take an hour to find everything around our house or neighbourhood. Reveal photos at the end. Score generously.", tag: "playful & active" },
-      { idea: "tarot night — <em>believe</em> or don't.", description: "One reads, the other listens. Switch. Believe none of it, or all of it. The cards are mostly an excuse to talk about our week.", tag: "quiet & personal" },
-      { idea: "watch the same weird <em>youtube</em> rabbit hole.", description: "Pick a topic — competitive duck herding, Soviet animation, anything. Take turns sending the next video. Time passes instantly.", tag: "easy & playful" }
-    ]
-  };
+  // Ideas are loaded from A.csv and P.csv at startup and merged into one pool.
+  // Each CSV must have a header row: idea,description,tag,category
+  // - "idea" may contain <em>...</em> tags around the highlighted word
+  // - "category" must be either "inperson" or "virtual" (lower case)
+  // Both files can contain a mix of inperson and virtual ideas.
+  let ideas = { inperson: [], virtual: [] };
+
+  // Minimal CSV parser supporting quoted fields with embedded commas, quotes ("" -> "), and newlines.
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], field = '', inQuotes = false, i = 0;
+    while (i < text.length) {
+      const c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
+          inQuotes = false; i++;
+        } else { field += c; i++; }
+      } else {
+        if (c === '"') { inQuotes = true; i++; }
+        else if (c === ',') { row.push(field); field = ''; i++; }
+        else if (c === '\n' || c === '\r') {
+          row.push(field); rows.push(row); row = []; field = '';
+          if (c === '\r' && text[i + 1] === '\n') i += 2; else i++;
+        } else { field += c; i++; }
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+    if (!rows.length) return [];
+    const header = rows[0].map(h => h.trim());
+    return rows.slice(1)
+      .filter(r => r.some(c => c && c.trim().length))
+      .map(r => Object.fromEntries(header.map((h, i) => [h, (r[i] || '').trim()])));
+  }
+
+  async function loadIdeas() {
+    const [aRes, pRes] = await Promise.all([fetch('./A.csv'), fetch('./P.csv')]);
+    if (!aRes.ok) throw new Error('Could not load A.csv (' + aRes.status + ')');
+    if (!pRes.ok) throw new Error('Could not load P.csv (' + pRes.status + ')');
+    const [aText, pText] = await Promise.all([aRes.text(), pRes.text()]);
+    const allRows = [...parseCSV(aText), ...parseCSV(pText)];
+    const grouped = { inperson: [], virtual: [] };
+    for (const row of allRows) {
+      const cat = (row.category || '').toLowerCase();
+      if (cat === 'inperson' || cat === 'virtual') {
+        grouped[cat].push(row);
+      } else if (row.idea) {
+        console.warn('Row has unknown or missing category, skipped:', row);
+      }
+    }
+    return grouped;
+  }
 
   const tabLabels = { inperson: 'In Person', virtual: 'Virtual' };
 
@@ -641,9 +637,25 @@
     });
   });
 
-  currentIndex.inperson = Math.floor(Math.random() * ideas.inperson.length);
-  currentIndex.virtual  = Math.floor(Math.random() * ideas.virtual.length);
-  render(false);
+  async function init() {
+    try {
+      ideas = await loadIdeas();
+      if (!ideas.inperson.length && !ideas.virtual.length) {
+        throw new Error('Both CSV files are empty.');
+      }
+      currentIndex.inperson = ideas.inperson.length ? Math.floor(Math.random() * ideas.inperson.length) : 0;
+      currentIndex.virtual  = ideas.virtual.length  ? Math.floor(Math.random() * ideas.virtual.length)  : 0;
+      render(false);
+    } catch (err) {
+      console.error(err);
+      if (els.idea) els.idea.innerHTML = "couldn't load <em>ideas</em>.";
+      if (els.description) els.description.textContent =
+        "Check if you forgot to start a localhost.";
+      if (els.cardTag) els.cardTag.textContent = 'error';
+      if (els.cardNumber) els.cardNumber.textContent = '— / —';
+    }
+  }
+  init();
 </script>
 
 </body>
