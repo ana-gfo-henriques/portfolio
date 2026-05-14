@@ -1,4 +1,13 @@
-/* base formatting */
+/* ============================================================
+   STOLEN SPOTLIGHT — general.css
+   Responsive across mobile, tablet, and desktop.
+   Desktop design preserved; smaller screens adapt progressively.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. BASE
+   ------------------------------------------------------------ */
 
 * {
     box-sizing: border-box;
@@ -10,26 +19,32 @@ html, body, head {
     overflow-y: scroll;
     margin: 0;
     padding: 0;
-    font-size: 1.7vw;
+    /* Clamped base size: scales with viewport but stays readable
+       on tiny phones and doesn't get gigantic on 4K displays. */
+    font-size: clamp(14px, 1.7vw, 22px);
     background-color: white;
 }
 
+/* The play-viewer page (Stolen_Spotlight.html) uses body#show
+   and is locked to a single viewport — no scrolling. */
 #show {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
+    height: 100dvh; /* dynamic viewport — accounts for mobile browser chrome */
 }
 
 #parent {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     flex-direction: column;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
-
 
 #parent section {
     position: absolute;
@@ -38,9 +53,7 @@ html, body, head {
     transform: translate(-50%, -50%);
 }
 
-canvas {
-    display: block;
-}
+canvas { display: block; }
 
 button {
     border: 0;
@@ -50,43 +63,20 @@ button {
     margin: 0;
 }
 
-button:active {
-    color: gray;
-}
+button:active { color: gray; }
 
-a {
-    text-decoration: inherit;
-    color: inherit;
-}
+a { text-decoration: inherit; color: inherit; }
+a:visited { color: inherit; }
 
-a:visited {
-    color: inherit;
-}
-
-audio {position: absolute; opacity: 0;}
+audio { position: absolute; opacity: 0; }
 
 
-/* stylers */
+/* ------------------------------------------------------------
+   2. LAYOUT UTILITIES
+   ------------------------------------------------------------ */
 
-.bottomArrows, .please {display: none;}
-
-.image {
-    width: max(51vw, 250px);
-    height: max(34.3vw, 169px);
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 0.7vw;
-    background-repeat: no-repeat;
-    background-size: fill;
-    background-position: 50%;
-}
-
-.margin {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 18vw;
-    margin-right: 18vw;
-}
+.bottomArrows,
+.please { display: none; }
 
 #break {
     width: 100%;
@@ -97,18 +87,21 @@ audio {position: absolute; opacity: 0;}
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .flex2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .flexRM {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .flexVert {
@@ -122,28 +115,13 @@ audio {position: absolute; opacity: 0;}
     position: absolute;
     left: 50%;
     top: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-
-.vertCenter, .vertCenterAbout {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50.5%);
-    transform: translateY(-50.5%);
-}
-
-.nonAdjustableScreen {
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
 }
 
 .start {
     margin-left: auto;
     margin-right: auto;
     width: 68vw;
-    /* height: 60vh; */
 }
 
 .curtain {
@@ -161,27 +139,26 @@ audio {position: absolute; opacity: 0;}
 }
 
 
-/* text */
+/* ------------------------------------------------------------
+   3. TYPOGRAPHY
+   ------------------------------------------------------------ */
 
-.type, .typeDP {
+.type,
+.typeDP {
     font-size: max(1.8333rem, 30px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    
-    /* margin-top: 5vh; */
     margin-bottom: 0;
     margin-left: 12vw;
     margin-right: 12vw;
 }
 
-.type span, .typeDP span {
-    font-size: max(2.5rem, 36px) !important ;
+.type span,
+.typeDP span {
+    font-size: max(2.5rem, 36px) !important;
     color: black;
-    text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-weight: bold;
 }
 
@@ -191,7 +168,6 @@ audio {position: absolute; opacity: 0;}
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
-    
     margin-top: 1vh;
     margin-bottom: 6vh;
     margin-left: 12vw;
@@ -203,17 +179,15 @@ audio {position: absolute; opacity: 0;}
     color: black;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    font-style: normal;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 3vw;
     margin-right: 0;
-    width: 35vw; 
+    width: 35vw;
 }
 
 .startText span {
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-size: max(1.2rem, 24px);
     font-weight: bold;
 }
@@ -223,12 +197,11 @@ audio {position: absolute; opacity: 0;}
     color: #B29A70;
 }
 
-.please { 
-    font-size: max(2rem, 32px) !important ;
+.please {
+    font-size: max(2rem, 32px) !important;
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-weight: bold;
     margin-bottom: 4vh;
 }
@@ -241,12 +214,10 @@ audio {position: absolute; opacity: 0;}
     color: black;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    font-style: normal;
 }
 
 .warning span {
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-size: max(1.1rem, 20px);
     font-weight: bold;
 }
@@ -262,7 +233,6 @@ audio {position: absolute; opacity: 0;}
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     border-top: 1pt black solid;
-    /* border-radius: 10px; */
 }
 
 #megaphone {
@@ -271,13 +241,13 @@ audio {position: absolute; opacity: 0;}
     overflow: visible;
 }
 
-#bold {
-    font-weight: bold;
-}
+#bold { font-weight: bold; }
+#italics { font-style: italic; }
 
-#italics {
-    font-style: italic;
-}
+
+/* ------------------------------------------------------------
+   4. CONTENT BLOCKS
+   ------------------------------------------------------------ */
 
 .chapters {
     margin-left: 12vw;
@@ -286,7 +256,6 @@ audio {position: absolute; opacity: 0;}
     color: black;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    font-style: normal;
     overflow: scroll;
     height: 25vh;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
@@ -294,7 +263,6 @@ audio {position: absolute; opacity: 0;}
 
 .chapters span {
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-size: max(1.5rem, 22px);
     font-weight: bold;
 }
@@ -325,9 +293,7 @@ audio {position: absolute; opacity: 0;}
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><text x='50%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='middle' fill='black'>SCROLL</text></svg>") 16 0, ns-resize;
 }
 
-.about span {
-    font-weight: bold;
-}
+.about span { font-weight: bold; }
 
 .presents {
     font-size: max(0.9rem, 12px);
@@ -340,9 +306,8 @@ audio {position: absolute; opacity: 0;}
     font-style: italic;
 }
 
-.presents span, .funding span {
-    font-weight: bold;
-}
+.presents span,
+.funding span { font-weight: bold; }
 
 .cast {
     font-size: max(0.9rem, 12px);
@@ -366,14 +331,16 @@ audio {position: absolute; opacity: 0;}
     font-weight: bold;
 }
 
-.follow a {
-    text-decoration: underline;
-}
+.follow a { text-decoration: underline; }
+
+
+/* ------------------------------------------------------------
+   5. LOGOS (footer)
+   ------------------------------------------------------------ */
 
 .logos {
     position: fixed;
     bottom: 20px;
-    /* left: 20px; */
     margin-left: 12vw;
     margin-right: 12vw;
 }
@@ -384,8 +351,7 @@ audio {position: absolute; opacity: 0;}
     background-image: url(../images/logos/pcclogo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
+    background-position: center;
 }
 
 #thislife {
@@ -394,8 +360,7 @@ audio {position: absolute; opacity: 0;}
     background-image: url(../images/logos/thislifelogo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
+    background-position: center;
 }
 
 #WT {
@@ -404,110 +369,184 @@ audio {position: absolute; opacity: 0;}
     background-image: url(../images/logos/WTlogo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
+    background-position: center;
 }
 
 
-/* .wrapper {
-  max-width: 100%;
-  overflow: hidden;
+/* ============================================================
+   6. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+
+/* ---------- Small laptop / large tablet (≤ 1024px) ---------- */
+@media only screen and (max-width: 1024px) {
+    .type,
+    .typeDP,
+    .produced,
+    .aboutParent,
+    .chapters,
+    .allWorksheets {
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+
+    .logos {
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+
+    .start { width: 84vw; }
+
+    /* Internal scroll regions get a bit more breathing room */
+    .aboutParent { height: 55vh; }
+    .chapters { height: 35vh; }
 }
 
-.marquee {
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  animation: marquee 20s linear infinite;
+
+/* ---------- Tablet / large phone landscape (≤ 768px) ---------- */
+@media only screen and (max-width: 768px) {
+    /* Internal scroll containers become natural-flow on touch devices.
+       The "SCROLL" cursor is desktop-only anyway and nested scrolling
+       on touch is a known UX trap. */
+    .aboutParent,
+    .chapters {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        cursor: default;
+    }
+
+    /* Logos rejoin the document flow so they don't overlap content. */
+    .logos {
+        position: static;
+        margin: 3rem 8vw 1rem;
+    }
+
+    /* The curtain + welcome text stack vertically. */
+    .flexRM {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .start { width: 84vw; }
+
+    .curtain {
+        width: 84vw;
+        height: 48vw;
+        min-height: 200px;
+    }
+
+    .startText {
+        width: 84vw;
+        margin-left: 0;
+    }
+
+    .flexVert {
+        height: auto;
+        gap: 0.75rem;
+    }
+
+    .warning,
+    .dedication { width: 84vw; }
+
+    .warning {
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+
+    .dedication {
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+
+    /* The dedication's megaphone + text don't crush together. */
+    .flex2 { gap: 0.5rem; }
+
+    #parent {
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+    }
 }
 
-.marquee p {
-  display: inline-block;
-}
 
-@keyframes marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-} */
-
-
-
-
-
-/* responsive */
-
+/* ---------- Mobile portrait (≤ 480px) ---------- */
 @media only screen and (max-width: 480px) {
-    .screenDesignPublishing {height: 70vh !important; margin-top: 0vh !important;}
-    .disclaimer {margin-bottom: 10vh !important;}
-    .vertCenterAbout {top: 0; -ms-transform: translateY(0); transform: translateY(0);}
-    .aboutTitle {margin-top: 12.5vh !important;}
-    .colophonTitle {margin-top: 5.7vh !important;}
-
-    .flexRM {display: block;}
-    .readMoreLess {margin-left: 18vw; margin-bottom: 2vh;}
-    .typeDP {margin-top: 8vh; margin-right: 30vw; font-size: max(1.5rem, 21px);}
-    .typeDP span {font-size: max(1.5rem, 22px);}
-    .nonAdjustableScreen {margin-top: 5vh; margin-bottom: 5vh;}
-    .curtain {width: 68vw; height: max(200px); margin-top: 2vh;}
-    .produced {margin-bottom: 2vh;}
-    .startText {width: 68vw; margin-top: 2vw; margin-left: 0;}
-    .flexVert {height: 40vw;}
-    #break {height: 0;}
-    #parent {width: 100vw; height: 100vh;}
-
-    .flex {display: block;}
-    .dedication {margin-top: 3rem;}
-    #megaphone {margin-right: 2rem;}
-    .slideshowArrowsDiv {display: none;}
-    .bottomArrows {display: block; margin-top: 5vh; height: 2vh;}
-    #leftArrow, #rightArrow {top: auto;}
-    .please {display: block;}
-}
-
-@media only screen and (max-width: 700px) {
-    /* .flex {display: block;} */
-    .designPublishing {margin-left: 0vw; margin-right: 0vw; margin-top: 4vh; width: 68vw;}
-    .goDown {margin-bottom: 5vh;}
-
-    .pronouns {text-align: left; margin-bottom: 1vh;}
-    .monikers {margin-top: -1vh; text-align: left;}
-    .print {margin-top: 4vh;}
-
-    .vertProjectTitle {writing-mode:horizontal-tb !important; -webkit-transform: rotate(0)!important; -moz-transform: rotate(0)!important; transform:rotate(0)!important; width: max(51vw, 250px) !important; height: fit-content !important; margin-top: 3vh !important; margin-bottom: 2vh !important;}
-
-    body .screenDesignPublishing:last-of-type {
-        margin-bottom: 15vw !important;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .screenDesignPublishing {height: 64vh; margin-top: 5vw; margin-bottom: -30vw;}
-    body .screenDesignPublishing:last-of-type {
-        margin-bottom: 20vh !important;
+    .typeDP {
+        margin-top: 2rem;
+        margin-left: 6vw;
+        margin-right: 6vw;
+        font-size: max(1.4rem, 21px);
     }
 
-    @media only screen and (max-height: 900px) {
-        .screenDesignPublishing {height: 70vh; margin-bottom: 0vw !important;}
-        body .screenDesignPublishing:last-of-type {
-            margin-bottom: 10vw !important;
-        }
-    } 
+    .typeDP span {
+        font-size: max(1.6rem, 24px) !important;
+    }
 
-    @media only screen and (max-height: 400px) {
-        .screenDesignPublishing {margin-bottom: 30vh !important; height: 80vh !important;}
+    .produced {
+        margin-bottom: 2vh;
+        margin-left: 6vw;
+        margin-right: 6vw;
+    }
 
-        .vertCenterAbout {top: 0; -ms-transform: translateY(0); transform: translateY(0);}
-        .aboutTitle {margin-top: 20vh !important;}
-        .disclaimer {margin-top: 10vh !important; margin-bottom: 15vh !important;}
-        .colophonTitle {margin-top: 15vh !important;}
-        .credits {margin-bottom: 10vh !important;}
-    }   
+    .aboutParent,
+    .chapters,
+    .allWorksheets {
+        margin-left: 6vw;
+        margin-right: 6vw;
+    }
+
+    .logos {
+        margin: 3rem 6vw 1rem;
+        gap: 1rem;
+    }
+
+    /* Center-stack the smaller marketing logos on mobile */
+    .logos #pcc {
+        width: 100%;
+        max-width: 300px;
+        height: 80px;
+        background-size: contain;
+        background-position: left center;
+    }
+
+    .start { width: 88vw; }
+
+    .curtain {
+        width: 88vw;
+        height: 52vw;
+        min-height: 200px;
+    }
+
+    .startText { width: 88vw; }
+
+    .warning,
+    .dedication {
+        width: 88vw;
+        margin-left: 6vw;
+        margin-right: 6vw;
+    }
+
+    #break { height: 0; }
+    .flexVert { height: auto; }
+
+    /* Slideshow page — bottom arrows replace side arrows in narrow viewports. */
+    .slideshowArrowsDiv { display: none; }
+
+    .bottomArrows {
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+        margin: 2vh auto 0;
+    }
+
+    .bottomArrows .sliderArrow {
+        position: static;
+        transform: none;
+    }
+
+    .please { display: block; }
 }
 
-@media only screen and (min-width: 1200px) {
-    .screenDesignPublishing {margin-top: 8vw !important;}
-}
+
+

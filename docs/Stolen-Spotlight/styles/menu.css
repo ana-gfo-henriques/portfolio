@@ -11,6 +11,7 @@
     background-position-y: center;
     border: 2pt black solid;
     border-radius: 10px;
+    z-index: 10;
 }
 
 .play {
@@ -42,18 +43,19 @@
 }
 
 .blinker {
-  animation: blinker 2s linear infinite;
+    animation: blinker 2s linear infinite;
 }
 
-@keyframes blinker {  
-  50% { opacity: 0; }
+@keyframes blinker {
+    50% { opacity: 0; }
 }
 
 #menuList {
     display: none;
 }
 
-#asterisk, #pause {
+#asterisk,
+#pause {
     z-index: 999999999;
 }
 
@@ -62,7 +64,6 @@
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-
     width: 80px;
     height: 55px;
     position: fixed;
@@ -78,7 +79,6 @@
 
 .asterisk:hover {
     background-image: url(../images/menu_h.svg);
-    /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='20'><text x='25%' y='50%' font-family='Arial' font-weight='bold' font-size='20' dominant-baseline='middle' text-anchor='start' fill='black'>MENU</text></svg>") 16 0, pointer; */
 }
 
 .asterisk:active {
@@ -98,26 +98,25 @@
     border-top: 0.2vw black solid;
 }
 
-.menuItem, .menuItem a {
+.menuItem,
+.menuItem a {
     font-size: max(0.7rem, 14px);
     color: black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     padding-left: 0.5vw;
     padding-bottom: 0.8vh;
 }
 
 .menuItem a:hover {
-    /* font-size: max(0.83333, 15px); */
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     font-weight: bold;
 }
 
 #menuOverlay {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     position: fixed;
     top: 0;
     left: 0;
@@ -127,24 +126,88 @@
 }
 
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
+/* Tablet — slightly smaller top-corner controls */
 @media only screen and (max-width: 900px) {
-    #flashing { top: 145px; left: 63px}
-
+    #flashing {
+        top: 145px;
+        left: 63px;
+    }
 }
 
+/* Tablet and below — shrink corner UI so it doesn't crowd the title text */
+@media only screen and (max-width: 1024px) {
+    .logo {
+        width: 56px;
+        height: 56px;
+        top: 12px;
+        left: 12px;
+        border-width: 1.5pt;
+    }
+
+    .asterisk {
+        width: 56px;
+        height: 40px;
+        top: 12px;
+        right: 12px;
+    }
+
+    .play {
+        width: 80px;
+        height: 80px;
+        top: 12px;
+        left: 12px;
+    }
+}
+
+/* Mobile — open menu fills the screen */
 @media only screen and (max-width: 480px) {
-    .menu {width: 80vw; position: fixed; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
-    .underline {width: 80vw; padding: 0; margin: 0; height: 5vh; border-top: 0.6vw solid black;}
-    .menuItem a {font-size: 10vw; text-align: center;}
-    /* .asterisk:hover {background-image: url(../images/menu/asterisk.svg);} */
+    /* Open menu becomes a centered overlay */
+    .menu {
+        width: 80vw;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
+    .underline {
+        width: 80vw;
+        padding: 0;
+        margin: 0;
+        height: 5vh;
+        border-top: 0.6vw solid black;
+    }
+
+    .menuItem a {
+        font-size: 10vw;
+        text-align: center;
+    }
 }
 
-@media only screen and (max-width: 1200px) {
-    @media only screen and (max-height: 400px) {
-        .menu {width: 75vw; position: fixed; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
-        .underline {width: 80vw; padding: 0; margin: 0; height: 5vh; border-top: 0.2vw solid black;}
-        .menuItem a {font-size: 3.5vw; text-align: center;}
+/* Short landscape phones — keep the open menu usable */
+@media only screen and (max-width: 1200px) and (max-height: 480px) {
+    .menu {
+        width: 75vw;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .underline {
+        width: 80vw;
+        padding: 0;
+        margin: 0;
+        height: 5vh;
+        border-top: 0.2vw solid black;
+    }
+
+    .menuItem a {
+        font-size: 3.5vw;
+        text-align: center;
     }
 }
