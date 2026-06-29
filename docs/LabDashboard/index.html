@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab OS</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --sidebar-bg:#f7f7f5;
+    --text:#37352f;
+    --text-secondary:rgba(55,53,47,0.65);
+    --text-tertiary:rgba(55,53,47,0.45);
+    --border:rgba(55,53,47,0.09);
+    --border-strong:rgba(55,53,47,0.16);
+    --hover:rgba(55,53,47,0.055);
+    --hover-strong:rgba(55,53,47,0.08);
+    --blue:#2383e2;
+    --blue-hover:#1a73d0;
+    --radius:6px;
+    --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji";
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:var(--font);
+    color:var(--text);
+    background:var(--bg);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;cursor:pointer;}
+  input,textarea,select{font-family:inherit;color:var(--text);}
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* ---------- Layout ---------- */
+  .app{display:flex;height:100vh;overflow:hidden;}
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    width:248px;min-width:248px;
+    background:var(--sidebar-bg);
+    border-right:1px solid var(--border);
+    display:flex;flex-direction:column;
+    height:100%;
+    transition:margin-left .18s ease;
+  }
+  .sidebar.collapsed{margin-left:-248px;}
+  .ws-head{
+    display:flex;align-items:center;gap:8px;
+    padding:14px 12px 8px 14px;
+  }
+  .ws-emoji{font-size:20px;line-height:1;}
+  .ws-name{
+    font-weight:600;font-size:15px;
+    border:none;background:transparent;outline:none;
+    width:100%;color:var(--text);padding:2px 4px;border-radius:4px;
+  }
+  .ws-name:hover,.ws-name:focus{background:var(--hover);}
+  .nav{padding:6px 8px 8px 8px;overflow-y:auto;flex:1;}
+  .nav-label{
+    font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--text-tertiary);padding:10px 8px 4px 8px;
+  }
+  .nav-item{
+    display:flex;align-items:center;gap:8px;
+    padding:5px 8px;margin:1px 0;border-radius:5px;
+    font-size:14px;color:var(--text-secondary);
+    cursor:pointer;border:none;background:transparent;width:100%;text-align:left;
+  }
+  .nav-item:hover{background:var(--hover-strong);}
+  .nav-item.active{background:var(--hover-strong);color:var(--text);font-weight:500;}
+  .nav-item .ico{font-size:16px;width:18px;text-align:center;flex:none;}
+  .sidebar-foot{padding:10px 14px;border-top:1px solid var(--border);font-size:12px;color:var(--text-tertiary);}
+
+  /* ---------- Main ---------- */
+  .main{flex:1;display:flex;flex-direction:column;height:100%;overflow:hidden;min-width:0;}
+  .topbar{
+    height:44px;min-height:44px;display:flex;align-items:center;gap:6px;
+    padding:0 14px;border-bottom:1px solid var(--border);
+    font-size:13px;color:var(--text-secondary);
+  }
+  .topbar .crumb{padding:3px 6px;border-radius:4px;cursor:default;}
+  .menu-btn{
+    border:none;background:transparent;font-size:17px;color:var(--text-secondary);
+    padding:4px 7px;border-radius:5px;line-height:1;display:none;
+  }
+  .menu-btn:hover{background:var(--hover-strong);}
+  .scroll{overflow-y:auto;flex:1;}
+  .page{max-width:920px;margin:0 auto;padding:18px 56px 120px 56px;}
+
+  .page-icon{font-size:46px;line-height:1;margin-bottom:6px;display:block;}
+  .page-title{font-size:34px;font-weight:700;letter-spacing:-0.01em;margin:0 0 4px 0;}
+  .page-sub{color:var(--text-secondary);font-size:15px;margin:0 0 20px 0;max-width:620px;}
+
+  /* view tabs (table/gallery/board) */
+  .viewbar{display:flex;align-items:center;gap:2px;border-bottom:1px solid var(--border);margin-bottom:2px;}
+  .view-tab{
+    border:none;background:transparent;font-size:14px;color:var(--text-secondary);
+    padding:7px 9px;border-radius:5px 5px 0 0;font-weight:500;position:relative;top:1px;
+  }
+  .view-tab:hover{background:var(--hover);}
+  .view-tab.active{color:var(--text);border-bottom:2px solid var(--text);}
+  .viewbar .spacer{flex:1;}
+
+  .toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;flex-wrap:wrap;}
+  .search{
+    display:flex;align-items:center;gap:6px;border:1px solid var(--border-strong);
+    border-radius:6px;padding:5px 9px;font-size:14px;color:var(--text-secondary);
+    min-width:200px;flex:1;max-width:340px;
+  }
+  .search input{border:none;outline:none;background:transparent;font-size:14px;flex:1;width:100%;}
+  .btn{
+    border:1px solid var(--border-strong);background:#fff;color:var(--text);
+    border-radius:6px;padding:6px 11px;font-size:14px;font-weight:500;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .btn:hover{background:var(--hover);}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .btn-primary:hover{background:var(--blue-hover);}
+  .btn-ghost{border-color:transparent;color:var(--text-secondary);background:transparent;}
+  .btn-ghost:hover{background:var(--hover-strong);}
+  .btn-sm{padding:3px 8px;font-size:13px;}
+
+  /* ---------- Table view (Notion database) ---------- */
+  .table{width:100%;border-collapse:collapse;font-size:14px;}
+  .table th{
+    text-align:left;font-weight:500;color:var(--text-secondary);font-size:13px;
+    padding:7px 10px;border-bottom:1px solid var(--border);border-top:1px solid var(--border);
+    white-space:nowrap;
+  }
+  .table td{
+    padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;
+  }
+  .table tr:hover td{background:var(--hover);}
+  .table .row-actions{opacity:0;white-space:nowrap;text-align:right;}
+  .table tr:hover .row-actions{opacity:1;}
+  .cell-title{font-weight:500;cursor:pointer;}
+  .cell-title:hover{text-decoration:underline;}
+  .cell-muted{color:var(--text-secondary);}
+  .cell-notes{color:var(--text-secondary);max-width:280px;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:12px;padding-top:6px;}
+  .card{
+    border:1px solid var(--border);border-radius:8px;padding:14px;background:#fff;
+    cursor:pointer;transition:box-shadow .12s,border-color .12s;position:relative;
+  }
+  .card:hover{box-shadow:0 1px 4px rgba(15,15,15,0.08),0 2px 8px rgba(15,15,15,0.06);border-color:var(--border-strong);}
+  .card .avatar{margin-bottom:9px;}
+  .card .card-name{font-weight:600;font-size:15px;margin-bottom:1px;}
+  .card .card-role{font-size:13px;color:var(--text-secondary);margin-bottom:9px;}
+  .card .card-bio{font-size:13px;color:var(--text-secondary);margin-bottom:9px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+  .avatar{
+    width:34px;height:34px;border-radius:50%;color:#fff;font-weight:600;font-size:14px;
+    display:inline-flex;align-items:center;justify-content:center;flex:none;
+  }
+  .avatar.sm{width:22px;height:22px;font-size:11px;}
+
+  /* ---------- Board (kanban) ---------- */
+  .board{display:flex;gap:12px;overflow-x:auto;padding:8px 0 6px 0;align-items:flex-start;}
+  .board-col{background:var(--sidebar-bg);border-radius:8px;padding:8px;min-width:248px;width:248px;flex:none;}
+  .board-col-head{display:flex;align-items:center;gap:7px;padding:4px 6px 9px 6px;font-size:13px;}
+  .board-count{color:var(--text-tertiary);font-size:12px;}
+  .board-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:7px;cursor:pointer;}
+  .board-card:hover{border-color:var(--border-strong);box-shadow:0 1px 3px rgba(15,15,15,0.08);}
+  .board-card .bc-title{font-weight:500;font-size:14px;margin-bottom:6px;}
+  .board-add{font-size:13px;color:var(--text-tertiary);padding:5px 6px;border-radius:5px;cursor:pointer;display:flex;align-items:center;gap:5px;}
+  .board-add:hover{background:var(--hover-strong);color:var(--text-secondary);}
+
+  /* ---------- Pills ---------- */
+  .pill{
+    display:inline-flex;align-items:center;font-size:12px;line-height:1.25;
+    padding:2px 8px;border-radius:4px;white-space:nowrap;font-weight:450;
+  }
+  .pill + .pill{margin-left:4px;}
+  .pillrow{display:flex;flex-wrap:wrap;gap:4px;}
+
+  /* ---------- Dashboard ---------- */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:26px;}
+  .stat{border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+  .stat .num{font-size:30px;font-weight:700;letter-spacing:-0.02em;}
+  .stat .lab{font-size:13px;color:var(--text-secondary);margin-top:2px;}
+  .section-h{font-size:13px;font-weight:600;color:var(--text-secondary);letter-spacing:.03em;
+    text-transform:uppercase;margin:24px 0 10px 0;display:flex;align-items:center;gap:8px;}
+  .callout{
+    display:flex;gap:10px;background:var(--sidebar-bg);border-radius:8px;padding:13px 15px;margin-bottom:9px;
+    align-items:flex-start;
+  }
+  .callout .c-emoji{font-size:18px;line-height:1.4;}
+  .callout .c-body{flex:1;font-size:14px;}
+  .callout .c-del{opacity:0;border:none;background:transparent;color:var(--text-tertiary);font-size:15px;padding:2px 6px;border-radius:4px;}
+  .callout:hover .c-del{opacity:1;}
+  .callout .c-del:hover{background:var(--hover-strong);color:var(--text);}
+  .feed-item{display:flex;gap:10px;padding:9px 4px;border-bottom:1px solid var(--border);font-size:14px;align-items:flex-start;}
+  .feed-item .fi-icon{font-size:15px;width:20px;text-align:center;flex:none;margin-top:1px;}
+  .feed-item .fi-meta{color:var(--text-tertiary);font-size:12px;margin-top:1px;}
+
+  .match-note{
+    font-size:13px;color:var(--text-secondary);background:var(--sidebar-bg);
+    border-radius:6px;padding:8px 11px;margin-top:7px;display:flex;gap:8px;align-items:flex-start;
+  }
+  .match-note .mn-ico{flex:none;}
+
+  .empty{
+    border:1px dashed var(--border-strong);border-radius:8px;padding:34px 20px;text-align:center;
+    color:var(--text-secondary);font-size:14px;margin-top:8px;
+  }
+  .empty .e-title{font-weight:600;color:var(--text);margin-bottom:4px;font-size:15px;}
+
+  .inline-link{color:var(--blue);cursor:pointer;}
+  .inline-link:hover{text-decoration:underline;}
+
+  /* ---------- Modal / peek ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(15,15,15,0.28);display:flex;justify-content:flex-end;z-index:50;}
+  .peek{
+    width:560px;max-width:96vw;height:100%;background:#fff;overflow-y:auto;
+    box-shadow:-2px 0 16px rgba(15,15,15,0.12);animation:slidein .16s ease;
+  }
+  @keyframes slidein{from{transform:translateX(24px);opacity:.6;}to{transform:none;opacity:1;}}
+  .peek-head{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;z-index:2;}
+  .peek-head .ph-title{flex:1;font-size:14px;color:var(--text-secondary);}
+  .peek-body{padding:20px 22px 40px 22px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:5px;letter-spacing:.02em;}
+  .field .hint{font-size:12px;color:var(--text-tertiary);font-weight:400;margin-top:4px;}
+  .field input,.field textarea,.field select{
+    width:100%;border:1px solid var(--border-strong);border-radius:6px;padding:8px 10px;font-size:14px;outline:none;background:#fff;
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(35,131,226,0.18);}
+  .field textarea{min-height:78px;resize:vertical;line-height:1.5;}
+  .peek-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px;}
+  .icon-btn{border:none;background:transparent;color:var(--text-secondary);font-size:16px;padding:5px 8px;border-radius:5px;line-height:1;}
+  .icon-btn:hover{background:var(--hover-strong);color:var(--text);}
+  .icon-btn.danger:hover{background:#ffe2dd;color:#6e3630;}
+
+  /* read-only profile peek */
+  .profile-top{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+  .profile-top .avatar{width:56px;height:56px;font-size:22px;}
+  .profile-name{font-size:22px;font-weight:700;}
+  .profile-role{color:var(--text-secondary);font-size:14px;}
+  .profile-block{margin-top:20px;}
+  .profile-block h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--text-secondary);margin:0 0 8px 0;}
+  .profile-block p{margin:0;font-size:14px;color:var(--text);}
+  .li-row{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;}
+
+  .file-input{display:none;}
+
+  .toast{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    background:#37352f;color:#fff;padding:9px 16px;border-radius:7px;font-size:14px;z-index:80;
+    box-shadow:0 4px 16px rgba(0,0,0,0.2);opacity:0;transition:opacity .2s;pointer-events:none;
+  }
+  .toast.show{opacity:1;}
+
+  :focus-visible{outline:2px solid var(--blue);outline-offset:1px;}
+
+  @media (max-width:780px){
+    .sidebar{position:fixed;z-index:40;box-shadow:2px 0 16px rgba(0,0,0,0.12);}
+    .menu-btn{display:inline-block;}
+    .page{padding:16px 20px 100px 20px;}
+    .peek{width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="ws-head">
+      <span class="ws-emoji">🧪</span>
+      <input class="ws-name" id="wsName" value="Lab OS" aria-label="Workspace name" maxlength="40">
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot" id="syncStatus">Starting…</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle sidebar">☰</button>
+      <span class="crumb" id="crumb">Home</span>
+    </div>
+    <div class="scroll">
+      <div class="page" id="page"></div>
+    </div>
+  </main>
+</div>
+
+<div id="overlayHost"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   Lab OS — a Notion-style lab management workspace.
+   Single file. Drop it anywhere (your website, a USB stick, a static host).
+   Data persists in the browser via localStorage.
+   ========================================================================= */
+
+/* ================= SHARED, MULTI-USER BACKEND ============================
+   Lab OS becomes a shared workspace when you connect a free Supabase project.
+   Fill in the two values below with your own details and re-upload this file.
+   Everyone who opens the page then reads and writes the SAME workspace,
+   kept in sync live.
+
+   Leave SUPABASE_URL / SUPABASE_ANON_KEY blank to run in local-only mode
+   (data stays in each person's browser). Full setup steps came with the file.
+   ========================================================================= */
+const SUPABASE_URL      = "https://cqxgevbchddzgfdfkqil.supabase.co";    // e.g. "https://yourproject.supabase.co"
+const SUPABASE_ANON_KEY = "sb_publishable_gML38O5e6xPtoXFBVREApQ_SwQlN9dW";    // your project's public "anon" key
+const WORKSPACE_ID      = "lab"; // a name for this workspace; change only if you run several
+
+/* ---------- storage layer (cloud when configured, else this browser) ----- */
+const CONFIGURED = !!(SUPABASE_URL && SUPABASE_ANON_KEY);
+const CLOUD = CONFIGURED && typeof window.supabase !== "undefined";
+let sb=null, saveTimer=null, lastSyncedJSON="", realtimeChannel=null;
+
+const STORE_KEY = "labos_v1";
+let memoryStore = null;
+function rawGet(){ try{ return localStorage.getItem(STORE_KEY); }catch(e){ return memoryStore; } }
+function rawSet(v){ try{ localStorage.setItem(STORE_KEY,v); }catch(e){ memoryStore=v; } }
+function safeParse(s){ try{ return JSON.parse(s); }catch(e){ return seed(); } }
+
+function setSync(state){
+  const elx=document.getElementById("syncStatus"); if(!elx) return;
+  const map={
+    connecting:"Connecting to shared workspace…",
+    syncing:"Syncing…",
+    synced:"Shared · all members in sync",
+    offline:"Offline — changes saved locally",
+    liberror:"Sync didn't load — using local copy",
+    local:"Saved in this browser"
+  };
+  elx.textContent=map[state]||state;
+  elx.style.color = state==="synced" ? "#2b593f" : (state==="offline"||state==="liberror") ? "#854c1d" : "";
+}
+
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function nowStamp(){ return Date.now(); }
+
+/* ---------- seed data (clearly illustrative — clear it in Settings) ------ */
+function seed(){
+  const m1=uid(), m2=uid(), m3=uid(), m4=uid();
+  return {
+    workspace:"Lab OS",
+    members:[
+      {id:m1,name:"Ana",role:"PhD Researcher",email:"ana@lab.org",
+       bio:"Care ethics & design tools. Building this workspace.",
+       skills:["care ethics","qualitative coding","CHI writing","diffractive reading","interviewing"],created:nowStamp()-5e8},
+      {id:m2,name:"Sample Member",role:"Postdoc",email:"",
+       bio:"Example profile — edit or delete me.",
+       skills:["statistics","R","data visualisation","survey design"],created:nowStamp()-4e8},
+      {id:m3,name:"Another Member",role:"MSc Student",email:"",
+       bio:"Example profile — edit or delete me.",
+       skills:["prototyping","Figma","user interviews","workshop facilitation"],created:nowStamp()-3e8},
+      {id:m4,name:"Lab Technician",role:"Technician",email:"",
+       bio:"Example profile — edit or delete me.",
+       skills:["equipment maintenance","3D printing","lab safety","procurement"],created:nowStamp()-2e8}
+    ],
+    activities:[
+      {id:uid(),title:"Critique of the FCE toolkit",memberId:m1,status:"Active",
+       tags:["care ethics","qualitative coding","discourse analysis"],
+       desc:"Visual content analysis + diffractive reading of the published toolkit.",updated:nowStamp()-2e7},
+      {id:uid(),title:"Survey instrument for deployment study",memberId:m2,status:"Planning",
+       tags:["survey design","statistics"],
+       desc:"Drafting items and a sampling plan.",updated:nowStamp()-1e7},
+      {id:uid(),title:"Card-deck prototype",memberId:m3,status:"On hold",
+       tags:["prototyping","Figma","care ethics"],
+       desc:"Physical card set for workshops. Paused pending feedback.",updated:nowStamp()-5e7}
+    ],
+    help:[
+      {id:uid(),title:"Need a second coder for interview transcripts",memberId:m1,status:"Open",
+       skills:["qualitative coding","interviewing"],
+       desc:"Looking for help double-coding ~8 transcripts for reliability.",created:nowStamp()-1e7},
+      {id:uid(),title:"Stats check on a small sample",memberId:m3,status:"Open",
+       skills:["statistics","R"],
+       desc:"Want a sanity check on which test to use for n=18.",created:nowStamp()-3e6}
+    ],
+    resources:[
+      {id:uid(),title:"Tronto — dimensions of care",type:"Paper",url:"",addedBy:m1,
+       tags:["care ethics"],notes:"Foundational framing for the toolkit."},
+      {id:uid(),title:"Example shared link",type:"Link",url:"https://example.org",addedBy:m2,
+       tags:["methods"],notes:"Replace with a real resource."}
+    ],
+    inventory:[
+      {id:uid(),name:"Example item — voice recorder",category:"Equipment",location:"Cupboard A",
+       quantity:2,status:"In stock",notes:"Sample row. Edit or delete and add your own."}
+    ],
+    announcements:[
+      {id:uid(),emoji:"👋",text:"Welcome to the lab workspace. Edit anything, delete the samples, and make it yours.",date:todayISO()}
+    ]
+  };
+}
+
+let db;
+async function load(){
+  if(CLOUD){
+    setSync("connecting");
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    try{
+      const {data,error}=await sb.from("workspaces").select("data").eq("id",WORKSPACE_ID).maybeSingle();
+      if(error) throw error;
+      if(data && data.data){ db=data.data; }
+      else { const raw=rawGet(); db = raw?safeParse(raw):seed(); await pushNow(); } // first run creates the shared row
+      lastSyncedJSON=JSON.stringify(db);
+      rawSet(lastSyncedJSON);                // keep a local cache for offline
+      subscribeRealtime();
+      setSync("synced");
+    }catch(e){
+      const raw=rawGet(); db = raw?safeParse(raw):seed();
+      setSync("offline");
+    }
+  } else if(CONFIGURED){
+    const raw=rawGet(); db = raw?safeParse(raw):seed();
+    setSync("liberror");
+  } else {
+    const raw=rawGet(); db = raw?safeParse(raw):seed();
+    if(!raw) rawSet(JSON.stringify(db));
+    setSync("local");
+  }
+}
+function save(){
+  const json=JSON.stringify(db);
+  rawSet(json);                            // instant local cache
+  if(CLOUD){
+    setSync("syncing");
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(pushNow, 350);    // debounce rapid edits into one write
+  }
+}
+async function pushNow(){
+  if(!CLOUD||!sb) return;
+  try{
+    const payload=JSON.stringify(db);
+    const {error}=await sb.from("workspaces")
+      .upsert({id:WORKSPACE_ID,data:db,updated_at:new Date().toISOString()});
+    if(error) throw error;
+    lastSyncedJSON=payload;
+    setSync("synced");
+  }catch(e){ setSync("offline"); }
+}
+function subscribeRealtime(){
+  if(!CLOUD||!sb) return;
+  realtimeChannel = sb.channel("labos-"+WORKSPACE_ID)
+    .on("postgres_changes",
+        {event:"*",schema:"public",table:"workspaces",filter:"id=eq."+WORKSPACE_ID},
+        payload=>{
+          const incoming = payload.new && payload.new.data;
+          if(!incoming) return;
+          const incomingJSON=JSON.stringify(incoming);
+          if(incomingJSON===lastSyncedJSON) return;   // ignore the echo of our own write
+          db=incoming; lastSyncedJSON=incomingJSON; rawSet(incomingJSON);
+          const wsInput=document.getElementById("wsName"); if(wsInput) wsInput.value=db.workspace||"Lab OS";
+          render();                                    // refresh the page with others' changes
+          setSync("synced");
+        })
+    .subscribe();
+}
+
+/* ---------- colour helpers ---------------------------------------------- */
+const TAG_PALETTE=[
+  {bg:"#e3e2e0",text:"#5a584f"},{bg:"#eee0da",text:"#603b2c"},
+  {bg:"#fadec9",text:"#854c1d"},{bg:"#fdecc8",text:"#866a2c"},
+  {bg:"#dbeddb",text:"#2b593f"},{bg:"#d3e5ef",text:"#28456c"},
+  {bg:"#e8deee",text:"#492f64"},{bg:"#f5e0e9",text:"#69314c"},
+  {bg:"#ffe2dd",text:"#6e3630"}
+];
+const AVATAR_PALETTE=["#0b6e99","#9f6b53","#c14c8a","#337ea9","#6940a5","#448361","#cb912f","#d44c47","#787774"];
+function hashIdx(str,len){ let h=0; str=String(str||""); for(let i=0;i<str.length;i++){h=(h*31+str.charCodeAt(i))>>>0;} return h%len; }
+function tagColor(t){ return TAG_PALETTE[hashIdx(t.toLowerCase(),TAG_PALETTE.length)]; }
+function avatarColor(name){ return AVATAR_PALETTE[hashIdx(name,AVATAR_PALETTE.length)]; }
+function initials(name){
+  const p=String(name||"?").trim().split(/\s+/);
+  return ((p[0]?.[0]||"")+(p[1]?.[0]||"")).toUpperCase()||"?";
+}
+
+const STATUS_COLOR={
+  "Planning":{bg:"#fdecc8",text:"#866a2c"},
+  "Active":{bg:"#d3e5ef",text:"#28456c"},
+  "On hold":{bg:"#fadec9",text:"#854c1d"},
+  "Done":{bg:"#dbeddb",text:"#2b593f"},
+  "Open":{bg:"#fadec9",text:"#854c1d"},
+  "Resolved":{bg:"#dbeddb",text:"#2b593f"},
+  "In stock":{bg:"#dbeddb",text:"#2b593f"},
+  "Low":{bg:"#fdecc8",text:"#866a2c"},
+  "Out":{bg:"#ffe2dd",text:"#6e3630"},
+  "On order":{bg:"#d3e5ef",text:"#28456c"}
+};
+
+/* ---------- tiny DOM helpers -------------------------------------------- */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild; }
+function pill(text,color){ const c=color||tagColor(text); return `<span class="pill" style="background:${c.bg};color:${c.text}">${esc(text)}</span>`; }
+function pills(arr){ if(!arr||!arr.length) return `<span class="cell-muted">—</span>`; return `<span class="pillrow">${arr.map(t=>pill(t)).join("")}</span>`; }
+function statusPill(s){ return pill(s, STATUS_COLOR[s]); }
+function avatar(name,cls){ return `<span class="avatar ${cls||""}" style="background:${avatarColor(name)}">${esc(initials(name))}</span>`; }
+function memberName(id){ const m=db.members.find(x=>x.id===id); return m?m.name:"Unknown"; }
+function memberById(id){ return db.members.find(x=>x.id===id); }
+function parseTags(str){ return String(str||"").split(",").map(s=>s.trim()).filter(Boolean); }
+function relTime(ts){
+  if(!ts) return "";
+  const d=Math.floor((Date.now()-ts)/86400000);
+  if(d<=0) return "today"; if(d===1) return "yesterday"; if(d<30) return d+" days ago";
+  return new Date(ts).toLocaleDateString(undefined,{month:"short",day:"numeric"});
+}
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),1800); }
+
+/* ---------- skill / overlap matching (the lab's connective tissue) ------- */
+function norm(s){ return String(s||"").toLowerCase().trim(); }
+function membersMatchingSkills(needed, excludeId){
+  const set=new Set(needed.map(norm));
+  return db.members
+    .filter(m=>m.id!==excludeId)
+    .map(m=>({m,hits:(m.skills||[]).filter(s=>set.has(norm(s)))}))
+    .filter(x=>x.hits.length>0)
+    .sort((a,b)=>b.hits.length-a.hits.length);
+}
+function similarActivities(act){
+  const set=new Set((act.tags||[]).map(norm));
+  return db.activities
+    .filter(a=>a.id!==act.id)
+    .map(a=>({a,shared:(a.tags||[]).filter(t=>set.has(norm(t)))}))
+    .filter(x=>x.shared.length>0)
+    .sort((a,b)=>b.shared.length-a.shared.length);
+}
+
+/* =========================================================================
+   Navigation
+   ========================================================================= */
+const PAGES=[
+  {id:"home",label:"Home",icon:"🏠"},
+  {id:"members",label:"Members",icon:"👥"},
+  {id:"skills",label:"Skills",icon:"🧠"},
+  {id:"activities",label:"Activities",icon:"🔭"},
+  {id:"help",label:"Help board",icon:"🤝"},
+  {id:"resources",label:"Resources",icon:"📚"},
+  {id:"inventory",label:"Inventory",icon:"📦"},
+  {id:"settings",label:"Settings",icon:"⚙️"}
+];
+let current="home";
+const viewState={members:"gallery",activities:"board"};
+
+function buildNav(){
+  const nav=document.getElementById("nav");
+  nav.innerHTML=`<div class="nav-label">Workspace</div>`+
+    PAGES.map(p=>`<button class="nav-item ${p.id===current?"active":""}" data-page="${p.id}">
+      <span class="ico">${p.icon}</span><span>${p.label}</span></button>`).join("");
+  nav.querySelectorAll(".nav-item").forEach(b=>b.onclick=()=>{ navigate(b.dataset.page); if(window.innerWidth<=780) toggleSidebar(true); });
+}
+function navigate(id){
+  current=id;
+  buildNav();
+  const p=PAGES.find(x=>x.id===id);
+  document.getElementById("crumb").textContent=p?p.label:"";
+  render();
+  document.querySelector(".scroll").scrollTop=0;
+}
+
+/* =========================================================================
+   Rendering
+   ========================================================================= */
+function render(){ RENDERERS[current](); }
+const page=()=>document.getElementById("page");
+
+function pageHeader(icon,title,sub){
+  return `<span class="page-icon">${icon}</span>
+    <h1 class="page-title">${esc(title)}</h1>
+    ${sub?`<p class="page-sub">${esc(sub)}</p>`:""}`;
+}
+
+/* ---------- HOME --------------------------------------------------------- */
+function renderHome(){
+  const activeCount=db.activities.filter(a=>a.status!=="Done").length;
+  const openHelp=db.help.filter(h=>h.status==="Open").length;
+  const skillCount=new Set(db.members.flatMap(m=>m.skills||[]).map(norm)).size;
+
+  const feed=[
+    ...db.activities.map(a=>({ts:a.updated,icon:"🔭",text:`<b>${esc(memberName(a.memberId))}</b> is working on <span class="inline-link" data-go="activities">${esc(a.title)}</span>`,meta:relTime(a.updated)})),
+    ...db.help.filter(h=>h.status==="Open").map(h=>({ts:h.created,icon:"🤝",text:`<b>${esc(memberName(h.memberId))}</b> asked for help: <span class="inline-link" data-go="help">${esc(h.title)}</span>`,meta:relTime(h.created)}))
+  ].sort((a,b)=>(b.ts||0)-(a.ts||0)).slice(0,7);
+
+  page().innerHTML=
+    pageHeader("🏠","Home","A shared overview of who's here, what everyone's working on, and where help is needed.")+
+    `<div class="stat-grid">
+      <div class="stat"><div class="num">${db.members.length}</div><div class="lab">Members</div></div>
+      <div class="stat"><div class="num">${skillCount}</div><div class="lab">Distinct skills</div></div>
+      <div class="stat"><div class="num">${activeCount}</div><div class="lab">Active activities</div></div>
+      <div class="stat"><div class="num">${openHelp}</div><div class="lab">Open help requests</div></div>
+    </div>
+
+    <div class="section-h">📣 Announcements <button class="btn btn-sm btn-ghost" id="addAnn">+ Add</button></div>
+    <div id="annList">${db.announcements.length?db.announcements.map(a=>
+      `<div class="callout"><span class="c-emoji">${esc(a.emoji||"📌")}</span>
+        <div class="c-body">${esc(a.text)}<div class="fi-meta" style="margin-top:3px">${esc(a.date||"")}</div></div>
+        <button class="c-del" data-del-ann="${a.id}" title="Remove">✕</button></div>`).join("")
+      :`<div class="empty"><div class="e-title">No announcements yet</div>Post a note for the lab — meetings, deadlines, news.</div>`}</div>
+
+    <div class="section-h">🕑 Recent activity</div>
+    <div id="feed">${feed.length?feed.map(f=>
+      `<div class="feed-item"><span class="fi-icon">${f.icon}</span><div>${f.text}<div class="fi-meta">${esc(f.meta)}</div></div></div>`).join("")
+      :`<div class="empty">Nothing yet. Add members and activities to see them here.</div>`}</div>`;
+
+  page().querySelector("#addAnn").onclick=()=>openAnnouncementForm();
+  page().querySelectorAll("[data-del-ann]").forEach(b=>b.onclick=()=>{
+    db.announcements=db.announcements.filter(a=>a.id!==b.dataset.delAnn); save(); render();
+  });
+  page().querySelectorAll("[data-go]").forEach(s=>s.onclick=()=>navigate(s.dataset.go));
+}
+
+/* ---------- MEMBERS ------------------------------------------------------ */
+function renderMembers(){
+  const view=viewState.members;
+  page().innerHTML=
+    pageHeader("👥","Members","Everyone in the lab. Click a profile to see their skills and what they're working on.")+
+    viewBar("members",[["gallery","Gallery"],["table","Table"]])+
+    toolbar("memberSearch","Search members…","Add member","addMember")+
+    `<div id="memberList"></div>`;
+  wireViewBar("members",renderMembers);
+  page().querySelector("#addMember").onclick=()=>openMemberForm();
+  const search=page().querySelector("#memberSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=db.members.filter(m=>!q||norm(m.name).includes(q)||norm(m.role).includes(q)||(m.skills||[]).some(s=>norm(s).includes(q)));
+    const host=page().querySelector("#memberList");
+    if(!list.length){ host.innerHTML=emptyState("No members yet","Add the people in your lab — name, role, and the skills they're happy to share."); return; }
+    if(view==="gallery"){
+      host.innerHTML=`<div class="gallery">`+list.map(m=>`
+        <div class="card" data-open="${m.id}">
+          <div class="avatar">${esc(initials(m.name))}</div>
+          <div class="card-name">${esc(m.name)}</div>
+          <div class="card-role">${esc(m.role||"")}</div>
+          ${m.bio?`<div class="card-bio">${esc(m.bio)}</div>`:""}
+          ${pills((m.skills||[]).slice(0,4))}
+        </div>`).join("")+`</div>`;
+    } else {
+      host.innerHTML=`<table class="table"><thead><tr>
+        <th style="width:24%">Name</th><th style="width:18%">Role</th><th>Skills</th><th></th></tr></thead><tbody>`+
+        list.map(m=>`<tr>
+          <td><span class="cell-title" data-open="${m.id}">${avatar(m.name,"sm")} &nbsp;${esc(m.name)}</span></td>
+          <td class="cell-muted">${esc(m.role||"—")}</td>
+          <td>${pills(m.skills)}</td>
+          <td class="row-actions">${rowBtns(m.id)}</td></tr>`).join("")+`</tbody></table>`;
+    }
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openMemberProfile(n.dataset.open));
+    wireRowBtns(host,id=>openMemberForm(memberById(id)),id=>deleteEntity("members",id));
+  };
+  search.oninput=draw; draw();
+}
+
+/* ---------- SKILLS ------------------------------------------------------- */
+function renderSkills(){
+  // build index: skill -> [members]
+  const index={};
+  db.members.forEach(m=>(m.skills||[]).forEach(s=>{
+    const k=s.trim(); if(!k) return;
+    (index[k.toLowerCase()]=index[k.toLowerCase()]||{label:k,people:[]}).people.push(m);
+  }));
+  const skills=Object.values(index).sort((a,b)=>b.people.length-a.people.length||a.label.localeCompare(b.label));
+
+  page().innerHTML=
+    pageHeader("🧠","Skills","The skillsharing space. Search for what you need, and see who in the lab can help.")+
+    `<div class="toolbar">
+      <div class="search"><span>🔎</span><input id="skillSearch" placeholder="Find someone who can… (e.g. statistics, Figma)"></div>
+    </div>
+    <div id="skillList"></div>
+    <div class="match-note" style="margin-top:18px"><span class="mn-ico">💡</span>
+      <span>Skills come from each person's profile. To add or change a skill, open a member in the <span class="inline-link" data-go="members">Members</span> tab.</span></div>`;
+
+  const search=page().querySelector("#skillSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=skills.filter(s=>!q||norm(s.label).includes(q)||s.people.some(p=>norm(p.name).includes(q)));
+    const host=page().querySelector("#skillList");
+    if(!skills.length){ host.innerHTML=emptyState("No skills listed yet","Add skills to member profiles and they'll appear here, searchable by the whole lab."); return; }
+    if(!list.length){ host.innerHTML=emptyState("No match","Nobody has listed that skill yet. Try a broader term, or post it on the Help board."); return; }
+    host.innerHTML=`<table class="table"><thead><tr>
+      <th style="width:34%">Skill</th><th style="width:10%">People</th><th>Who can help</th></tr></thead><tbody>`+
+      list.map(s=>`<tr>
+        <td>${pill(s.label)}</td>
+        <td class="cell-muted">${s.people.length}</td>
+        <td><span class="pillrow">${s.people.map(p=>`<span class="pill" style="background:${avatarColor(p.name)};color:#fff;cursor:pointer" data-open="${p.id}">${esc(p.name)}</span>`).join("")}</span></td>
+      </tr>`).join("")+`</tbody></table>`;
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openMemberProfile(n.dataset.open));
+  };
+  search.oninput=draw; draw();
+  page().querySelectorAll("[data-go]").forEach(s=>s.onclick=()=>navigate(s.dataset.go));
+}
+
+/* ---------- ACTIVITIES --------------------------------------------------- */
+const ACT_STATUSES=["Planning","Active","On hold","Done"];
+function renderActivities(){
+  const view=viewState.activities;
+  page().innerHTML=
+    pageHeader("🔭","Activities","What everyone's working on right now. Shared tags surface overlapping work and people who could help.")+
+    viewBar("activities",[["board","Board"],["table","Table"]])+
+    toolbar("actSearch","Search activities…","Add activity","addAct")+
+    `<div id="actList"></div>`;
+  wireViewBar("activities",renderActivities);
+  page().querySelector("#addAct").onclick=()=>openActivityForm();
+  const search=page().querySelector("#actSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=db.activities.filter(a=>!q||norm(a.title).includes(q)||norm(memberName(a.memberId)).includes(q)||(a.tags||[]).some(t=>norm(t).includes(q)));
+    const host=page().querySelector("#actList");
+    if(!db.activities.length){ host.innerHTML=emptyState("No activities yet","Add what you're working on so the lab can spot overlaps and offer help."); return; }
+    if(view==="board"){
+      host.innerHTML=`<div class="board">`+ACT_STATUSES.map(st=>{
+        const items=list.filter(a=>a.status===st);
+        return `<div class="board-col">
+          <div class="board-col-head">${statusPill(st)}<span class="board-count">${items.length}</span></div>
+          ${items.map(a=>`<div class="board-card" data-open="${a.id}">
+            <div class="bc-title">${esc(a.title)}</div>
+            <div style="margin-bottom:7px">${pills(a.tags)}</div>
+            <div class="cell-muted" style="font-size:12px">${avatar(memberName(a.memberId),"sm")} ${esc(memberName(a.memberId))}</div>
+          </div>`).join("")}
+          <div class="board-add" data-add-status="${st}">+ New</div>
+        </div>`;
+      }).join("")+`</div>`;
+      host.querySelectorAll("[data-add-status]").forEach(n=>n.onclick=()=>openActivityForm(null,n.dataset.addStatus));
+    } else {
+      host.innerHTML=`<table class="table"><thead><tr>
+        <th style="width:30%">Activity</th><th style="width:14%">Owner</th><th style="width:12%">Status</th><th>Tags</th><th></th></tr></thead><tbody>`+
+        list.map(a=>`<tr>
+          <td><span class="cell-title" data-open="${a.id}">${esc(a.title)}</span></td>
+          <td class="cell-muted">${esc(memberName(a.memberId))}</td>
+          <td>${statusPill(a.status)}</td>
+          <td>${pills(a.tags)}</td>
+          <td class="row-actions">${rowBtns(a.id)}</td></tr>`).join("")+`</tbody></table>`;
+      wireRowBtns(host,id=>openActivityForm(db.activities.find(x=>x.id===id)),id=>deleteEntity("activities",id));
+    }
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openActivityDetail(n.dataset.open));
+  };
+  search.oninput=draw; draw();
+}
+
+/* ---------- HELP BOARD --------------------------------------------------- */
+function renderHelp(){
+  page().innerHTML=
+    pageHeader("🤝","Help board","Post what you're stuck on. Lab members whose skills match are surfaced automatically.")+
+    toolbar("helpSearch","Search requests…","Post a request","addHelp")+
+    `<div id="helpList"></div>`;
+  page().querySelector("#addHelp").onclick=()=>openHelpForm();
+  const search=page().querySelector("#helpSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=db.help.filter(h=>!q||norm(h.title).includes(q)||(h.skills||[]).some(s=>norm(s).includes(q)));
+    const host=page().querySelector("#helpList");
+    if(!db.help.length){ host.innerHTML=emptyState("No requests yet","Stuck on something? Post it here with the skills you're looking for."); return; }
+    host.innerHTML=list.map(h=>{
+      const matches=membersMatchingSkills(h.skills||[], h.memberId).slice(0,5);
+      return `<div class="callout" style="flex-direction:column;align-items:stretch;gap:8px">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <span class="c-emoji">${h.status==="Resolved"?"✅":"🙋"}</span>
+          <div class="c-body">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              <b>${esc(h.title)}</b>${statusPill(h.status)}
+            </div>
+            <div class="cell-muted" style="margin:3px 0 6px">Asked by ${esc(memberName(h.memberId))} · ${esc(relTime(h.created))}</div>
+            ${h.desc?`<div style="margin-bottom:6px">${esc(h.desc)}</div>`:""}
+            <div>${pills(h.skills)}</div>
+          </div>
+          <div style="white-space:nowrap">
+            <button class="icon-btn" data-edit="${h.id}" title="Edit">✎</button>
+            <button class="icon-btn danger" data-del="${h.id}" title="Delete">🗑</button>
+          </div>
+        </div>
+        ${h.status==="Open"&&matches.length?`<div class="match-note"><span class="mn-ico">✨</span>
+          <span><b>Might be able to help:</b> ${matches.map(x=>`<span class="inline-link" data-open="${x.m.id}">${esc(x.m.name)}</span> <span class="cell-muted">(${x.hits.join(", ")})</span>`).join(" · ")}</span></div>`
+          :h.status==="Open"?`<div class="match-note"><span class="mn-ico">🔍</span><span>No matching skills listed yet — adding skills to member profiles will surface helpers here.</span></div>`:""}
+      </div>`;
+    }).join("");
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openMemberProfile(n.dataset.open));
+    host.querySelectorAll("[data-edit]").forEach(n=>n.onclick=()=>openHelpForm(db.help.find(x=>x.id===n.dataset.edit)));
+    host.querySelectorAll("[data-del]").forEach(n=>n.onclick=()=>deleteEntity("help",n.dataset.del));
+  };
+  search.oninput=draw; draw();
+}
+
+/* ---------- RESOURCES ---------------------------------------------------- */
+const RES_TYPES=["Paper","Link","Dataset","Tool","Book","Other"];
+function renderResources(){
+  page().innerHTML=
+    pageHeader("📚","Resources","Shared reading, links, datasets and tools the lab relies on.")+
+    toolbar("resSearch","Search resources…","Add resource","addRes")+
+    `<div id="resList"></div>`;
+  page().querySelector("#addRes").onclick=()=>openResourceForm();
+  const search=page().querySelector("#resSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=db.resources.filter(r=>!q||norm(r.title).includes(q)||(r.tags||[]).some(t=>norm(t).includes(q))||norm(r.type).includes(q));
+    const host=page().querySelector("#resList");
+    if(!db.resources.length){ host.innerHTML=emptyState("No resources yet","Add the papers, links and tools your lab keeps coming back to."); return; }
+    host.innerHTML=`<table class="table"><thead><tr>
+      <th style="width:30%">Title</th><th style="width:11%">Type</th><th style="width:16%">Added by</th><th>Tags</th><th></th></tr></thead><tbody>`+
+      list.map(r=>`<tr>
+        <td><span class="cell-title" data-open="${r.id}">${esc(r.title)}</span>${r.url?` <a href="${esc(r.url)}" target="_blank" rel="noopener" title="Open link">↗</a>`:""}</td>
+        <td>${pill(r.type)}</td>
+        <td class="cell-muted">${esc(memberName(r.addedBy))}</td>
+        <td>${pills(r.tags)}</td>
+        <td class="row-actions">${rowBtns(r.id)}</td></tr>`).join("")+`</tbody></table>`;
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openResourceForm(db.resources.find(x=>x.id===n.dataset.open)));
+    wireRowBtns(host,id=>openResourceForm(db.resources.find(x=>x.id===id)),id=>deleteEntity("resources",id));
+  };
+  search.oninput=draw; draw();
+}
+
+/* ---------- INVENTORY ---------------------------------------------------- */
+const INV_STATUSES=["In stock","Low","Out","On order"];
+function renderInventory(){
+  page().innerHTML=
+    pageHeader("📦","Inventory","Equipment, consumables and shared kit. The structure's ready — fill it whenever you like.")+
+    toolbar("invSearch","Search inventory…","Add item","addInv")+
+    `<div id="invList"></div>`;
+  page().querySelector("#addInv").onclick=()=>openInventoryForm();
+  const search=page().querySelector("#invSearch");
+  const draw=()=>{
+    const q=norm(search.value);
+    const list=db.inventory.filter(i=>!q||norm(i.name).includes(q)||norm(i.category).includes(q)||norm(i.location).includes(q));
+    const host=page().querySelector("#invList");
+    if(!db.inventory.length){ host.innerHTML=emptyState("Inventory is empty","The table's set up and ready. Add an item to start tracking what the lab has and where it lives."); return; }
+    host.innerHTML=`<table class="table"><thead><tr>
+      <th style="width:26%">Item</th><th style="width:14%">Category</th><th style="width:14%">Location</th>
+      <th style="width:8%">Qty</th><th style="width:12%">Status</th><th>Notes</th><th></th></tr></thead><tbody>`+
+      list.map(i=>`<tr>
+        <td><span class="cell-title" data-open="${i.id}">${esc(i.name)}</span></td>
+        <td class="cell-muted">${esc(i.category||"—")}</td>
+        <td class="cell-muted">${esc(i.location||"—")}</td>
+        <td class="cell-muted">${esc(i.quantity??"—")}</td>
+        <td>${i.status?statusPill(i.status):"—"}</td>
+        <td class="cell-notes">${esc(i.notes||"")}</td>
+        <td class="row-actions">${rowBtns(i.id)}</td></tr>`).join("")+`</tbody></table>`;
+    host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>openInventoryForm(db.inventory.find(x=>x.id===n.dataset.open)));
+    wireRowBtns(host,id=>openInventoryForm(db.inventory.find(x=>x.id===id)),id=>deleteEntity("inventory",id));
+  };
+  search.oninput=draw; draw();
+}
+
+/* ---------- SETTINGS ----------------------------------------------------- */
+function syncBlurb(){
+  if(CLOUD) return `<b>Shared workspace active.</b> Everyone who opens this page reads and writes the same data, synced live across the lab. Edits use last-write-wins, so it's best not to edit the exact same item at the same moment.`;
+  if(CONFIGURED) return `<b>Configured for sharing, but the sync library didn't load.</b> Check that this page can reach jsdelivr.net, then reload. You're on the local copy for now.`;
+  return `<b>Local only.</b> Data is saved in this browser. To share it across the lab, add your Supabase URL and anon key to the config block near the top of this file (setup steps came with the file), then re-upload.`;
+}
+function renderSettings(){
+  page().innerHTML=
+    pageHeader("⚙️","Settings","Name your workspace, back up your data, or start fresh.")+
+    `<div class="field" style="max-width:420px">
+      <label>Workspace name</label>
+      <input id="setWsName" value="${esc(db.workspace||"Lab OS")}" maxlength="40">
+    </div>
+
+    <div class="section-h">💾 Your data</div>
+    <p class="page-sub" style="margin-bottom:14px">Everything lives in this browser. Export a backup file you can keep or move to another machine, or import one to restore it.</p>
+    <div class="toolbar" style="padding-top:0">
+      <button class="btn" id="exportBtn">⬇ Export backup (.json)</button>
+      <button class="btn" id="importBtn">⬆ Import backup</button>
+      <input type="file" id="importFile" class="file-input" accept="application/json,.json">
+    </div>
+
+    <div class="section-h">⚠️ Reset</div>
+    <div class="toolbar" style="padding-top:0">
+      <button class="btn" id="reseedBtn">Reload sample data</button>
+      <button class="btn" id="clearBtn" style="color:#6e3630;border-color:#f3c6bf">Clear everything</button>
+    </div>
+
+    <div class="match-note" style="margin-top:26px"><span class="mn-ico">${CLOUD?"🌐":"ℹ️"}</span>
+      <span>${syncBlurb()}</span></div>`;
+
+  page().querySelector("#setWsName").onchange=e=>{ db.workspace=e.target.value.trim()||"Lab OS"; document.getElementById("wsName").value=db.workspace; save(); toast("Workspace renamed"); };
+  page().querySelector("#exportBtn").onclick=exportData;
+  page().querySelector("#importBtn").onclick=()=>page().querySelector("#importFile").click();
+  page().querySelector("#importFile").onchange=importData;
+  page().querySelector("#reseedBtn").onclick=()=>{ if(confirm("Replace everything with the sample data?")){ db=seed(); save(); document.getElementById("wsName").value=db.workspace; navigate("home"); toast("Sample data loaded"); } };
+  page().querySelector("#clearBtn").onclick=()=>{ if(confirm("Delete all data? This cannot be undone.")){ db={workspace:"Lab OS",members:[],activities:[],help:[],resources:[],inventory:[],announcements:[]}; save(); document.getElementById("wsName").value="Lab OS"; navigate("home"); toast("Workspace cleared"); } };
+}
+
+const RENDERERS={home:renderHome,members:renderMembers,skills:renderSkills,activities:renderActivities,help:renderHelp,resources:renderResources,inventory:renderInventory,settings:renderSettings};
+
+/* =========================================================================
+   Shared UI bits
+   ========================================================================= */
+function viewBar(key,tabs){
+  return `<div class="viewbar">`+tabs.map(([v,l])=>`<button class="view-tab ${viewState[key]===v?"active":""}" data-vt="${v}">${l}</button>`).join("")+`<span class="spacer"></span></div>`;
+}
+function wireViewBar(key,rerender){
+  page().querySelectorAll("[data-vt]").forEach(b=>b.onclick=()=>{ viewState[key]=b.dataset.vt; rerender(); });
+}
+function toolbar(searchId,placeholder,btnLabel,btnId){
+  return `<div class="toolbar">
+    <div class="search"><span>🔎</span><input id="${searchId}" placeholder="${esc(placeholder)}"></div>
+    <button class="btn btn-primary" id="${btnId}">+ ${esc(btnLabel)}</button></div>`;
+}
+function rowBtns(id){
+  return `<button class="icon-btn" data-edit="${id}" title="Edit">✎</button>
+          <button class="icon-btn danger" data-del="${id}" title="Delete">🗑</button>`;
+}
+function wireRowBtns(host,onEdit,onDelete){
+  host.querySelectorAll("[data-edit]").forEach(b=>b.onclick=e=>{e.stopPropagation();onEdit(b.dataset.edit);});
+  host.querySelectorAll("[data-del]").forEach(b=>b.onclick=e=>{e.stopPropagation();onDelete(b.dataset.del);});
+}
+function emptyState(title,body){ return `<div class="empty"><div class="e-title">${esc(title)}</div>${esc(body)}</div>`; }
+function deleteEntity(coll,id){
+  const item=db[coll].find(x=>x.id===id);
+  const label=item&&(item.name||item.title)||"this item";
+  if(confirm(`Delete "${label}"?`)){ db[coll]=db[coll].filter(x=>x.id!==id); save(); render(); toast("Deleted"); }
+}
+
+/* ---------- member options for selects ---------------------------------- */
+function memberOptions(selected){
+  return db.members.map(m=>`<option value="${m.id}" ${m.id===selected?"selected":""}>${esc(m.name)}</option>`).join("");
+}
+
+/* =========================================================================
+   Peek panels (forms + read-only details)
+   ========================================================================= */
+function closePeek(){ document.getElementById("overlayHost").innerHTML=""; document.removeEventListener("keydown",escClose); }
+function escClose(e){ if(e.key==="Escape") closePeek(); }
+function openPeek(title,bodyHTML,setup){
+  const host=document.getElementById("overlayHost");
+  host.innerHTML=`<div class="overlay"><div class="peek" role="dialog" aria-modal="true">
+    <div class="peek-head"><button class="icon-btn" id="peekClose" aria-label="Close">✕</button><span class="ph-title">${esc(title)}</span></div>
+    <div class="peek-body">${bodyHTML}</div></div></div>`;
+  host.querySelector(".overlay").onclick=e=>{ if(e.target.classList.contains("overlay")) closePeek(); };
+  host.querySelector("#peekClose").onclick=closePeek;
+  document.addEventListener("keydown",escClose);
+  if(setup) setup(host);
+  const first=host.querySelector("input,textarea,select"); if(first) first.focus();
+}
+
+/* generic field renderers */
+function fText(id,label,val,hint){ return `<div class="field"><label>${esc(label)}</label><input id="${id}" value="${esc(val||"")}">${hint?`<div class="hint">${esc(hint)}</div>`:""}</div>`; }
+function fNum(id,label,val){ return `<div class="field"><label>${esc(label)}</label><input id="${id}" type="number" value="${val??""}"></div>`; }
+function fArea(id,label,val){ return `<div class="field"><label>${esc(label)}</label><textarea id="${id}">${esc(val||"")}</textarea></div>`; }
+function fSelect(id,label,opts,val){ return `<div class="field"><label>${esc(label)}</label><select id="${id}">${opts.map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`; }
+function fTags(id,label,arr,hint){ return `<div class="field"><label>${esc(label)}</label><input id="${id}" value="${esc((arr||[]).join(", "))}"><div class="hint">${esc(hint||"Separate with commas")}</div></div>`; }
+function fMember(id,label,val){ return `<div class="field"><label>${esc(label)}</label><select id="${id}">${memberOptions(val)}</select></div>`; }
+function v(host,id){ return host.querySelector("#"+id).value; }
+
+function saveBar(){ return `<div class="peek-actions"><button class="btn btn-ghost" id="cancelBtn">Cancel</button><button class="btn btn-primary" id="saveBtn">Save</button></div>`; }
+
+/* ----- Member form ----- */
+function openMemberForm(m){
+  const isNew=!m; m=m||{};
+  openPeek(isNew?"New member":"Edit member",
+    fText("f_name","Name",m.name)+
+    fText("f_role","Role",m.role,"e.g. PhD Researcher, Postdoc, Technician")+
+    fText("f_email","Email / contact",m.email)+
+    fArea("f_bio","About",m.bio)+
+    fTags("f_skills","Skills",m.skills,"The skills they're happy to share. Separate with commas.")+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const name=v(host,"f_name").trim(); if(!name){ toast("Add a name first"); return; }
+        const rec={id:m.id||uid(),name,role:v(host,"f_role").trim(),email:v(host,"f_email").trim(),
+          bio:v(host,"f_bio").trim(),skills:parseTags(v(host,"f_skills")),created:m.created||nowStamp()};
+        if(isNew) db.members.push(rec); else Object.assign(db.members.find(x=>x.id===m.id),rec);
+        save(); closePeek(); render(); toast(isNew?"Member added":"Saved");
+      };
+    });
+}
+
+/* ----- Member read-only profile ----- */
+function openMemberProfile(id){
+  const m=memberById(id); if(!m) return;
+  const acts=db.activities.filter(a=>a.memberId===id);
+  const reqs=db.help.filter(h=>h.memberId===id&&h.status==="Open");
+  openPeek("Profile",
+    `<div class="profile-top">
+      <span class="avatar" style="background:${avatarColor(m.name)}">${esc(initials(m.name))}</span>
+      <div><div class="profile-name">${esc(m.name)}</div><div class="profile-role">${esc(m.role||"")}</div></div>
+    </div>
+    ${m.email?`<div class="profile-role">📧 ${esc(m.email)}</div>`:""}
+    ${m.bio?`<div class="profile-block"><h4>About</h4><p>${esc(m.bio)}</p></div>`:""}
+    <div class="profile-block"><h4>Skills</h4>${pills(m.skills)}</div>
+    <div class="profile-block"><h4>Working on</h4>${acts.length?acts.map(a=>`<div class="li-row">🔭 <div><b>${esc(a.title)}</b> ${statusPill(a.status)}</div></div>`).join(""):`<p class="cell-muted">Nothing listed.</p>`}</div>
+    ${reqs.length?`<div class="profile-block"><h4>Asking for help with</h4>${reqs.map(r=>`<div class="li-row">🤝 <div>${esc(r.title)}</div></div>`).join("")}</div>`:""}
+    <div class="peek-actions" style="margin-top:24px"><button class="btn" id="editFromProfile">Edit profile</button></div>`,
+    host=>{ host.querySelector("#editFromProfile").onclick=()=>{ closePeek(); openMemberForm(m); }; });
+}
+
+/* ----- Activity form ----- */
+function openActivityForm(a,presetStatus){
+  const isNew=!a; a=a||{};
+  if(!db.members.length){ toast("Add a member first"); navigate("members"); return; }
+  openPeek(isNew?"New activity":"Edit activity",
+    fText("f_title","Activity",a.title)+
+    fMember("f_owner","Owner",a.memberId)+
+    fSelect("f_status","Status",ACT_STATUSES,a.status||presetStatus||"Active")+
+    fTags("f_tags","Tags",a.tags,"Topics, methods, themes. Shared tags connect related work and helpers.")+
+    fArea("f_desc","Notes",a.desc)+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const title=v(host,"f_title").trim(); if(!title){ toast("Add a title first"); return; }
+        const rec={id:a.id||uid(),title,memberId:v(host,"f_owner"),status:v(host,"f_status"),
+          tags:parseTags(v(host,"f_tags")),desc:v(host,"f_desc").trim(),updated:nowStamp()};
+        if(isNew) db.activities.push(rec); else Object.assign(db.activities.find(x=>x.id===a.id),rec);
+        save(); closePeek(); render(); toast(isNew?"Activity added":"Saved");
+      };
+    });
+}
+
+/* ----- Activity detail (with overlap + helper hints) ----- */
+function openActivityDetail(id){
+  const a=db.activities.find(x=>x.id===id); if(!a) return;
+  const sim=similarActivities(a);
+  const helpers=membersMatchingSkills(a.tags||[], a.memberId).slice(0,6);
+  openPeek("Activity",
+    `<div class="profile-name" style="margin-bottom:6px">${esc(a.title)}</div>
+    <div style="margin-bottom:10px">${statusPill(a.status)} &nbsp;<span class="cell-muted">${avatar(memberName(a.memberId),"sm")} ${esc(memberName(a.memberId))}</span></div>
+    <div style="margin-bottom:14px">${pills(a.tags)}</div>
+    ${a.desc?`<div class="profile-block" style="margin-top:0"><h4>Notes</h4><p>${esc(a.desc)}</p></div>`:""}
+    ${sim.length?`<div class="match-note"><span class="mn-ico">🔗</span><span><b>Related work in the lab:</b> ${sim.slice(0,4).map(s=>`<span class="cell-title">${esc(s.a.title)}</span> <span class="cell-muted">(${esc(memberName(s.a.memberId))} · ${s.shared.join(", ")})</span>`).join(" · ")}</span></div>`:""}
+    ${helpers.length?`<div class="match-note"><span class="mn-ico">✨</span><span><b>People with matching skills:</b> ${helpers.map(h=>`<span class="inline-link" data-open="${h.m.id}">${esc(h.m.name)}</span> <span class="cell-muted">(${h.hits.join(", ")})</span>`).join(" · ")}</span></div>`:""}
+    <div class="peek-actions" style="margin-top:22px"><button class="btn" id="editAct">Edit</button></div>`,
+    host=>{
+      host.querySelector("#editAct").onclick=()=>{ closePeek(); openActivityForm(a); };
+      host.querySelectorAll("[data-open]").forEach(n=>n.onclick=()=>{ closePeek(); openMemberProfile(n.dataset.open); });
+    });
+}
+
+/* ----- Help form ----- */
+function openHelpForm(h){
+  const isNew=!h; h=h||{};
+  if(!db.members.length){ toast("Add a member first"); navigate("members"); return; }
+  openPeek(isNew?"Post a request":"Edit request",
+    fText("f_title","What do you need help with?",h.title)+
+    fMember("f_owner","Asked by",h.memberId)+
+    fSelect("f_status","Status",["Open","Resolved"],h.status||"Open")+
+    fTags("f_skills","Skills needed",h.skills,"List skills — matching members are surfaced automatically.")+
+    fArea("f_desc","Details",h.desc)+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const title=v(host,"f_title").trim(); if(!title){ toast("Add a title first"); return; }
+        const rec={id:h.id||uid(),title,memberId:v(host,"f_owner"),status:v(host,"f_status"),
+          skills:parseTags(v(host,"f_skills")),desc:v(host,"f_desc").trim(),created:h.created||nowStamp()};
+        if(isNew) db.help.push(rec); else Object.assign(db.help.find(x=>x.id===h.id),rec);
+        save(); closePeek(); render(); toast(isNew?"Request posted":"Saved");
+      };
+    });
+}
+
+/* ----- Resource form ----- */
+function openResourceForm(r){
+  const isNew=!r; r=r||{};
+  if(!db.members.length){ toast("Add a member first"); navigate("members"); return; }
+  openPeek(isNew?"New resource":"Edit resource",
+    fText("f_title","Title",r.title)+
+    fSelect("f_type","Type",RES_TYPES,r.type||"Paper")+
+    fText("f_url","Link (optional)",r.url,"Paste a URL if there is one")+
+    fMember("f_addedby","Added by",r.addedBy)+
+    fTags("f_tags","Tags",r.tags)+
+    fArea("f_notes","Notes",r.notes)+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const title=v(host,"f_title").trim(); if(!title){ toast("Add a title first"); return; }
+        const rec={id:r.id||uid(),title,type:v(host,"f_type"),url:v(host,"f_url").trim(),
+          addedBy:v(host,"f_addedby"),tags:parseTags(v(host,"f_tags")),notes:v(host,"f_notes").trim()};
+        if(isNew) db.resources.push(rec); else Object.assign(db.resources.find(x=>x.id===r.id),rec);
+        save(); closePeek(); render(); toast(isNew?"Resource added":"Saved");
+      };
+    });
+}
+
+/* ----- Inventory form ----- */
+function openInventoryForm(i){
+  const isNew=!i; i=i||{};
+  openPeek(isNew?"New item":"Edit item",
+    fText("f_name","Item",i.name)+
+    fText("f_cat","Category",i.category,"e.g. Equipment, Consumable, Software")+
+    fText("f_loc","Location",i.location,"Where it lives")+
+    fNum("f_qty","Quantity",i.quantity)+
+    fSelect("f_status","Status",INV_STATUSES,i.status||"In stock")+
+    fArea("f_notes","Notes",i.notes)+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const name=v(host,"f_name").trim(); if(!name){ toast("Add an item name"); return; }
+        const qtyRaw=v(host,"f_qty");
+        const rec={id:i.id||uid(),name,category:v(host,"f_cat").trim(),location:v(host,"f_loc").trim(),
+          quantity:qtyRaw===""?null:Number(qtyRaw),status:v(host,"f_status"),notes:v(host,"f_notes").trim()};
+        if(isNew) db.inventory.push(rec); else Object.assign(db.inventory.find(x=>x.id===i.id),rec);
+        save(); closePeek(); render(); toast(isNew?"Item added":"Saved");
+      };
+    });
+}
+
+/* ----- Announcement form ----- */
+function openAnnouncementForm(){
+  openPeek("New announcement",
+    fText("f_emoji","Emoji",("📣"),"A single emoji for the note")+
+    fArea("f_text","Message","")+
+    saveBar(),
+    host=>{
+      host.querySelector("#cancelBtn").onclick=closePeek;
+      host.querySelector("#saveBtn").onclick=()=>{
+        const text=v(host,"f_text").trim(); if(!text){ toast("Write a message first"); return; }
+        db.announcements.unshift({id:uid(),emoji:v(host,"f_emoji").trim()||"📣",text,date:todayISO()});
+        save(); closePeek(); render(); toast("Posted");
+      };
+    });
+}
+
+/* =========================================================================
+   Backup / restore
+   ========================================================================= */
+function exportData(){
+  const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="lab-os-backup-"+todayISO()+".json";
+  a.click(); URL.revokeObjectURL(a.href); toast("Backup downloaded");
+}
+function importData(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const data=JSON.parse(reader.result);
+      if(!data||!Array.isArray(data.members)) throw new Error("bad file");
+      ["members","activities","help","resources","inventory","announcements"].forEach(k=>{ if(!Array.isArray(data[k])) data[k]=[]; });
+      db=data; save();
+      document.getElementById("wsName").value=db.workspace||"Lab OS";
+      navigate("home"); toast("Backup restored");
+    }catch(err){ alert("That file couldn't be read as a Lab OS backup."); }
+  };
+  reader.readAsText(file);
+  e.target.value="";
+}
+
+/* =========================================================================
+   Boot
+   ========================================================================= */
+function toggleSidebar(force){
+  const sb=document.getElementById("sidebar");
+  if(force===true) sb.classList.add("collapsed");
+  else sb.classList.toggle("collapsed");
+}
+document.getElementById("menuBtn").onclick=()=>toggleSidebar();
+document.getElementById("wsName").addEventListener("change",e=>{ db.workspace=e.target.value.trim()||"Lab OS"; save(); });
+
+(async function boot(){
+  await load();
+  document.getElementById("wsName").value=db.workspace||"Lab OS";
+  buildNav();
+  navigate("home");
+  if(window.innerWidth<=780) toggleSidebar(true);
+})();
+</script>
+</body>
+</html>
