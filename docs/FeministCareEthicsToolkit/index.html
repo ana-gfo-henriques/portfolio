@@ -27,12 +27,14 @@
   html,body{margin:0;}
   body{font-family:var(--font);color:var(--ink);background:var(--paper);
     font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding:34px 20px 90px;}
-  .wrap{max-width:720px;margin:0 auto;}
+  .wrap{max-width:860px;margin:0 auto;}
 
   /* header */
   .masthead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
   .wordmark{font-weight:700;font-size:22px;letter-spacing:-.01em;}
   .tagline{color:var(--gray);font-size:14px;}
+  .team-badge{font-weight:700;font-size:14px;}
+  .team-badge::before{content:"·";color:var(--gray);font-weight:400;margin-right:12px;}
   .rule{height:2px;background:var(--ink);margin:12px 0 22px;}
   .progress{display:flex;gap:8px;margin-bottom:26px;}
   .pip{flex:1;height:5px;border-radius:3px;background:var(--paper);border:1.5px solid var(--gray);}
@@ -73,7 +75,7 @@
   .btn.link{background:none;border:none;color:var(--gray);text-decoration:underline;text-underline-offset:3px;padding:8px 4px;}
 
   /* intro */
-  .intro-lead{font-size:18px;max-width:56ch;}
+  .intro-lead{font-size:18px;}
   .intro-lead b{font-weight:700;}
   .how{display:grid;gap:12px;margin:22px 0 4px;padding:0;list-style:none;counter-reset:s;}
   .how li{display:flex;gap:14px;align-items:baseline;}
@@ -83,6 +85,7 @@
   /* results */
   .summary-line{color:var(--gray);font-size:15px;margin:0 0 2px;}
   .summary-line .time{font-weight:700;color:var(--ink);}
+  .summary-line .team{font-weight:700;color:var(--ink);}
   .panel-lbl{font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);
     margin:26px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
   .toggle{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--gray);cursor:pointer;
@@ -108,7 +111,7 @@
   .chip{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);border-radius:999px;padding:8px 15px;font-size:14.5px;font-weight:700;}
   .chip.cond{border-style:dashed;color:var(--gray);}
   .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;align-items:center;}
-  .footnote{font-size:13px;color:var(--gray);margin-top:22px;border-top:1px solid var(--gray);padding-top:14px;max-width:64ch;}
+  .footnote{font-size:13px;color:var(--gray);margin-top:22px;border-top:1px solid var(--gray);padding-top:14px;}
   .footnote b{color:var(--ink);}
 
   @media(max-width:520px){.row .meta .pin-note{display:block;}}
@@ -117,6 +120,19 @@
   .card-tag:hover{border-color:var(--ink);color:var(--ink);}
   .card-tag:focus-visible{outline:3px solid var(--focus);outline-offset:2px;}
   .card-tag svg{width:12px;height:12px;}
+
+  /* inspiration-cards living teaser (on the plan) */
+  .card-teaser{display:flex;gap:18px;align-items:stretch;}
+  .ct-card{flex:none;width:230px;min-height:150px;border:2px solid var(--ink);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;justify-content:center;text-align:center;}
+  .ct-type{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);}
+  .ct-title{font-size:19px;font-weight:700;line-height:1.16;}
+  .ct-note{font-size:12.5px;color:var(--gray);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .ct-card.flip{animation:flipin .28s ease;}
+  .ct-side{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+  .ct-why{margin:0;line-height:1.5;}
+  .ct-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .btn.small{padding:9px 17px;font-size:14px;}
+  @media(max-width:560px){.card-teaser{flex-direction:column;} .ct-card{width:100%;}}
 
   /* inspiration-cards tile (entry on the plan) */
   .deck-tile{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
@@ -149,7 +165,7 @@
   .deck-count{text-align:center;color:var(--gray);font-size:13px;font-weight:700;margin-top:10px;}
   .dc-type{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);}
   .dc-title{font-size:30px;font-weight:700;line-height:1.15;}
-  .dc-note{font-size:15px;color:var(--gray);max-width:42ch;}
+  .dc-note{font-size:15px;color:var(--gray);}
   .dc-inner.flip{animation:flipin .28s ease;}
   @keyframes flipin{from{opacity:.15;transform:scale(.96);}to{opacity:1;transform:none;}}
   @media(prefers-reduced-motion:reduce){.dc-inner.flip{animation:none;}}
@@ -222,6 +238,7 @@
     <div class="masthead">
       <span class="wordmark">Session Builder</span>
       <span class="tagline">Feminist Care Ethics Toolkit</span>
+      <span class="team-badge" id="teambadge" hidden></span>
     </div>
     <div class="rule"></div>
     <div class="progress" id="progress" hidden></div>
@@ -232,6 +249,7 @@
 <div class="plan" id="plan"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 /* ── PURPOSES: the curated-list options (verbatim intents from App. D) ── */
 const PURPOSES = [
@@ -278,10 +296,13 @@ const BOOKENDS = {
            note:"Close the session — capture takeaways and agree what happens next." },
 };
 const EXTRAS = [
-  { key:"board",           label:"The board",                file:"board.pdf",             sub:"The play board the activities sit on" },
-  { key:"instructions",    label:"Instructions",             file:"instructions.pdf",      sub:"How to run the toolkit" },
   { key:"blankCards",      label:"Blank card templates",     file:"blank-cards.pdf",       sub:"Make your own cards" },
   { key:"blankWorksheets", label:"Blank worksheet templates",file:"blank-worksheets.pdf",  sub:"Make your own worksheets" },
+];
+/* always in the pack, before everything else */
+const ALWAYS = [
+  { file:"instructions.pdf", name:"Instructions" },
+  { file:"board.pdf",        name:"The board" },
 ];
 const fileFor = a => a.file || (a.id + ".pdf");
 
@@ -299,6 +320,23 @@ function cardTagFor(a){
   if(!a.cards||a.cards==="none") return null;
   return { type:a.cards==="inspiration"?"value":a.cards, label:a.cards==="inspiration"?"full deck":a.cards+" cards" };
 }
+const ALLCARDS = Object.entries(CARDS).flatMap(([t,arr])=>arr.map(c=>({t:c.t,d:c.d,type:t})));
+let teaserCard=null;
+function relevantTypes(){ const w={}; state.chosen.forEach(id=>{ const a=byId(id); if(!a||!a.cards||a.cards==="none") return;
+  if(a.cards==="inspiration"){ ["value","method","reflection","role"].forEach(t=>w[t]=(w[t]||0)+1); }
+  else w[a.cards]=(w[a.cards]||0)+1; }); return w; }
+function teaserFits(){ if(!teaserCard) return false; const t=Object.keys(relevantTypes()); return !t.length || t.includes(teaserCard.type); }
+function drawTeaser(){
+  const w=relevantTypes(), types=Object.keys(w);
+  let pool;
+  if(types.length){ const total=types.reduce((s,t)=>s+w[t],0); let r=Math.random()*total, pick=types[0];
+    for(const t of types){ r-=w[t]; if(r<=0){ pick=t; break; } }
+    pool=(CARDS[pick]||[]).map(c=>({t:c.t,d:c.d,type:pick})); }
+  else pool=ALLCARDS;
+  let c; do{ c=pool[Math.floor(Math.random()*pool.length)]; }while(teaserCard&&c.t===teaserCard.t&&pool.length>1); teaserCard=c;
+}
+function teaserFace(){ if(!teaserCard) return ""; const m=CARD_TYPES[teaserCard.type];
+  return `<span class="ct-type">${m.label} card</span><span class="ct-title">${esc(teaserCard.t)}</span>${teaserCard.d?`<span class="ct-note">${esc(teaserCard.d)}</span>`:""}`; }
 const CARD_GLYPH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="11" height="14" rx="2" transform="rotate(-9 8.5 14)"/><rect x="8" y="4" width="12" height="15" rx="2" transform="rotate(7 14 11)"/></svg>';
 
 /* ── QUESTIONS: purpose (multi) · stage · track ── */
@@ -319,7 +357,6 @@ const QUESTIONS = [
     q:"How much time do you have?",
     help:"We'll fit the session to it — warm-up and wrap-up are counted in.",
     options:[
-      { v:"30",   lbl:"Up to 30 minutes",     sub:"A quick, focused check-in" },
       { v:"60",   lbl:"About an hour",         sub:"Room for a couple of activities" },
       { v:"120",  lbl:"A couple of hours",     sub:"A full working session" },
       { v:"none", lbl:"However long it takes", sub:"Everything that fits your focus" },
@@ -379,7 +416,7 @@ function teamPlanLine(){
 }
 
 /* ── STATE ── */
-const state = { i:0, answers:{ purposes:[], stage:null, time:null }, chosen:[], showDim:true, extras:{board:false,instructions:false,blankCards:false,blankWorksheets:false}, teams:{}, teamId:null, teamName:null };
+const state = { i:0, answers:{ purposes:[], stage:null, time:null }, chosen:[], showDim:true, extras:{blankCards:false,blankWorksheets:false}, teams:{}, teamId:null, teamName:null };
 const screen = document.getElementById("screen");
 const progressEl = document.getElementById("progress");
 const planEl = document.getElementById("plan");
@@ -400,12 +437,14 @@ function render(){
   if(state.i<=QUESTIONS.length) return question(QUESTIONS[state.i-1]);
   return results();
 }
+function setHeader(name){ const tb=document.getElementById("teambadge"); if(!tb) return; if(name){ tb.textContent=name; tb.hidden=false; } else { tb.hidden=true; } }
 
 function intro(){
+  setHeader(null);
   const teams=Object.values(state.teams).sort((a,b)=>(lastUsed(b.id)||b.created||"").localeCompare(lastUsed(a.id)||a.created||""));
   screen.innerHTML=`
     <p class="step-eyebrow">Welcome</p>
-    <h1 class="q" style="max-width:ch32">A gentle way to plan a care-full session.</h1>
+    <h1 class="q">A gentle way to plan a care-full session.</h1>
     <p class="intro-lead">The Feminist Care Ethics toolkit helps a team or community work with care — attending to people and relationships, not only the task at hand. This companion plans a session for you: say what you'd like to focus on and how long you have, and it lays out an ordered set of activities to print, bookended by a warm-up and a wrap-up.</p>
 
     <div class="panel-lbl">Inspiration cards</div>
@@ -468,6 +507,7 @@ function intro(){
 }
 
 function showHistory(){
+  setHeader(state.teamName);
   progressEl.hidden=true;
   const t=teamRec(state.teamId); const sessions=(t&&t.sessions)?[...t.sessions].reverse():[];
   screen.innerHTML=`
@@ -494,6 +534,7 @@ function histRow(x){
 }
 
 function question(qd){
+  setHeader(state.teamName);
   const val=state.answers[qd.key];
   const isSel=v=> qd.type==="multi" ? val.includes(v) : val===v;
   screen.innerHTML=`
@@ -546,6 +587,7 @@ function recommend(){
   let running=0, chosen=[];
   for(const a of sorted){ if(running+a.time<=bodyBudget){ chosen.push(a); running+=a.time; } }
   if(chosen.length===0) chosen=[sorted[0]]; // never return an empty body
+  teaserCard=null;
   return chosen.map(a=>a.id).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
 }
 
@@ -563,15 +605,17 @@ function summaryLine(){
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
 
 function results(){
+  setHeader(state.teamName);
   justSaved=false;
   const ids=state.chosen, mins=sessionTime();
   const available=ACTIVITIES.filter(a=>!ids.includes(a.id));
   const cardAct=ids.map(byId).find(a=>a.cards&&a.cards!=="none");
   const defType=cardAct?(cardAct.cards==="inspiration"?"value":cardAct.cards):"value";
+  if(!teaserFits()) drawTeaser();
   screen.innerHTML=`
     <p class="step-eyebrow">Your session</p>
     <h1 class="q" style="margin-bottom:10px">Here's your plan.</h1>
-    <p class="summary-line">${state.teamName?esc(state.teamName)+" · ":""}${summaryLine()} · <span class="time">${fmt(mins)}</span></p>
+    <p class="summary-line">${state.teamName?`<span class="team">${esc(state.teamName)}</span> · `:""}${summaryLine()} · <span class="time">${fmt(mins)}</span></p>
 
     <div class="panel-lbl">Activities, in order
       <label class="toggle"><input type="checkbox" id="dimtog" ${state.showDim?"checked":""}> Show care-ethics categories</label>
@@ -599,24 +643,27 @@ function results(){
       ${EXTRAS.map(x=>`<label class="xopt"><input type="checkbox" data-x="${x.key}" ${state.extras[x.key]?"checked":""}><span class="xtext"><span class="xlbl">${x.label}</span><span class="xsub">${x.sub}</span></span></label>`).join("")}
     </div>
 
-    <button class="deck-tile" id="cardstile" type="button">
-      <span class="dt-glyph" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="8" width="12" height="15" rx="2" transform="rotate(-9 10 15)"/><rect x="9" y="4" width="13" height="16" rx="2" transform="rotate(7 15 12)"/></svg></span>
-      <span class="dt-body">
-        <span class="dt-title">Inspiration cards</span>
-        <span class="dt-sub">Optional sparks — draw one when a discussion needs a nudge. On screen, nothing to cut.</span>
-      </span>
-      <span class="dt-open">Open →</span>
-    </button>
+    <div class="panel-lbl">Inspiration cards</div>
+    <div class="card-teaser">
+      <div class="ct-card" id="teasercard" aria-live="polite">${teaserFace()}</div>
+      <div class="ct-side">
+        <p class="ct-why">Chosen to suit your activities — an optional prompt for when a conversation stalls. Draw another for a fresh angle, or tap an activity's tag above to open the deck there.</p>
+        <div class="ct-actions">
+          <button class="btn small" id="teaseropen">Browse all →</button>
+          <button class="btn link" id="teaserdraw">Draw another</button>
+        </div>
+      </div>
+    </div>
 
     <p class="pack-msg" id="packmsg" ${packMsg?"":"hidden"}>${packMsg||""}</p>
     <div class="actions">
       <button class="btn ghost" id="back">Back</button>
-      <button class="btn" id="pack">Download the pack</button>
-      <button class="btn link" id="print">Print plan only</button>
+      <button class="btn" id="pack">Download the pack (PDF)</button>
+      <button class="btn link" id="zip">Download files (.zip)</button>
       ${state.teamId?`<button class="btn link" id="hist">View history (${sessionCount(state.teamId)})</button>`:""}
       <button class="btn link" id="restart">Start over</button>
     </div>
-    <p class="footnote"><b>The pack</b> collates a cover sheet with the warm-up, the activity worksheets, the wrap-up, and anything ticked above — pulling the PDFs from the <code>${PACK_DIR}</code> folder. “Print plan only” prints the cover sheet on its own.</p>`;
+    <p class="footnote"><b>The pack (PDF)</b> is one file — a contents page, then the instructions and board, the warm-up, the activity worksheets, the wrap-up, and any templates ticked above. <b>The .zip</b> is the same set as separate PDFs. Both pull from the <code>${PACK_DIR}</code> folder.</p>`;
 
   packMsg="";
   drawStack();
@@ -628,22 +675,13 @@ function results(){
     results();
   };
   screen.querySelectorAll(".xopt input").forEach(cb=>cb.onchange=()=>{ state.extras[cb.dataset.x]=cb.checked; });
-  document.getElementById("pack").onclick=async(e)=>{
-    const btn=e.currentTarget; btn.disabled=true; btn.textContent="Building…";
-    let missing; try{ missing=await buildPack(); }catch(err){ missing=null; }
-    if(missing!==null) await recordSession();
-    packMsg = (missing===null)
-      ? "Couldn't build the pack — the PDF library didn't load. Check your connection and try again."
-      : missing.length
-        ? `Saved. Drop these files into <code>${PACK_DIR}</code> to include them next time: ${missing.map(f=>`<code>${esc(f)}</code>`).join(", ")}`
-        : "Pack downloaded — and saved to this team's history.";
-    results();
-  };
-  document.getElementById("print").onclick=()=>{ buildPlan(); window.print(); };
+  document.getElementById("pack").onclick=(e)=>doDownload("pack", e);
+  document.getElementById("zip").onclick=(e)=>doDownload("zip", e);
   { const h=document.getElementById("hist"); if(h) h.onclick=()=>showHistory(); }
-  { const c=document.getElementById("cardstile"); if(c) c.onclick=()=>openDeck(defType, ()=>results()); }
+  document.getElementById("teaserdraw").onclick=()=>{ drawTeaser(); const el=document.getElementById("teasercard"); if(el){ el.classList.remove("flip"); void el.offsetWidth; el.innerHTML=teaserFace(); el.classList.add("flip"); } };
+  document.getElementById("teaseropen").onclick=()=>openDeck(teaserCard?teaserCard.type:defType, ()=>results());
   document.getElementById("back").onclick=()=>{ state.i--; render(); };
-  document.getElementById("restart").onclick=()=>{ state.i=0; state.answers={purposes:[],stage:null,time:null}; state.chosen=[]; state.extras={board:false,instructions:false,blankCards:false,blankWorksheets:false}; render(); };
+  document.getElementById("restart").onclick=()=>{ state.i=0; state.answers={purposes:[],stage:null,time:null}; state.chosen=[]; state.extras={blankCards:false,blankWorksheets:false}; render(); };
 }
 function drawStack(){
   const stack=document.getElementById("stack"); stack.innerHTML="";
@@ -696,38 +734,101 @@ function buildPlan(){
 
 /* ── printable pack: collate the toolkit PDFs from PACK_DIR ── */
 function packItems(){
-  const items=[ BOOKENDS.warmup, ...state.chosen.map(byId), BOOKENDS.wrapup ];
-  EXTRAS.forEach(x=>{ if(state.extras[x.key]) items.push(x); });
-  return items.map(it=>({ file:fileFor(it), title:it.title||it.label }));
+  const body=state.chosen.map(id=>{ const a=byId(id); return { file:fileFor(a), name:`${a.id} ${a.title}` }; });
+  const items=[ ...ALWAYS,
+    { file:BOOKENDS.warmup.file, name:BOOKENDS.warmup.title },
+    ...body,
+    { file:BOOKENDS.wrapup.file, name:BOOKENDS.wrapup.title } ];
+  EXTRAS.forEach(x=>{ if(state.extras[x.key]) items.push({ file:x.file, name:x.label }); });
+  return items;
 }
-function orderedRows(){ return orderedItems().map(a=>({ tag:a._pin?(a._pin==="first"?"Warm-up":"Wrap-up"):a.id, title:a.title, time:a.time })); }
-function ascii(x){ return String(x).replace(/[—–]/g,"-").replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/·/g,"|").replace(/…/g,"..."); }
 function downloadBlob(blob,name){ const u=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),2000); }
+function fname(kind){ return ((state.teamName||"session").replace(/[^a-z0-9-]+/gi,"-").toLowerCase())+"-"+kind; }
+/* keep only characters pdf-lib's standard fonts can draw */
+function pdfsafe(t){ return Array.from(String(t)).map(ch=>{ const c=ch.codePointAt(0);
+  if(c<=0xFF) return ch;
+  const ok={0x2013:"–",0x2014:"—",0x2018:"‘",0x2019:"’",0x201C:"“",0x201D:"”",0x2022:"•",0x2026:"…",0x20AC:"€",0x2122:"™"};
+  return ok[c]||"?"; }).join(""); }
+function wrapText(t, font, size, maxW){ const words=pdfsafe(t).split(" ").filter(Boolean); const lines=[]; let cur="";
+  for(const w of words){ const test=cur?cur+" "+w:w; if(font.widthOfTextAtSize(test,size)>maxW && cur){ lines.push(cur); cur=w; } else cur=test; }
+  if(cur) lines.push(cur); return lines; }
+async function loadItems(){
+  const { PDFDocument } = PDFLib; const arr=[], missing=[];
+  for(const it of packItems()){
+    try{ const res=await fetch(PACK_DIR+it.file); if(!res.ok) throw 0;
+      const buf=await res.arrayBuffer(); const doc=await PDFDocument.load(buf);
+      arr.push({ ...it, buf, doc, pages:doc.getPageCount() });
+    }catch(e){ missing.push(it.file); arr.push({ ...it, buf:null, doc:null, pages:0 }); }
+  }
+  return { arr, missing };
+}
+function packContents(arr){ let p=2; return arr.map(it=>{
+  if(it.pages>0){ const r=it.pages===1?String(p):`${p}–${p+it.pages-1}`; p+=it.pages; return { label:it.name, right:r }; }
+  return { label:it.name, right:"—" }; }); }
+/* the first page: an index/contents sheet, in the toolkit's curated-list style */
+async function makeCoverDoc(contents, rightHead){
+  const { PDFDocument, StandardFonts, rgb } = PDFLib;
+  const doc=await PDFDocument.create();
+  const font=await doc.embedFont(StandardFonts.Helvetica), bold=await doc.embedFont(StandardFonts.HelveticaBold);
+  const W=595.28,H=841.89,M=64,R=W-M, page=doc.addPage([W,H]);
+  const ink=rgb(0.08,0.08,0.08), gray=rgb(0.42,0.42,0.42);
+  let y=H-78;
+  const at=(t,x,size,f,c)=>page.drawText(pdfsafe(t),{x,y,size,font:f||font,color:c||ink});
+  const rt=(t,size,f,c)=>{ t=pdfsafe(t); at(t, R-(f||font).widthOfTextAtSize(t,size), size, f, c); };
+  const para=(t,size,f,c,lead)=>{ wrapText(t,f||font,size,R-M).forEach(l=>{ at(l,M,size,f,c); y-=(lead||size+4); }); };
+  const rule=(th,c)=>page.drawLine({start:{x:M,y},end:{x:R,y},thickness:th,color:c||ink});
+  at("Your session", M, 24, bold); y-=30;
+  para(summaryLine()+"    —    "+fmt(sessionTime()), 11, font, gray, 15);
+  para(teamPlanLine(), 10, font, gray, 22);
+  para("This pack was made with the Feminist Care Ethics toolkit — a set of activities for a team or community to work with care, attending to people and relationships and not only the task. It holds one session in order: instructions and a board to set up with, a warm-up to begin, a few activities, and a wrap-up to close. Print it out, bring post-its, pens and scissors, and work through the sheets together.", 11, font, ink, 16);
+  y-=14;
+  at("CONTENTS", M, 11, bold); rt(rightHead||"PAGE", 9, bold, gray); y-=9; rule(1.5); y-=20;
+  contents.forEach(row=>{
+    let label=row.label; const maxW=R-M-70;
+    while(font.widthOfTextAtSize(pdfsafe(label),11)>maxW && label.length>3){ label=label.slice(0,-2); }
+    if(label!==row.label) label=label.replace(/[ .]+$/,"")+"…";
+    const lw=font.widthOfTextAtSize(pdfsafe(label),11), rw=font.widthOfTextAtSize(pdfsafe(row.right),11);
+    at(label, M, 11, font); rt(row.right, 11, font, gray);
+    const ds=M+lw+10, de=R-rw-10, dw=font.widthOfTextAtSize(".",11);
+    if(de>ds+dw){ const n=Math.floor((de-ds)/dw); page.drawText(".".repeat(n),{x:ds,y,size:11,font,color:gray}); }
+    y-=18;
+  });
+  y-=8; rule(1, gray); y-=18;
+  at("BRING WITH YOU", M, 9, bold, gray); y-=15;
+  at("Post-its    ·    Pens    ·    Scissors    ·    The worksheets in this pack", M, 11, font);
+  return doc;
+}
+/* one merged PDF: index cover + every sheet in order */
 async function buildPack(){
   if(typeof PDFLib==="undefined") return null;
-  const { PDFDocument, StandardFonts, rgb } = PDFLib;
-  const out = await PDFDocument.create();
-  const font = await out.embedFont(StandardFonts.Helvetica);
-  const bold = await out.embedFont(StandardFonts.HelveticaBold);
-  const page = out.addPage([595.28,841.89]); const M=56; let y=782;
-  const put=(t,f,size,gap)=>{ page.drawText(ascii(t),{x:M,y,size,font:f,color:rgb(0,0,0)}); y-=gap; };
-  put("Session plan", bold, 22, 12);
-  put(ascii(summaryLine())+" - "+fmt(sessionTime()), font, 11, 26);
-  put(ascii(teamPlanLine()), font, 10, 24);
-  put("ORDER OF THE SESSION", bold, 10, 18);
-  orderedRows().forEach(r=>put(`${r.tag}    ${r.title}    (${r.time} min)`, font, 11, 17));
-  y-=10; put("BRING WITH YOU", bold, 10, 18);
-  put("Post-its | Pens | Scissors | The worksheets in this pack", font, 11, 17);
-  const missing=[];
-  for(const it of packItems()){
-    try{
-      const res=await fetch(PACK_DIR+it.file); if(!res.ok) throw 0;
-      const src=await PDFDocument.load(await res.arrayBuffer());
-      (await out.copyPages(src, src.getPageIndices())).forEach(pg=>out.addPage(pg));
-    }catch(e){ missing.push(it.file); }
-  }
-  downloadBlob(new Blob([await out.save()],{type:"application/pdf"}), ((state.teamName||"session").replace(/[^a-z0-9-]+/gi,"-").toLowerCase())+"-pack.pdf");
+  const { arr, missing } = await loadItems();
+  const out = await makeCoverDoc(packContents(arr), "PAGE");
+  for(const it of arr){ if(it.doc){ (await out.copyPages(it.doc, it.doc.getPageIndices())).forEach(pg=>out.addPage(pg)); } }
+  downloadBlob(new Blob([await out.save()],{type:"application/pdf"}), fname("pack")+".pdf");
   return missing;
+}
+/* the same set as separate PDFs, bundled in a zip */
+async function buildZip(){
+  if(typeof PDFLib==="undefined"||typeof JSZip==="undefined") return null;
+  const { arr, missing } = await loadItems();
+  const zip=new JSZip();
+  const zc=arr.map((it,i)=>({ label:it.name, right:it.pages>0?String(i+1).padStart(2,"0"):"—" }));
+  const cover=await makeCoverDoc(zc, "FILE");
+  zip.file("00 Session plan.pdf", await cover.save());
+  arr.forEach((it,i)=>{ if(it.buf){ const nm=`${String(i+1).padStart(2,"0")} ${it.name}.pdf`.replace(/[/:*?"<>|]+/g,"-"); zip.file(nm, it.buf); } });
+  downloadBlob(await zip.generateAsync({type:"blob"}), fname("files")+".zip");
+  return missing;
+}
+async function doDownload(kind, e){
+  const btn=e.currentTarget; btn.disabled=true; btn.textContent="Preparing…";
+  let missing; try{ missing = kind==="zip" ? await buildZip() : await buildPack(); }catch(err){ missing=null; }
+  if(missing!==null) await recordSession();
+  packMsg = (missing===null)
+    ? "Couldn't build the download — a needed library didn't load. Check your connection and try again."
+    : missing.length
+      ? `Saved. Drop these files into <code>${PACK_DIR}</code> to include them next time: ${missing.map(f=>`<code>${esc(f)}</code>`).join(", ")}`
+      : (kind==="zip" ? "Files downloaded (.zip) — and saved to this team's history." : "Pack downloaded (PDF) — and saved to this team's history.");
+  results();
 }
 
 /* ── inspiration deck view ── */
@@ -742,6 +843,7 @@ function refreshFace(){ const f=document.getElementById("dcface");
   if(f){ f.classList.remove("flip"); void f.offsetWidth; f.innerHTML=faceHTML(); f.classList.add("flip"); } }
 function move(d){ const n=deck.order.length; if(!n) return; deck.index=(deck.index+d+n)%n; refreshFace(); }
 function showDeck(){
+  setHeader(state.teamName);
   progressEl.hidden=true;
   const t=deck.type, m=CARD_TYPES[t], arr=CARDS[t]||[];
   screen.innerHTML=`
