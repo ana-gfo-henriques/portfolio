@@ -405,7 +405,7 @@ function intro(){
   const teams=Object.values(state.teams).sort((a,b)=>(lastUsed(b.id)||b.created||"").localeCompare(lastUsed(a.id)||a.created||""));
   screen.innerHTML=`
     <p class="step-eyebrow">Welcome</p>
-    <h1 class="q" style="max-width:22ch">A gentle way to plan a care-full session.</h1>
+    <h1 class="q" style="max-width:ch32">A gentle way to plan a care-full session.</h1>
     <p class="intro-lead">The Feminist Care Ethics toolkit helps a team or community work with care — attending to people and relationships, not only the task at hand. This companion plans a session for you: say what you'd like to focus on and how long you have, and it lays out an ordered set of activities to print, bookended by a warm-up and a wrap-up.</p>
 
     <div class="panel-lbl">Inspiration cards</div>
