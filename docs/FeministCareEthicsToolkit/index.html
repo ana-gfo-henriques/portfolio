@@ -121,6 +121,10 @@
   .card-tag:focus-visible{outline:3px solid var(--focus);outline-offset:2px;}
   .card-tag svg{width:12px;height:12px;}
 
+  .confirm-end{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin-top:14px;}
+  .confirm-end .ce-q{font-weight:700;}
+  .confirm-end .ce-actions{display:flex;gap:14px;align-items:center;}
+
   /* inspiration-cards living teaser (on the plan) */
   .card-teaser{display:flex;gap:18px;align-items:stretch;}
   .ct-card{flex:none;width:230px;min-height:150px;border:2px solid var(--ink);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;justify-content:center;text-align:center;}
@@ -364,7 +368,7 @@ const QUESTIONS = [
 ];
 
 /* ── persistence: artifact storage → localStorage → memory ── */
-const STORE_KEY="fce:teams:v1"; const _mem={}; let justSaved=false, packMsg="";
+const STORE_KEY="fce:teams:v1"; const _mem={}; let justSaved=false, packMsg="", endArmed=false, sessionDownloaded=false;
 async function _get(k){
   if(typeof window!=="undefined"&&window.storage&&window.storage.get){
     try{ const r=await window.storage.get(k); return r&&r.value!=null?r.value:null; }catch(e){}
@@ -587,7 +591,7 @@ function recommend(){
   let running=0, chosen=[];
   for(const a of sorted){ if(running+a.time<=bodyBudget){ chosen.push(a); running+=a.time; } }
   if(chosen.length===0) chosen=[sorted[0]]; // never return an empty body
-  teaserCard=null;
+  teaserCard=null; sessionDownloaded=false;
   return chosen.map(a=>a.id).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
 }
 
@@ -656,16 +660,21 @@ function results(){
     </div>
 
     <p class="pack-msg" id="packmsg" ${packMsg?"":"hidden"}>${packMsg||""}</p>
+    ${endArmed?`<div class="confirm-end">
+      <span class="ce-q">You haven't downloaded the pack or files yet — end the session anyway?</span>
+      <span class="ce-actions"><button class="btn small" id="endyes">End anyway</button><button class="btn link" id="endno">Keep planning</button></span>
+    </div>`:""}
     <div class="actions">
       <button class="btn ghost" id="back">Back</button>
       <button class="btn" id="pack">Download the pack (PDF)</button>
       <button class="btn link" id="zip">Download files (.zip)</button>
       ${state.teamId?`<button class="btn link" id="hist">View history (${sessionCount(state.teamId)})</button>`:""}
+      <button class="btn ghost" id="endsession">End session</button>
       <button class="btn link" id="restart">Start over</button>
     </div>
     <p class="footnote"><b>The pack (PDF)</b> is one file — a contents page, then the instructions and board, the warm-up, the activity worksheets, the wrap-up, and any templates ticked above. <b>The .zip</b> is the same set as separate PDFs. Both pull from the <code>${PACK_DIR}</code> folder.</p>`;
 
-  packMsg="";
+  packMsg=""; endArmed=false;
   drawStack();
   document.getElementById("dimtog").onchange=e=>{ state.showDim=e.target.checked; drawStack(); };
   document.getElementById("addsel").onchange=e=>{
@@ -681,7 +690,10 @@ function results(){
   document.getElementById("teaserdraw").onclick=()=>{ drawTeaser(); const el=document.getElementById("teasercard"); if(el){ el.classList.remove("flip"); void el.offsetWidth; el.innerHTML=teaserFace(); el.classList.add("flip"); } };
   document.getElementById("teaseropen").onclick=()=>openDeck(teaserCard?teaserCard.type:defType, ()=>results());
   document.getElementById("back").onclick=()=>{ state.i--; render(); };
-  document.getElementById("restart").onclick=()=>{ state.i=0; state.answers={purposes:[],stage:null,time:null}; state.chosen=[]; state.extras={blankCards:false,blankWorksheets:false}; render(); };
+  document.getElementById("endsession").onclick=()=>{ if(sessionDownloaded){ openDeck("reflection", backToWelcome, "Back to start"); } else { endArmed=true; results(); } };
+  { const y=document.getElementById("endyes"); if(y) y.onclick=()=>backToWelcome(); }
+  { const n=document.getElementById("endno"); if(n) n.onclick=()=>{ results(); }; }
+  document.getElementById("restart").onclick=()=>{ backToWelcome(); };
 }
 function drawStack(){
   const stack=document.getElementById("stack"); stack.innerHTML="";
@@ -823,18 +835,23 @@ async function doDownload(kind, e){
   const btn=e.currentTarget; btn.disabled=true; btn.textContent="Preparing…";
   let missing; try{ missing = kind==="zip" ? await buildZip() : await buildPack(); }catch(err){ missing=null; }
   if(missing!==null) await recordSession();
+  if(missing!==null && missing.length===0){
+    // full success — the download closes the session, so move to the inspiration cards
+    sessionDownloaded=true;
+    openDeck("reflection", backToWelcome, "Back to start");
+    return;
+  }
   packMsg = (missing===null)
     ? "Couldn't build the download — a needed library didn't load. Check your connection and try again."
-    : missing.length
-      ? `Saved. Drop these files into <code>${PACK_DIR}</code> to include them next time: ${missing.map(f=>`<code>${esc(f)}</code>`).join(", ")}`
-      : (kind==="zip" ? "Files downloaded (.zip) — and saved to this team's history." : "Pack downloaded (PDF) — and saved to this team's history.");
+    : `Saved. Drop these files into <code>${PACK_DIR}</code> to include them next time: ${missing.map(f=>`<code>${esc(f)}</code>`).join(", ")}`;
   results();
 }
 
 /* ── inspiration deck view ── */
-const deck={ type:"value", order:[], index:0, browse:false, _back:null };
+const deck={ type:"value", order:[], index:0, browse:false, _back:null, _backLabel:"Back" };
 function loadType(t){ deck.type=(t&&CARDS[t])?t:"value"; deck.order=(CARDS[deck.type]||[]).slice(); deck.index=0; deck.browse=false; }
-function openDeck(type, back){ loadType(type); deck._back=back||(()=>render()); showDeck(); }
+function openDeck(type, back, backLabel){ loadType(type); deck._back=back||(()=>render()); deck._backLabel=backLabel||"Back"; showDeck(); }
+function backToWelcome(){ state.i=0; state.answers={purposes:[],stage:null,time:null}; state.chosen=[]; state.extras={blankCards:false,blankWorksheets:false}; teaserCard=null; sessionDownloaded=false; endArmed=false; render(); }
 function shuffleDeck(){ const a=deck.order; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } deck.index=0; }
 function faceHTML(){ const m=CARD_TYPES[deck.type], c=deck.order[deck.index];
   if(!c) return `<div class="dc-title">No cards</div>`;
@@ -862,7 +879,7 @@ function showDeck(){
            <div class="dc-inner" id="dcface">${faceHTML()}</div>
          </div>`}
     <div class="actions">
-      <button class="btn ghost" id="deckback">Back</button>
+      <button class="btn ghost" id="deckback">${deck._backLabel||"Back"}</button>
       ${deck.browse
         ? `<button class="btn" id="tocards">Back to cards</button>`
         : `<button class="btn" id="shuffle">Shuffle</button><button class="btn link" id="togglebrowse">Browse all</button>`}
